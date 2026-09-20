@@ -1,955 +1,2469 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+/* =====================================
+   ARES TRACKER 7.0
+   DANIEL AMARAL
+===================================== */
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-<title>🏛️ ARES TRACKER 5.0</title>
+:root{
 
-<link rel="stylesheet" href="style.css">
+--bg:#070b14;
+--card:#111827;
+--card2:#1a2333;
 
-</head>
+--gold:#ffd700;
+--gold2:#ffb300;
 
-<body>
+--blue:#00e5ff;
+--purple:#7b61ff;
 
-<div class="container">
+--green:#00ff88;
+--red:#ff4d4d;
 
-<header class="hero">
+--text:#ffffff;
+--text2:#c8d0e0;
 
-<img
-src="daniel.jpeg"
-class="banner"
-alt="Daniel Amaral">
+}
 
-<div class="hero-content">
+body{
 
-<h1>🏛️ ARES TRACKER 6.0</h1>
+font-family:'Poppins',sans-serif;
 
-<p>
-Projeto Tanquinho São Paulo
-</p>
+background:
+linear-gradient(
+135deg,
+#05070d,
+#0b1020,
+#111827
+);
 
-<div class="hero-badges">
+color:white;
 
-<span class="badge">
-🔥 Projeto ARES
-</span>
+min-height:100vh;
 
-<span class="badge">
-🏋️ Hip Thrust 130kg
-</span>
+overflow-x:hidden;
 
-<span class="badge">
-⚖️ 79kg
-</span>
+position:relative;
 
-</div>
+}
 
-</div>
+/* =====================================
+   FUNDO
+===================================== */
 
-</header>
+.fundoGlow,
+.fundoGlow2,
+.fundoGlow3{
 
-<section class="grid">
+position:fixed;
 
-<div class="card perfil">
+border-radius:50%;
 
-<img
-src="daniel.jpeg"
-class="avatar">
+filter:blur(120px);
 
-<div class="perfil-info">
+z-index:-1;
 
-<h2>
-Daniel Amaral
-</h2>
+}
 
-<p id="classe">
-🥇 Ouro
-</p>
+.fundoGlow{
 
-<p id="nivel">
-⚔️ Nível 16
-</p>
+width:350px;
+height:350px;
 
-<p id="xp">
-XP Total: 1540
-</p>
+background:#00e5ff;
 
-<p id="streak">
-🔥 Streak: 0 dias
-</p>
+top:-100px;
+left:-100px;
 
-<div class="xp-box">
+opacity:.15;
 
-<div class="barra">
+}
 
-<div
-id="xpBarra"
-class="xpBarra">
-</div>
+.fundoGlow2{
 
-</div>
+width:450px;
+height:450px;
 
-</div>
+background:#7b61ff;
 
-</div>
+bottom:-150px;
+right:-150px;
 
-</div>
+opacity:.15;
 
-<div class="card objetivos">
+}
 
-<h2>
-🎯 Projeto Tanquinho SP
-</h2>
+.fundoGlow3{
 
-<div class="meta-item">
+width:300px;
+height:300px;
 
-<label>
-Peso Atual
-</label>
+background:#ffd700;
 
-<span id="pesoAtual">
-79kg
-</span>
+top:50%;
 
-</div>
+left:50%;
 
-<div class="barra">
+transform:
+translate(-50%,-50%);
 
-<div
-id="pesoBarra"
-class="pesoBarra">
-</div>
+opacity:.08;
 
-</div>
+}
 
-<br>
+/* =====================================
+   CONTAINER
+===================================== */
 
-<div class="meta-item">
+.container{
 
-<label>
-Meta
-</label>
+width:95%;
 
-<span>
-75kg
-</span>
+max-width:1600px;
 
-</div>
+margin:auto;
 
-<hr>
+padding:20px;
 
-<br>
+}
 
-<div class="meta-item">
+/* =====================================
+   HERO
+===================================== */
 
-<label>
-BF Atual
-</label>
+.hero{
 
-<span id="bfAtual">
-14%
-</span>
+height:300px;
 
-</div>
+border-radius:30px;
 
-<div class="barra">
+overflow:hidden;
 
-<div
-id="bfBarra"
-class="bfBarra">
-</div>
+position:relative;
 
-</div>
+margin-bottom:25px;
 
-<br>
+background:
 
-<div class="meta-item">
+linear-gradient(
+135deg,
+rgba(0,229,255,.2),
+rgba(123,97,255,.2)
+),
 
-<label>
-Meta BF
-</label>
+url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438")
+center/cover;
 
-<span>
-10%
-</span>
+box-shadow:
 
-</div>
+0 0 40px rgba(0,229,255,.2);
 
-</div>
+}
 
-</section>
+.heroOverlay{
 
-<section class="card boss-card">
+width:100%;
+height:100%;
 
-<h2>
-👹 Boss da Semana
-</h2>
+display:flex;
 
-<div class="boss-area">
+flex-direction:column;
 
-<div class="boss-avatar">
+justify-content:center;
 
-👹
+align-items:center;
 
-</div>
+backdrop-filter:blur(5px);
 
-<div class="boss-info">
+}
 
-<h3 id="bossNome">
+.hero h1{
 
-Minotauro
+font-size:3rem;
 
-</h3>
+font-weight:800;
 
-<p>
+color:white;
 
-Recompensa:
-+500 XP
+text-shadow:
 
-</p>
+0 0 20px var(--blue);
 
-<div class="barra">
+}
 
-<div
-id="bossBarra"
-class="preenchida">
-</div>
+.hero p{
 
-</div>
+font-size:1.1rem;
 
-<p id="bossHp">
+margin-top:10px;
 
-10000 HP
+color:white;
 
-</p>
+}
 
-</div>
+.heroBadges{
 
-</div>
+display:flex;
 
-</section>
+gap:15px;
 
-<section class="card">
+margin-top:20px;
 
-<h2>
-⚔️ Missões Diárias
-</h2>
+flex-wrap:wrap;
 
-<div class="missao">
+justify-content:center;
 
-<input
-type="checkbox"
-class="m">
+}
 
-Treino Completo
+.heroBadges span{
 
-<span>
-+50 XP
-</span>
+padding:10px 18px;
 
-</div>
+background:
+rgba(255,255,255,.08);
 
-<div class="missao">
+border:
 
-<input
-type="checkbox"
-class="m">
+1px solid rgba(255,255,255,.1);
 
-6000 Passos
+border-radius:20px;
 
-<span>
-+30 XP
-</span>
+backdrop-filter:blur(10px);
 
-</div>
+}
 
-<div class="missao">
+/* =====================================
+   DASHBOARD
+===================================== */
 
-<input
-type="checkbox"
-class="m">
+.dashboard{
 
-3km Cardio
+display:grid;
 
-<span>
-+30 XP
-</span>
+grid-template-columns:
+1fr 1fr;
 
-</div>
+gap:20px;
 
-<div class="missao">
+margin-bottom:20px;
 
-<input
-type="checkbox"
-class="m">
+}
 
-Beber 3L Água
+@media(max-width:900px){
 
-<span>
-+20 XP
-</span>
+.dashboard{
 
-</div>
+grid-template-columns:1fr;
 
-<div class="missao">
+}
 
-<input
-type="checkbox"
-class="m">
+}
 
-Bater Proteína
+/* =====================================
+   CARDS
+===================================== */
 
-<span>
-+30 XP
-</span>
+.card{
 
-</div>
+background:
 
-<div class="missao">
+rgba(17,24,39,.75);
 
-<input
-type="checkbox"
-class="m">
+backdrop-filter:blur(20px);
 
-Dormir 7h+
+border:
 
-<span>
-+20 XP
-</span>
+1px solid rgba(255,255,255,.08);
 
-</div>
+border-radius:24px;
 
-<div class="missaoResumo">
+padding:25px;
 
-XP Hoje:
+margin-bottom:20px;
 
-<span id="xpHoje">
+box-shadow:
 
-0
+0 10px 35px rgba(0,0,0,.25);
 
-</span>
+transition:.3s;
 
-</div>
+}
 
-</section>
-<!-- ========================= -->
-<!-- CALENDÁRIO ARES -->
-<!-- ========================= -->
+.card:hover{
 
-<section class="card">
+transform:translateY(-4px);
 
-<h2>📅 Calendário ARES</h2>
+box-shadow:
 
-<div id="calendario" class="calendar">
+0 0 25px rgba(0,229,255,.15);
 
-<div class="diaSemana">DOM</div>
-<div class="diaSemana">SEG</div>
-<div class="diaSemana">TER</div>
-<div class="diaSemana">QUA</div>
-<div class="diaSemana">QUI</div>
-<div class="diaSemana">SEX</div>
-<div class="diaSemana">SAB</div>
+}
 
-<div class="dia" data-dia="0">⬜</div>
-<div class="dia" data-dia="1">⬜</div>
-<div class="dia" data-dia="2">⬜</div>
-<div class="dia" data-dia="3">⬜</div>
-<div class="dia" data-dia="4">⬜</div>
-<div class="dia" data-dia="5">⬜</div>
-<div class="dia" data-dia="6">⬜</div>
+.card h2{
 
-</div>
+margin-bottom:20px;
 
-<div class="streakBox">
+font-size:1.5rem;
 
-🔥 Streak Atual:
-<span id="streakAtual">
+color:var(--gold);
 
-0
+}
 
-</span>
+/* =====================================
+   PERFIL
+===================================== */
 
-dias
+.perfilCard{
 
-</div>
+display:flex;
 
-</section>
+flex-direction:column;
 
-<!-- ========================= -->
-<!-- TREINOS ARES -->
-<!-- ========================= -->
+align-items:center;
 
-<section class="card">
+text-align:center;
 
-<h2>🏋️ Treinos ARES</h2>
+}
 
-<label>
+.avatarBox{
 
-Selecionar Dia
+width:140px;
+height:140px;
 
-</label>
+border-radius:50%;
 
-<select id="diaTreino">
+overflow:hidden;
 
-<option value="1">Segunda - PUSH</option>
+border:4px solid var(--gold);
 
-<option value="2">Terça - PULL</option>
+box-shadow:
 
-<option value="3">Quarta - GLÚTEO + POSTERIOR</option>
+0 0 25px var(--gold);
 
-<option value="4">Quinta - LOWER</option>
+margin-bottom:15px;
 
-<option value="5">Sexta - OMBRO + BRAÇO</option>
+}
 
-<option value="6">Sábado - PEITO + TRÍCEPS</option>
+.avatarBox img{
 
-<option value="0">Domingo - RECUPERAÇÃO</option>
+width:100%;
+height:100%;
 
-</select>
+object-fit:cover;
 
-<br><br>
+}
 
-<div id="treinoHoje">
+.perfilInfo h2{
 
-Selecione um dia
+font-size:1.8rem;
 
-</div>
+margin-bottom:10px;
 
-</section>
+}
 
-<!-- ========================= -->
-<!-- REGISTRO DE TREINO -->
-<!-- ========================= -->
+#classe{
 
-<section class="card">
+font-weight:700;
 
-<h2>📋 Registro do Treino</h2>
+color:var(--gold);
 
-<div id="registroTreino">
+margin-bottom:5px;
 
-<table class="tabelaTreino">
+}
 
-<thead>
+#nivel{
 
-<tr>
+color:var(--blue);
 
-<th>Exercício</th>
+margin-bottom:5px;
 
-<th>S1</th>
+}
 
-<th>S2</th>
+#xp{
 
-<th>S3</th>
+margin-bottom:10px;
 
-<th>S4</th>
+}
 
-<th>✔</th>
+/* =====================================
+   BARRA XP
+===================================== */
 
-</tr>
+.barraXP{
 
-</thead>
+width:100%;
 
-<tbody id="corpoTreino">
+height:18px;
 
-<tr>
+background:#222;
 
-<td>
+border-radius:20px;
 
-Hip Thrust
+overflow:hidden;
 
-</td>
+margin-top:10px;
 
-<td>
+}
 
-<input
-type="number"
-placeholder="kg">
+#barraXP{
 
-<input
-type="number"
-placeholder="rep">
+height:100%;
 
-</td>
+width:40%;
 
-<td>
+background:
 
-<input
-type="number"
-placeholder="kg">
+linear-gradient(
+90deg,
+var(--gold),
+var(--gold2)
+);
 
-<input
-type="number"
-placeholder="rep">
+box-shadow:
 
-</td>
+0 0 15px var(--gold);
 
-<td>
+transition:.4s;
 
-<input
-type="number"
-placeholder="kg">
+}
+/* =====================================
+   BOSS DA SEMANA
+===================================== */
 
-<input
-type="number"
-placeholder="rep">
+.bossCard{
 
-</td>
+position:relative;
 
-<td>
+overflow:hidden;
 
-<input
-type="number"
-placeholder="kg">
+}
 
-<input
-type="number"
-placeholder="rep">
+.bossArea{
 
-</td>
+display:flex;
 
-<td>
+align-items:center;
 
-<input
-type="checkbox">
+gap:25px;
 
-</td>
+flex-wrap:wrap;
 
-</tr>
+}
 
-</tbody>
+.bossAvatar{
 
-</table>
+width:120px;
+height:120px;
 
-</div>
+border-radius:50%;
 
-<br>
+display:flex;
 
-<button id="salvarTreino">
+align-items:center;
 
-💾 Salvar Treino
+justify-content:center;
 
-</button>
+font-size:4rem;
 
-</section>
+background:
 
-<!-- ========================= -->
-<!-- RECORDES -->
-<!-- ========================= -->
+linear-gradient(
+135deg,
+#ff4d4d,
+#ff8800
+);
 
-<section class="card">
+box-shadow:
 
-<h2>🏆 Recordes Pessoais</h2>
+0 0 30px rgba(255,77,77,.5);
 
-<div id="recordes">
+animation:
+bossPulse 2s infinite;
 
-<div class="recordeCard">
+}
 
-<h3>
+@keyframes bossPulse{
 
-Hip Thrust
+0%{
+transform:scale(1);
+}
 
-</h3>
+50%{
+transform:scale(1.08);
+}
 
-<p id="recHip">
+100%{
+transform:scale(1);
+}
 
-130kg
+}
 
-</p>
+.bossInfo{
 
-</div>
+flex:1;
 
-<div class="recordeCard">
+}
 
-<h3>
+.bossInfo h3{
 
-Agachamento
+font-size:1.6rem;
 
-</h3>
+margin-bottom:10px;
 
-<p id="recAgachamento">
+color:#ff6666;
 
-120kg
+}
 
-</p>
+.bossBar{
 
-</div>
+width:100%;
 
-<div class="recordeCard">
+height:22px;
 
-<h3>
+background:#1d2435;
 
-Leg Press
+border-radius:30px;
 
-</h3>
+overflow:hidden;
 
-<p id="recLeg">
+margin:15px 0;
 
-240kg
+}
 
-</p>
+#bossBarra{
 
-</div>
+height:100%;
 
-<div class="recordeCard">
+width:100%;
 
-<h3>
+background:
 
-Stiff
+linear-gradient(
+90deg,
+#ff4d4d,
+#ff8800
+);
 
-</h3>
+box-shadow:
 
-<p id="recStiff">
+0 0 20px #ff4d4d;
 
-120kg
+transition:.4s;
 
-</p>
+}
 
-</div>
+#bossHp{
 
-</div>
+font-weight:700;
 
-</section>
+font-size:1.1rem;
 
-<!-- ========================= -->
-<!-- HISTÓRICO -->
-<!-- ========================= -->
+}
 
-<section class="card">
+/* =====================================
+   MISSÕES
+===================================== */
 
-<h2>📚 Histórico de Treinos</h2>
+.missoes{
 
-<div id="historicoTreinos">
+display:grid;
 
-Nenhum treino registrado.
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
 
-</div>
+gap:15px;
 
-</section>
-<!-- ========================= -->
-<!-- EVOLUÇÃO FÍSICA -->
-<!-- ========================= -->
+}
 
-<section class="card">
+.missao{
 
-<h2>📏 Evolução Física</h2>
+display:flex;
 
-<div class="form-grid">
+justify-content:space-between;
 
-<div class="campo">
+align-items:center;
 
-<label>Peso (kg)</label>
+padding:15px;
 
-<input
-type="number"
-id="pesoInput"
-placeholder="79">
+border-radius:18px;
 
-</div>
+background:
 
-<div class="campo">
+rgba(255,255,255,.05);
 
-<label>BF (%)</label>
+border:
 
-<input
-type="number"
-id="bfInput"
-placeholder="14">
+1px solid rgba(255,255,255,.08);
 
-</div>
+cursor:pointer;
 
-<div class="campo">
+transition:.3s;
 
-<label>Braço (cm)</label>
+}
 
-<input
-type="number"
-id="bracoInput"
-placeholder="40">
+.missao:hover{
 
-</div>
+transform:translateY(-3px);
 
-<div class="campo">
+border-color:var(--blue);
 
-<label>Peito (cm)</label>
+box-shadow:
 
-<input
-type="number"
-id="peitoInput"
-placeholder="101">
+0 0 15px rgba(0,229,255,.25);
 
-</div>
+}
 
-<div class="campo">
+.missao input{
 
-<label>Cintura (cm)</label>
+transform:scale(1.3);
 
-<input
-type="number"
-id="cinturaInput"
-placeholder="81">
+cursor:pointer;
 
-</div>
+}
 
-<div class="campo">
+.missao span{
 
-<label>Glúteo (cm)</label>
+color:var(--green);
 
-<input
-type="number"
-id="gluteoInput"
-placeholder="103">
+font-weight:700;
 
-</div>
+}
 
-<div class="campo">
+#xpHoje{
 
-<label>Coxa (cm)</label>
+margin-top:20px;
 
-<input
-type="number"
-id="coxaInput"
-placeholder="60">
+font-size:1.1rem;
 
-</div>
+font-weight:700;
 
-<div class="campo">
+color:var(--gold);
 
-<label>Panturrilha (cm)</label>
+}
 
-<input
-type="number"
-id="panturrilhaInput"
-placeholder="39">
+/* =====================================
+   CALENDÁRIO
+===================================== */
 
-</div>
+.calendario{
 
-</div>
+display:grid;
 
-<br>
+grid-template-columns:
+repeat(7,1fr);
 
-<button id="salvarMedidas">
+gap:12px;
 
-💾 Salvar Medidas
+margin-top:15px;
 
-</button>
+}
 
-</section>
+.diaBox{
 
-<!-- ========================= -->
-<!-- GRÁFICO DE PESO -->
-<!-- ========================= -->
+display:flex;
 
-<section class="card">
+flex-direction:column;
 
-<h2>📈 Evolução do Peso</h2>
+align-items:center;
 
-<canvas id="graficoPeso"></canvas>
+gap:8px;
 
-</section>
+}
 
-<!-- ========================= -->
-<!-- GRÁFICO DE BF -->
-<!-- ========================= -->
+.diaBox span{
 
-<section class="card">
+font-size:.85rem;
 
-<h2>📉 Evolução do BF</h2>
+color:var(--text2);
 
-<canvas id="graficoBF"></canvas>
+}
 
-</section>
+.dia{
 
-<!-- ========================= -->
-<!-- GRÁFICO DE MEDIDAS -->
-<!-- ========================= -->
+width:55px;
+height:55px;
 
-<section class="card">
+border-radius:16px;
 
-<h2>📊 Evolução Corporal</h2>
+background:
 
-<canvas id="graficoMedidas"></canvas>
+rgba(255,255,255,.06);
 
-</section>
+border:
 
-<!-- ========================= -->
-<!-- CONQUISTAS -->
-<!-- ========================= -->
+1px solid rgba(255,255,255,.08);
 
-<section class="card">
+cursor:pointer;
 
-<h2>🏅 Conquistas</h2>
+transition:.3s;
 
-<div id="conquistas">
+display:flex;
 
-<div class="conquista">
-🥇 Primeiro Treino
-</div>
+align-items:center;
 
-<div class="conquista">
-🔥 7 Dias Seguidos
-</div>
+justify-content:center;
 
-<div class="conquista">
-⚔️ Primeiro Boss
-</div>
+font-size:1.2rem;
 
-<div class="conquista">
-💎 Diamante
-</div>
+}
 
-<div class="conquista">
-🏛️ Titã
-</div>
+.dia:hover{
 
-<div class="conquista">
-👑 Deus da Guerra
-</div>
+transform:translateY(-3px);
 
-</div>
+box-shadow:
 
-</section>
+0 0 15px rgba(0,229,255,.25);
 
-<!-- ========================= -->
-<!-- ESTATÍSTICAS -->
-<!-- ========================= -->
+}
 
-<section class="card">
+.diaConcluido{
 
-<h2>📊 Estatísticas Gerais</h2>
+background:
 
-<div class="stats-grid">
+linear-gradient(
+135deg,
+#00ff88,
+#00cc66
+);
 
-<div class="stat">
+color:black;
 
-<h3 id="totalTreinos">
-0
-</h3>
+font-weight:700;
 
-<p>Treinos</p>
+box-shadow:
 
-</div>
+0 0 20px #00ff88;
 
-<div class="stat">
+}
 
-<h3 id="totalBoss">
-0
-</h3>
+#streakAtual{
 
-<p>Bosses</p>
+margin-top:20px;
 
-</div>
+font-size:1.1rem;
 
-<div class="stat">
+font-weight:700;
 
-<h3 id="diasProjeto">
-0
-</h3>
+color:var(--gold);
 
-<p>Dias Projeto</p>
+}
 
-</div>
+/* =====================================
+   ARENA DE COMBATE
+===================================== */
 
-<div class="stat">
+.arenaCard{
 
-<h3 id="xpTotal">
-1540
-</h3>
+background:
 
-<p>XP Total</p>
+linear-gradient(
+135deg,
+rgba(255,77,77,.08),
+rgba(255,136,0,.08)
+);
 
-</div>
+}
 
-</div>
+.arenaBoss{
 
-</section>
+display:flex;
 
-<!-- ========================= -->
-<!-- CICLO DE TREINO -->
-<!-- ========================= -->
+align-items:center;
 
-<section class="card">
+gap:30px;
 
-<h2>🔄 Ciclo Atual</h2>
+flex-wrap:wrap;
 
-<p id="cicloAtual">
+}
 
-Ciclo 1 • Dias 1-30
+.bossImagem img{
 
-</p>
+width:180px;
 
-<div class="barra">
+max-width:100%;
 
-<div
-id="barraCiclo"
-class="cicloBarra">
-</div>
+filter:
 
-</div>
+drop-shadow(
+0 0 25px rgba(255,77,77,.6)
+);
 
-<p id="diasRestantes">
+}
 
-30 dias para próximo ciclo
+.arenaInfo{
 
-</p>
+flex:1;
 
-</section>
+}
 
-<!-- ========================= -->
-<!-- CONSELHO DO GEPETÃO -->
-<!-- ========================= -->
+.bossBarArena{
 
-<section class="card">
+width:100%;
 
-<h2>🧠 Conselho do Gepetão</h2>
+height:25px;
 
-<p id="mensagem">
+background:#1d2435;
 
-Disciplina vence motivação.
-O shape é construído quando ninguém está olhando.
+border-radius:30px;
 
-</p>
+overflow:hidden;
 
-</section>
+margin-top:10px;
 
-<!-- ========================= -->
-<!-- RODAPÉ -->
-<!-- ========================= -->
+}
 
-<footer class="footer">
+#bossBarraArena{
 
-<h3>
+height:100%;
 
-🏛️ ARES TRACKER 6.0
+width:100%;
 
-</h3>
+background:
 
-<p>
+linear-gradient(
+90deg,
+#ff4d4d,
+#ff8800
+);
 
-Projeto Tanquinho São Paulo
+box-shadow:
 
-</p>
+0 0 20px #ff4d4d;
 
-<p>
+transition:.4s;
 
-Daniel Amaral • Projeto ARES
+}
 
-</p>
+#bossHpArena{
 
-<p>
+margin-top:10px;
 
-🔥 Forjando o Shape Todos os Dias
+font-size:1.1rem;
 
-</p>
+font-weight:700;
 
-</footer>
+}
 
-</div>
+/* =====================================
+   EFEITO DE DANO
+===================================== */
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+.danoBoss{
 
-<script src="script.js"></script>
+position:fixed;
 
-</body>
-</html>
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:3rem;
+
+font-weight:800;
+
+color:#ff4d4d;
+
+text-shadow:
+
+0 0 20px #ff4d4d;
+
+pointer-events:none;
+
+z-index:9999;
+
+animation:
+subirDano 1s forwards;
+
+}
+
+@keyframes subirDano{
+
+0%{
+
+opacity:1;
+
+transform:
+translate(-50%,-50%);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+translate(-50%,-150%);
+
+}
+
+}
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+@media(max-width:768px){
+
+.bossArea,
+.arenaBoss{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.calendario{
+
+grid-template-columns:
+repeat(4,1fr);
+
+}
+
+}
+/* =====================================
+   TREINOS ARES
+===================================== */
+
+#diaTreino{
+
+width:100%;
+
+padding:14px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:15px;
+
+background:#1d2435;
+
+color:white;
+
+font-size:1rem;
+
+outline:none;
+
+}
+
+#diaTreino:focus{
+
+box-shadow:
+
+0 0 15px var(--blue);
+
+}
+
+#treinoHoje{
+
+margin-top:20px;
+
+}
+
+#treinoHoje h3{
+
+font-size:1.5rem;
+
+color:var(--gold);
+
+margin-bottom:20px;
+
+text-align:center;
+
+}
+
+/* =====================================
+   EXERCÍCIOS
+===================================== */
+
+.exercicio{
+
+padding:18px;
+
+margin-bottom:12px;
+
+border-radius:18px;
+
+background:
+
+rgba(255,255,255,.05);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+transition:.3s;
+
+}
+
+.exercicio:hover{
+
+transform:translateY(-3px);
+
+border-color:var(--gold);
+
+box-shadow:
+
+0 0 20px rgba(255,215,0,.25);
+
+}
+
+/* =====================================
+   TABELA TREINO
+===================================== */
+
+table{
+
+width:100%;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+border-radius:20px;
+
+}
+
+thead{
+
+background:
+
+linear-gradient(
+90deg,
+var(--gold),
+var(--gold2)
+);
+
+color:black;
+
+}
+
+thead th{
+
+padding:15px;
+
+font-size:.95rem;
+
+}
+
+tbody tr{
+
+background:
+
+rgba(255,255,255,.03);
+
+transition:.3s;
+
+}
+
+tbody tr:hover{
+
+background:
+
+rgba(255,255,255,.08);
+
+}
+
+tbody td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:
+
+1px solid rgba(255,255,255,.05);
+
+}
+
+/* =====================================
+   INPUTS TREINO
+===================================== */
+
+tbody input[type="number"]{
+
+width:80px;
+
+padding:10px;
+
+border:none;
+
+border-radius:12px;
+
+background:#1d2435;
+
+color:white;
+
+text-align:center;
+
+}
+
+tbody input[type="number"]:focus{
+
+outline:none;
+
+box-shadow:
+
+0 0 12px var(--blue);
+
+}
+
+.checkExercicio{
+
+transform:scale(1.4);
+
+cursor:pointer;
+
+}
+
+/* =====================================
+   TREINO FEITO
+===================================== */
+
+.treinoFeito{
+
+background:
+
+linear-gradient(
+90deg,
+rgba(0,255,136,.15),
+rgba(0,255,136,.05)
+) !important;
+
+border-left:
+
+4px solid #00ff88;
+
+box-shadow:
+
+0 0 20px rgba(0,255,136,.25);
+
+}
+
+/* =====================================
+   BOTÃO VÍDEO
+===================================== */
+
+.btnVideo{
+
+background:
+
+linear-gradient(
+90deg,
+var(--blue),
+#0099ff
+);
+
+color:white;
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.btnVideo:hover{
+
+transform:scale(1.05);
+
+box-shadow:
+
+0 0 20px rgba(0,229,255,.4);
+
+}
+
+/* =====================================
+   MODAL VÍDEO
+===================================== */
+
+.videoModal{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+rgba(0,0,0,.85);
+
+z-index:9999;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.videoContainer{
+
+width:90%;
+
+max-width:900px;
+
+background:#111827;
+
+padding:20px;
+
+border-radius:20px;
+
+position:relative;
+
+box-shadow:
+
+0 0 40px rgba(0,229,255,.25);
+
+}
+
+.fecharVideo{
+
+position:absolute;
+
+right:20px;
+top:10px;
+
+font-size:2rem;
+
+cursor:pointer;
+
+color:white;
+
+}
+
+/* =====================================
+   PROGRESSO TREINO
+===================================== */
+
+.treinoProgress{
+
+width:100%;
+
+height:22px;
+
+background:#1d2435;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-bottom:15px;
+
+}
+
+#barraTreino{
+
+width:0%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+#00ff88,
+#00cc66
+);
+
+box-shadow:
+
+0 0 20px #00ff88;
+
+transition:.4s;
+
+}
+
+#textoProgresso{
+
+text-align:center;
+
+font-weight:700;
+
+color:var(--gold);
+
+margin-bottom:15px;
+
+}
+
+/* =====================================
+   BOTÃO SALVAR TREINO
+===================================== */
+
+#salvarTreino{
+
+width:100%;
+
+padding:16px;
+
+margin-top:20px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:1rem;
+
+font-weight:700;
+
+cursor:pointer;
+
+background:
+
+linear-gradient(
+90deg,
+var(--gold),
+var(--gold2)
+);
+
+color:black;
+
+transition:.3s;
+
+}
+
+#salvarTreino:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+
+0 0 25px rgba(255,215,0,.4);
+
+}
+
+/* =====================================
+   RECORDES
+===================================== */
+
+.recordesGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+}
+
+.recordeCard{
+
+padding:20px;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,215,0,.15),
+rgba(255,179,0,.08)
+);
+
+border:
+
+1px solid rgba(255,215,0,.2);
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.recordeCard:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+
+0 0 25px rgba(255,215,0,.3);
+
+}
+
+.recordeCard h3{
+
+margin-bottom:10px;
+
+color:var(--gold);
+
+}
+
+.recordeCard p{
+
+font-size:1.4rem;
+
+font-weight:800;
+
+}
+
+/* =====================================
+   HISTÓRICO TREINOS
+===================================== */
+
+#historicoTreinos{
+
+display:grid;
+
+gap:15px;
+
+}
+
+.historicoCard{
+
+padding:20px;
+
+border-radius:20px;
+
+background:
+
+rgba(255,255,255,.05);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+.historicoCard h3{
+
+color:var(--gold);
+
+margin-bottom:10px;
+
+}
+
+.historicoCard p{
+
+margin-bottom:6px;
+
+}
+/* =====================================
+   EVOLUÇÃO FÍSICA
+===================================== */
+
+.gridMedidas{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.gridMedidas div{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.gridMedidas label{
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:var(--text2);
+
+}
+
+.gridMedidas input{
+
+padding:14px;
+
+border:none;
+
+border-radius:14px;
+
+background:#1d2435;
+
+color:white;
+
+font-size:1rem;
+
+}
+
+.gridMedidas input:focus{
+
+outline:none;
+
+box-shadow:
+0 0 15px var(--blue);
+
+}
+
+#salvarMedidas{
+
+width:100%;
+
+padding:16px;
+
+margin-top:25px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:1rem;
+
+font-weight:700;
+
+cursor:pointer;
+
+background:
+
+linear-gradient(
+90deg,
+#00ff88,
+#00cc66
+);
+
+color:black;
+
+transition:.3s;
+
+}
+
+#salvarMedidas:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 0 25px rgba(0,255,136,.4);
+
+}
+
+/* =====================================
+   GRÁFICOS
+===================================== */
+
+canvas{
+
+width:100% !important;
+
+max-height:400px;
+
+background:
+
+rgba(255,255,255,.03);
+
+border-radius:20px;
+
+padding:15px;
+
+}
+
+/* =====================================
+   HISTÓRICO MEDIDAS
+===================================== */
+
+#historicoMedidas{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:15px;
+
+}
+
+#historicoMedidas .historicoCard{
+
+background:
+
+rgba(255,255,255,.04);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+padding:20px;
+
+transition:.3s;
+
+}
+
+#historicoMedidas .historicoCard:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 0 20px rgba(0,229,255,.15);
+
+}
+
+/* =====================================
+   GALERIA EVOLUÇÃO
+===================================== */
+
+.uploadFotos{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:20px;
+
+}
+
+.fotoBox{
+
+background:
+
+rgba(255,255,255,.04);
+
+padding:20px;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.fotoBox h3{
+
+margin-bottom:15px;
+
+color:var(--gold);
+
+}
+
+.fotoBox input{
+
+margin-bottom:15px;
+
+}
+
+.fotoBox img{
+
+width:100%;
+
+max-height:350px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+display:block;
+
+}
+
+/* =====================================
+   CONQUISTAS
+===================================== */
+
+.conquistasGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+}
+
+.conquista{
+
+padding:20px;
+
+border-radius:20px;
+
+text-align:center;
+
+font-weight:700;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,215,0,.15),
+rgba(255,179,0,.08)
+);
+
+border:
+
+1px solid rgba(255,215,0,.25);
+
+box-shadow:
+
+0 0 20px rgba(255,215,0,.15);
+
+transition:.3s;
+
+}
+
+.conquista:hover{
+
+transform:scale(1.03);
+
+}
+
+.bloqueada{
+
+opacity:.35;
+
+filter:grayscale(100%);
+
+}
+
+/* =====================================
+   ESTATÍSTICAS
+===================================== */
+
+.statsGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:15px;
+
+}
+
+.statCard{
+
+padding:20px;
+
+border-radius:20px;
+
+text-align:center;
+
+background:
+
+rgba(255,255,255,.04);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+transition:.3s;
+
+}
+
+.statCard:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 0 20px rgba(0,229,255,.15);
+
+}
+
+.statCard h3{
+
+margin-bottom:10px;
+
+font-size:1rem;
+
+color:var(--gold);
+
+}
+
+.statCard p{
+
+font-size:2rem;
+
+font-weight:800;
+
+color:white;
+
+}
+
+/* =====================================
+   TÍTULOS RPG
+===================================== */
+
+.titulosGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+}
+
+.tituloCard{
+
+padding:20px;
+
+text-align:center;
+
+font-weight:800;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,215,0,.15),
+rgba(255,179,0,.08)
+);
+
+border:
+
+1px solid rgba(255,215,0,.25);
+
+}
+
+.tituloCard.bloqueado{
+
+opacity:.25;
+
+filter:grayscale(100%);
+
+}
+
+/* =====================================
+   HALL DA FAMA
+===================================== */
+
+#hallDaFama{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+}
+
+.famaCard{
+
+padding:20px;
+
+border-radius:20px;
+
+text-align:center;
+
+background:
+
+rgba(255,255,255,.05);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+.famaCard p{
+
+margin-top:10px;
+
+font-size:1.5rem;
+
+font-weight:800;
+
+color:var(--gold);
+
+}
+
+/* =====================================
+   TERMINAL ARES
+===================================== */
+
+.terminalCard{
+
+background:#050505;
+
+border:
+
+1px solid #00ff88;
+
+}
+
+#terminalARES{
+
+font-family:monospace;
+
+color:#00ff88;
+
+line-height:1.8;
+
+max-height:250px;
+
+overflow-y:auto;
+
+}
+
+/* =====================================
+   POPUP LEVEL UP
+===================================== */
+
+#levelUpPopup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+rgba(0,0,0,.85);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+}
+
+.popupContent{
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,215,0,.2),
+rgba(255,179,0,.08)
+);
+
+padding:50px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:
+
+0 0 40px rgba(255,215,0,.5);
+
+animation:
+levelUpAnim .5s ease;
+
+}
+
+.popupContent h1{
+
+font-size:3rem;
+
+color:var(--gold);
+
+margin-bottom:20px;
+
+}
+
+.popupContent h2{
+
+font-size:2rem;
+
+margin-bottom:15px;
+
+}
+
+@keyframes levelUpAnim{
+
+0%{
+
+transform:scale(.5);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+/* =====================================
+   FOOTER PREMIUM
+===================================== */
+
+footer{
+
+margin-top:40px;
+
+padding:40px 20px;
+
+text-align:center;
+
+border-top:
+
+1px solid rgba(255,255,255,.08);
+
+background:
+
+rgba(255,255,255,.02);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px 25px 0 0;
+
+}
+
+footer h3{
+
+font-size:2rem;
+
+color:var(--gold);
+
+margin-bottom:10px;
+
+text-shadow:
+
+0 0 20px rgba(255,215,0,.5);
+
+}
+
+footer p{
+
+color:var(--text2);
+
+margin:5px 0;
+
+}
+
+/* =====================================
+   BOTÕES GERAIS
+===================================== */
+
+button{
+
+cursor:pointer;
+
+border:none;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+}
+
+button:active{
+
+transform:scale(.97);
+
+}
+
+/* =====================================
+   SCROLLBAR FUTURISTA
+===================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#0a0f1a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+
+linear-gradient(
+180deg,
+var(--blue),
+var(--purple)
+);
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:
+
+linear-gradient(
+180deg,
+var(--gold),
+var(--gold2)
+);
+
+}
+
+/* =====================================
+   ANIMAÇÕES DOS CARDS
+===================================== */
+
+.card{
+
+animation:
+cardEntrada .6s ease;
+
+}
+
+@keyframes cardEntrada{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+/* =====================================
+   EFEITO GLASS
+===================================== */
+
+.glass{
+
+background:
+
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+/* =====================================
+   EFEITO NEON
+===================================== */
+
+.neonBlue{
+
+box-shadow:
+
+0 0 20px rgba(0,229,255,.5);
+
+}
+
+.neonGold{
+
+box-shadow:
+
+0 0 20px rgba(255,215,0,.5);
+
+}
+
+.neonGreen{
+
+box-shadow:
+
+0 0 20px rgba(0,255,136,.5);
+
+}
+
+/* =====================================
+   EFEITO PULSO
+===================================== */
+
+.pulse{
+
+animation:
+pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.03);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* =====================================
+   BRILHO AO PASSAR MOUSE
+===================================== */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-100%;
+
+width:100%;
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.05),
+transparent
+);
+
+transition:.8s;
+
+pointer-events:none;
+
+}
+
+.card:hover::before{
+
+left:100%;
+
+}
+
+/* =====================================
+   META PESO / BF
+===================================== */
+
+.metaBar{
+
+width:100%;
+
+height:22px;
+
+background:#1d2435;
+
+border-radius:30px;
+
+overflow:hidden;
+
+margin-top:10px;
+
+}
+
+#barraMetaPeso{
+
+height:100%;
+
+width:0%;
+
+background:
+
+linear-gradient(
+90deg,
+#00ff88,
+#00cc66
+);
+
+transition:.4s;
+
+}
+
+#barraMetaBF{
+
+height:100%;
+
+width:0%;
+
+background:
+
+linear-gradient(
+90deg,
+#00e5ff,
+#0099ff
+);
+
+transition:.4s;
+
+}
+
+/* =====================================
+   PARTÍCULAS
+===================================== */
+
+.particula{
+
+position:fixed;
+
+border-radius:50%;
+
+pointer-events:none;
+
+opacity:.2;
+
+z-index:-1;
+
+animation:
+flutuar 15s linear infinite;
+
+}
+
+@keyframes flutuar{
+
+0%{
+
+transform:
+translateY(100vh)
+rotate(0deg);
+
+}
+
+100%{
+
+transform:
+translateY(-120vh)
+rotate(360deg);
+
+}
+
+}
+
+/* =====================================
+   RESPONSIVIDADE PREMIUM
+===================================== */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:2rem;
+
+}
+
+.hero p{
+
+font-size:.9rem;
+
+}
+
+.card{
+
+padding:18px;
+
+}
+
+.statsGrid,
+.conquistasGrid,
+.titulosGrid,
+.recordesGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.famaCard{
+
+width:100%;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+footer h3{
+
+font-size:1.4rem;
+
+}
+
+}
+
+/* =====================================
+   EASTER EGG ARES
+===================================== */
+
+.aresMode{
+
+animation:
+aresGlow 3s infinite;
+
+}
+
+@keyframes aresGlow{
+
+0%{
+
+box-shadow:
+0 0 10px rgba(255,215,0,.3);
+
+}
+
+50%{
+
+box-shadow:
+0 0 40px rgba(255,215,0,.8);
+
+}
+
+100%{
+
+box-shadow:
+0 0 10px rgba(255,215,0,.3);
+
+}
+
+}
+
+/* =====================================
+   FIM DO STYLE ARES 7.0
+===================================== */
