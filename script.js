@@ -1,3 +1,80 @@
+const treinos = {
+1: {
+nome: "🔥 PUSH",
+lista: [
+"Supino Inclinado",
+"Supino Máquina",
+"Crucifixo",
+"Desenvolvimento",
+"Tríceps"
+]
+},
+
+2: {
+nome: "🦍 PULL",
+lista: [
+"Puxada",
+"Remada",
+"Pulldown",
+"Rosca Direta",
+"Rosca Martelo"
+]
+},
+
+3: {
+nome: "🍑 GLÚTEO + POSTERIOR",
+lista: [
+"Hip Thrust 130kg",
+"Mesa Flexora",
+"Stiff 120kg",
+"Abdutora",
+"Panturrilha"
+]
+},
+
+4: {
+nome: "🦵 LOWER",
+lista: [
+"Agachamento 120kg",
+"Leg Press 240kg",
+"Extensora",
+"Flexora",
+"Panturrilha"
+]
+},
+
+5: {
+nome: "💪 OMBRO + BRAÇO",
+lista: [
+"Desenvolvimento",
+"Elevação Lateral",
+"Rosca",
+"Tríceps"
+]
+},
+
+6: {
+nome: "⚔️ PEITO + TRÍCEPS",
+lista: [
+"Supino Inclinado",
+"Crucifixo",
+"Peck Deck",
+"Tríceps Francês",
+"Tríceps Corda"
+]
+},
+
+0: {
+nome: "🏃 RECUPERAÇÃO",
+lista: [
+"Cardio",
+"Alongamento",
+"Mobilidade",
+"Caminhada"
+]
+}
+};
+
 let xp =
 Number(localStorage.getItem("ares_xp")) || 1540;
 
@@ -16,102 +93,167 @@ document.getElementById("bossBarra");
 const mensagem =
 document.getElementById("mensagem");
 
+const treinoHoje =
+document.getElementById("treinoHoje");
+
 const checkboxes =
-document.querySelectorAll(".missao input");
+document.querySelectorAll(".m");
 
-function atualizarTela() {
+function renderTreino(){
 
-  xpElemento.textContent =
-  `XP Total: ${xp}`;
+const hoje =
+new Date().getDay();
 
-  bossHpElemento.textContent =
-  `${bossHp.toLocaleString()} HP`;
+const treino =
+treinos[hoje];
 
-  const porcentagem =
-  Math.max((bossHp / 10000) * 100,0);
+let html =
+`<h3>${treino.nome}</h3><br>`;
 
-  bossBarra.style.width =
-  porcentagem + "%";
+treino.lista.forEach(ex => {
 
-  if (xp >= 5000) {
+html += `• ${ex}<br>`;
 
-    document.getElementById("classe")
-    .textContent =
-    "👑 Semideus";
+});
 
-  } else if (xp >= 3000) {
-
-    document.getElementById("classe")
-    .textContent =
-    "🏛️ Titã";
-
-  } else if (xp >= 1000) {
-
-    document.getElementById("classe")
-    .textContent =
-    "🥇 Ouro";
-
-  } else {
-
-    document.getElementById("classe")
-    .textContent =
-    "🥈 Prata";
-  }
-
-  const nivel =
-  Math.floor(xp / 100) + 1;
-
-  document.getElementById("nivel")
-  .textContent =
-  `⚔️ Nível ${nivel}`;
+treinoHoje.innerHTML =
+html;
 }
 
-checkboxes.forEach((box) => {
+function atualizarClasse(){
 
-  box.addEventListener(
-    "change",
-    () => {
+let classe = "🥈 Prata";
 
-      if (box.checked) {
+if(xp >= 1000)
+classe = "🥇 Ouro";
 
-        xp += 50;
+if(xp >= 2000)
+classe = "💎 Diamante";
 
-        bossHp -= 250;
+if(xp >= 5000)
+classe = "🏛️ Titã";
 
-        if (bossHp <= 0) {
+if(xp >= 10000)
+classe = "👑 Deus da Guerra";
 
-          alert(
-          "🏆 Boss derrotado! +500 XP"
-          );
+document.getElementById("classe")
+.textContent = classe;
+}
 
-          xp += 500;
+function atualizarBoss(){
 
-          bossHp = 10000;
+let bossNome =
+"🐺 Lobo Sombrio";
 
-          mensagem.textContent =
-          "🔥 Você derrotou o Boss da Semana!";
-        }
+if(xp >= 1000)
+bossNome = "👹 Minotauro";
 
-      } else {
+if(xp >= 3000)
+bossNome = "🐉 Dragão Ancião";
 
-        xp -= 50;
+if(xp >= 5000)
+bossNome = "⚔️ Ares";
 
-        bossHp += 250;
-      }
+document.getElementById("bossNome")
+.textContent = bossNome;
+}
 
-      localStorage.setItem(
-        "ares_xp",
-        xp
-      );
+function atualizarTela(){
 
-      localStorage.setItem(
-        "ares_boss_hp",
-        bossHp
-      );
+xpElemento.textContent =
+`XP Total: ${xp}`;
 
-      atualizarTela();
-    }
-  );
+const nivel =
+Math.floor(xp / 100) + 1;
+
+document.getElementById("nivel")
+.textContent =
+`⚔️ Nível ${nivel}`;
+
+bossHpElemento.textContent =
+`${bossHp.toLocaleString()} HP`;
+
+const porcentagem =
+Math.max(
+(bossHp / 10000) * 100,
+0
+);
+
+bossBarra.style.width =
+porcentagem + "%";
+
+atualizarClasse();
+
+atualizarBoss();
+
+if(xp < 2000){
+
+mensagem.textContent =
+"⚔️ Continue avançando guerreiro.";
+
+}
+
+else if(xp < 5000){
+
+mensagem.textContent =
+"🔥 Você está evoluindo rapidamente.";
+
+}
+
+else{
+
+mensagem.textContent =
+"🏛️ Seu poder está acima da média.";
+}
+}
+
+checkboxes.forEach(box => {
+
+box.addEventListener(
+"change",
+() => {
+
+if(box.checked){
+
+xp += 50;
+
+bossHp -= 250;
+
+if(bossHp <= 0){
+
+xp += 500;
+
+bossHp = 10000;
+
+alert(
+"🏆 Boss derrotado! +500 XP"
+);
+}
+
+}else{
+
+xp -= 50;
+
+bossHp += 250;
+}
+
+localStorage.setItem(
+"ares_xp",
+xp
+);
+
+localStorage.setItem(
+"ares_boss_hp",
+bossHp
+);
+
+atualizarTela();
+
+}
+);
+
 });
+
+renderTreino();
 
 atualizarTela();
