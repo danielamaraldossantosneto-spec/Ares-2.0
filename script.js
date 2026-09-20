@@ -1,78 +1,81 @@
 const treinos = {
-1: {
-nome: "🔥 PUSH",
-lista: [
-"Supino Inclinado",
-"Supino Máquina",
-"Crucifixo",
-"Desenvolvimento",
-"Tríceps"
-]
-},
 
-2: {
-nome: "🦍 PULL",
-lista: [
-"Puxada",
-"Remada",
-"Pulldown",
-"Rosca Direta",
-"Rosca Martelo"
-]
-},
-
-3: {
-nome: "🍑 GLÚTEO + POSTERIOR",
-lista: [
-"Hip Thrust 130kg",
-"Mesa Flexora",
-"Stiff 120kg",
-"Abdutora",
-"Panturrilha"
-]
-},
-
-4: {
-nome: "🦵 LOWER",
-lista: [
-"Agachamento 120kg",
-"Leg Press 240kg",
-"Extensora",
-"Flexora",
-"Panturrilha"
-]
-},
-
-5: {
-nome: "💪 OMBRO + BRAÇO",
-lista: [
-"Desenvolvimento",
-"Elevação Lateral",
-"Rosca",
-"Tríceps"
-]
-},
-
-6: {
-nome: "⚔️ PEITO + TRÍCEPS",
-lista: [
-"Supino Inclinado",
-"Crucifixo",
-"Peck Deck",
-"Tríceps Francês",
-"Tríceps Corda"
-]
-},
-
-0: {
-nome: "🏃 RECUPERAÇÃO",
-lista: [
-"Cardio",
+0:{
+nome:"🏃 RECUPERAÇÃO",
+lista:[
+"30 min Cardio",
 "Alongamento",
 "Mobilidade",
-"Caminhada"
+"10.000 passos"
+]
+},
+
+1:{
+nome:"🔥 PUSH",
+lista:[
+"Supino Inclinado 4x10",
+"Supino Máquina 4x12",
+"Crucifixo 4x12",
+"Desenvolvimento 4x10",
+"Tríceps Corda 4x12"
+]
+},
+
+2:{
+nome:"🦍 PULL",
+lista:[
+"Puxada Alta 4x10",
+"Remada Baixa 4x12",
+"Pulldown 4x12",
+"Rosca Direta 4x10",
+"Rosca Martelo 4x12"
+]
+},
+
+3:{
+nome:"🍑 GLÚTEO + POSTERIOR",
+lista:[
+"Hip Thrust 130kg 4x10",
+"Mesa Flexora 4x12",
+"Stiff 120kg 4x10",
+"Abdutora 4x15",
+"Panturrilha 4x20"
+]
+},
+
+4:{
+nome:"🦵 LOWER",
+lista:[
+"Agachamento 120kg 4x10",
+"Leg Press 240kg 4x12",
+"Extensora 4x12",
+"Flexora 4x12",
+"Panturrilha 4x20"
+]
+},
+
+5:{
+nome:"💪 OMBRO + BRAÇO",
+lista:[
+"Desenvolvimento 4x10",
+"Elevação Lateral 4x12",
+"Rosca Direta 4x10",
+"Rosca Martelo 4x12",
+"Tríceps Francês 4x12"
+]
+},
+
+6:{
+nome:"⚔️ PEITO + TRÍCEPS",
+lista:[
+"Supino Inclinado 4x10",
+"Peck Deck 4x12",
+"Crucifixo 4x12",
+"Tríceps Francês 4x12",
+"Tríceps Corda 4x12"
 ]
 }
+
 };
 
 let xp =
@@ -81,43 +84,35 @@ Number(localStorage.getItem("ares_xp")) || 1540;
 let bossHp =
 Number(localStorage.getItem("ares_boss_hp")) || 10000;
 
-const xpElemento =
-document.getElementById("xp");
-
-const bossHpElemento =
-document.getElementById("bossHp");
-
-const bossBarra =
-document.getElementById("bossBarra");
-
-const mensagem =
-document.getElementById("mensagem");
-
-const treinoHoje =
-document.getElementById("treinoHoje");
-
-const checkboxes =
-document.querySelectorAll(".m");
-
 function renderTreino(){
 
-const hoje =
-new Date().getDay();
+const dia =
+document.getElementById("diaTreino").value;
 
 const treino =
-treinos[hoje];
+treinos[dia];
 
 let html =
 `<h3>${treino.nome}</h3><br>`;
 
-treino.lista.forEach(ex => {
+treino.lista.forEach(item=>{
 
-html += `• ${ex}<br>`;
+html += `
+<div style="
+background:#1e293b;
+padding:12px;
+border-radius:10px;
+margin-bottom:8px;">
+${item}
+</div>
+`;
 
 });
 
-treinoHoje.innerHTML =
-html;
+document
+.getElementById("treinoHoje")
+.innerHTML = html;
+
 }
 
 function atualizarClasse(){
@@ -127,7 +122,7 @@ let classe = "🥈 Prata";
 if(xp >= 1000)
 classe = "🥇 Ouro";
 
-if(xp >= 2000)
+if(xp >= 3000)
 classe = "💎 Diamante";
 
 if(xp >= 5000)
@@ -136,105 +131,95 @@ classe = "🏛️ Titã";
 if(xp >= 10000)
 classe = "👑 Deus da Guerra";
 
-document.getElementById("classe")
+document
+.getElementById("classe")
 .textContent = classe;
+
 }
 
 function atualizarBoss(){
 
-let bossNome =
-"🐺 Lobo Sombrio";
+let boss = "🐺 Lobo Sombrio";
 
 if(xp >= 1000)
-bossNome = "👹 Minotauro";
+boss = "👹 Minotauro";
 
 if(xp >= 3000)
-bossNome = "🐉 Dragão Ancião";
+boss = "🐉 Dragão Ancião";
 
 if(xp >= 5000)
-bossNome = "⚔️ Ares";
+boss = "⚔️ Ares";
 
-document.getElementById("bossNome")
-.textContent = bossNome;
+document
+.getElementById("bossNome")
+.textContent = boss;
+
 }
 
 function atualizarTela(){
 
-xpElemento.textContent =
+document
+.getElementById("xp")
+.textContent =
 `XP Total: ${xp}`;
 
-const nivel =
-Math.floor(xp / 100) + 1;
-
-document.getElementById("nivel")
+document
+.getElementById("nivel")
 .textContent =
-`⚔️ Nível ${nivel}`;
+`⚔️ Nível ${Math.floor(xp/100)+1}`;
 
-bossHpElemento.textContent =
+document
+.getElementById("bossHp")
+.textContent =
 `${bossHp.toLocaleString()} HP`;
 
-const porcentagem =
-Math.max(
-(bossHp / 10000) * 100,
-0
-);
-
-bossBarra.style.width =
-porcentagem + "%";
+document
+.getElementById("bossBarra")
+.style.width =
+`${Math.max((bossHp/10000)*100,0)}%`;
 
 atualizarClasse();
 
 atualizarBoss();
 
-if(xp < 2000){
-
-mensagem.textContent =
-"⚔️ Continue avançando guerreiro.";
-
 }
 
-else if(xp < 5000){
+document
+.getElementById("diaTreino")
+.addEventListener(
+"change",
+renderTreino
+);
 
-mensagem.textContent =
-"🔥 Você está evoluindo rapidamente.";
-
-}
-
-else{
-
-mensagem.textContent =
-"🏛️ Seu poder está acima da média.";
-}
-}
-
-checkboxes.forEach(box => {
+document
+.querySelectorAll(".m")
+.forEach(box=>{
 
 box.addEventListener(
 "change",
-() => {
+()=>{
 
 if(box.checked){
 
 xp += 50;
-
 bossHp -= 250;
 
 if(bossHp <= 0){
 
 xp += 500;
-
 bossHp = 10000;
 
 alert(
 "🏆 Boss derrotado! +500 XP"
 );
+
 }
 
 }else{
 
 xp -= 50;
-
 bossHp += 250;
+
 }
 
 localStorage.setItem(
@@ -249,12 +234,9 @@ bossHp
 
 atualizarTela();
 
-}
-);
+});
 
 });
 
 renderTreino();
-
 atualizarTela();
-console.log("ARES CARREGADO");
