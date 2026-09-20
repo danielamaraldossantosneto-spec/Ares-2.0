@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARES TRACKER 2.0</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -13,63 +15,211 @@
 
     <img src="daniel.jpeg" class="banner">
 
-    <h1>🏛️ ARES TRACKER 2.0</h1>
-    <p>Projeto Tanquinho São Paulo</p>
+    <div class="hero">
+
+        <h1>🏛️ ARES TRACKER 2.0</h1>
+
+        <p>Projeto Tanquinho São Paulo</p>
+
+        <p class="frase">
+            ⚔️ A disciplina constrói o físico que a motivação nunca sustentará.
+        </p>
+
+    </div>
 
     <div class="card perfil">
 
-        <img src="daniel.jpeg" class="avatar">
+        <img
+        src="daniel.jpeg"
+        class="avatar"
+        >
 
         <div>
+
             <h2>Daniel Amaral</h2>
-            <p>🥇 Ouro</p>
-            <p>⚔️ Nível 15</p>
-            <p>XP Total: 1540</p>
-            <p>⚖️ Peso Atual: 79kg</p>
-            <p>🎯 Meta: Tanquinho São Paulo</p>
+
+            <p id="classe">
+                🥇 Ouro
+            </p>
+
+            <p id="nivel">
+                ⚔️ Nível 15
+            </p>
+
+            <p id="xp">
+                XP Total: 1540
+            </p>
+
+            <p>
+                ⚖️ Peso Atual: 79kg
+            </p>
+
+            <p>
+                🎯 Meta: Tanquinho São Paulo
+            </p>
+
         </div>
 
     </div>
 
     <div class="card">
+
         <h2>👹 Boss da Semana</h2>
-        <p>🐺 Lobo Sombrio</p>
+
+        <p id="bossNome">
+            🐺 Lobo Sombrio
+        </p>
 
         <div class="barra">
-            <div class="preenchida"></div>
+
+            <div
+            id="bossBarra"
+            class="preenchida">
+            </div>
+
         </div>
 
-        <p>HP: 10000</p>
+        <p id="bossHp">
+            10000 HP
+        </p>
+
     </div>
 
     <div class="card">
+
         <h2>⚔️ Missões Diárias</h2>
 
-        <p>☐ Fazer treino completo (+50 XP)</p>
-        <p>☐ 6000 passos (+30 XP)</p>
-        <p>☐ 3km cardio (+30 XP)</p>
-        <p>☐ Beber 3L de água (+20 XP)</p>
+        <div class="missao">
+
+            <input
+            type="checkbox"
+            class="m">
+
+            Fazer treino completo (+50 XP)
+
+        </div>
+
+        <div class="missao">
+
+            <input
+            type="checkbox"
+            class="m">
+
+            6000 passos (+30 XP)
+
+        </div>
+
+        <div class="missao">
+
+            <input
+            type="checkbox"
+            class="m">
+
+            3km cardio (+30 XP)
+
+        </div>
+
+        <div class="missao">
+
+            <input
+            type="checkbox"
+            class="m">
+
+            Beber 3L de água (+20 XP)
+
+        </div>
+
     </div>
 
     <div class="card">
+
         <h2>🏋️ Treino de Hoje</h2>
 
-        <p>Hip Thrust 130kg</p>
-        <p>Mesa Flexora</p>
-        <p>Stiff 120kg</p>
-        <p>Abdutora</p>
-        <p>Panturrilha</p>
+        <ul>
+
+            <li>Hip Thrust 130kg</li>
+
+            <li>Mesa Flexora</li>
+
+            <li>Stiff 120kg</li>
+
+            <li>Abdutora</li>
+
+            <li>Panturrilha</li>
+
+        </ul>
+
     </div>
 
     <div class="card">
+
+        <h2>📅 Treinos da Semana</h2>
+
+        <ul>
+
+            <li>Segunda — Push</li>
+
+            <li>Terça — Pull</li>
+
+            <li>Quarta — Glúteo + Posterior</li>
+
+            <li>Quinta — Lower</li>
+
+            <li>Sexta — Ombro + Braço</li>
+
+            <li>Sábado — Peito + Tríceps</li>
+
+        </ul>
+
+    </div>
+
+    <div class="card">
+
         <h2>🏆 Recordes</h2>
 
         <p>Hip Thrust: 130kg</p>
-        <p>Agachamento: 120kg</p>
+
+        <p>Agachamento Livre: 120kg</p>
+
         <p>Leg Press: 240kg</p>
+
+        <p>Supino Inclinado: 32kg</p>
+
+        <p>Stiff: 120kg</p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📈 Evolução Física</h2>
+
+        <p>⚖️ Peso Inicial: 81kg</p>
+
+        <p>⚖️ Peso Atual: 79kg</p>
+
+        <p>🎯 Meta: 75kg</p>
+
+        <hr>
+
+        <p>🧬 BF Atual: 14%</p>
+
+        <p>🎯 Meta BF: 10%</p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🧠 Conselho do Gepetão</h2>
+
+        <p id="mensagem">
+            Continue avançando guerreiro.
+        </p>
+
     </div>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
