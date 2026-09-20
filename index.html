@@ -1,136 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ARES TRACKER 4.0</title>
+<title>🏛️ ARES TRACKER 5.0</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-body{
-background:linear-gradient(180deg,#050816,#0f172a);
-color:white;
-padding:20px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-}
-
-.banner{
-width:100%;
-height:300px;
-object-fit:cover;
-border-radius:25px;
-margin-bottom:20px;
-box-shadow:0 0 30px rgba(250,204,21,.2);
-}
-
-.card{
-background:#111827;
-padding:25px;
-border-radius:20px;
-margin-bottom:20px;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.card h2{
-margin-bottom:15px;
-color:#facc15;
-}
-
-.perfil{
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-.avatar{
-width:150px;
-height:150px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid #facc15;
-}
-
-.barra{
-width:100%;
-height:20px;
-background:#1e293b;
-border-radius:999px;
-overflow:hidden;
-margin-top:10px;
-}
-
-.preenchida{
-height:100%;
-width:100%;
-background:linear-gradient(90deg,#dc2626,#ef4444);
-transition:.5s;
-}
-
-.missao{
-background:#1e293b;
-padding:15px;
-border-radius:12px;
-margin-bottom:10px;
-cursor:pointer;
-}
-
-.missao input{
-margin-right:10px;
-transform:scale(1.2);
-}
-
-#diaTreino{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:#1e293b;
-color:white;
-font-size:16px;
-}
-
-#treinoHoje{
-margin-top:20px;
-line-height:2;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-@media(max-width:768px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.perfil{
-flex-direction:column;
-text-align:center;
-}
-
-.avatar{
-width:180px;
-height:180px;
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -138,15 +15,25 @@ height:180px;
 
 <div class="container">
 
+<header class="hero">
+
 <img src="daniel.jpeg" class="banner">
 
-<div class="card perfil">
+<div class="hero-content">
+
+<h1>🏛️ ARES TRACKER 5.0</h1>
+
+<p>Projeto Tanquinho São Paulo</p>
+
+</div>
+
+</header>
+
+<section class="card perfil">
 
 <img src="daniel.jpeg" class="avatar">
 
 <div>
-
-<h1>🏛️ ARES TRACKER 4.0</h1>
 
 <h2>Daniel Amaral</h2>
 
@@ -156,11 +43,35 @@ height:180px;
 
 <p id="xp">XP Total: 1540</p>
 
-<p>⚖️ Peso Atual: 79kg</p>
-
-<p>🎯 Meta: Tanquinho São Paulo</p>
+<p id="streak">🔥 Streak: 12 dias</p>
 
 </div>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<h2>🎯 Projeto Tanquinho SP</h2>
+
+<p>⚖️ Peso Atual: 79kg</p>
+
+<div class="barra">
+<div class="pesoBarra" style="width:75%"></div>
+</div>
+
+<br>
+
+<p>🧬 BF Atual: 14%</p>
+
+<div class="barra">
+<div class="bfBarra" style="width:50%"></div>
+</div>
+
+<p class="meta">
+Meta: 75kg | 10% BF
+</p>
 
 </div>
 
@@ -171,42 +82,89 @@ height:180px;
 <p id="bossNome">👹 Minotauro</p>
 
 <div class="barra">
-<div id="bossBarra" class="preenchida"></div>
+
+<div
+id="bossBarra"
+class="preenchida">
 </div>
 
-<br>
+</div>
 
-<p id="bossHp">10000 HP</p>
+<p id="bossHp">
+10000 HP
+</p>
+
+<p>
+🏆 Recompensa: +500 XP
+</p>
 
 </div>
 
-<div class="card">
+</section>
+
+<section class="card">
 
 <h2>⚔️ Missões Diárias</h2>
 
 <div class="missao">
 <input type="checkbox" class="m">
-Treino do dia (+50 XP)
+Treino do Dia (+50 XP)
 </div>
 
 <div class="missao">
 <input type="checkbox" class="m">
-6000 passos (+30 XP)
+6000 Passos (+30 XP)
 </div>
 
 <div class="missao">
 <input type="checkbox" class="m">
-3km cardio (+30 XP)
+3km Cardio (+30 XP)
 </div>
 
 <div class="missao">
 <input type="checkbox" class="m">
-Beber 3L de água (+20 XP)
+3L de Água (+20 XP)
 </div>
+
+<div class="missao">
+<input type="checkbox" class="m">
+Bater Proteína (+50 XP)
+</div>
+
+<div class="missao">
+<input type="checkbox" class="m">
+Dormir 7h (+50 XP)
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>📅 Calendário ARES</h2>
+
+<div class="calendar">
+
+<div>SEG</div>
+<div>TER</div>
+<div>QUA</div>
+<div>QUI</div>
+<div>SEX</div>
+<div>SAB</div>
+<div>DOM</div>
+
+<div class="done">🟩</div>
+<div class="done">🟩</div>
+<div class="done">🟩</div>
+<div>⬜</div>
+<div class="done">🟩</div>
+<div class="done">🟩</div>
+<div>⬜</div>
 
 </div>
 
-<div class="card">
+</section>
+
+<section class="card">
 
 <h2>🏋️ Treinos ARES</h2>
 
@@ -228,216 +186,78 @@ Beber 3L de água (+20 XP)
 
 </select>
 
-<div id="treinoHoje"></div>
+<div id="treinoHoje">
+
+Carregando treino...
 
 </div>
 
-<div class="grid">
+</section>
+
+<section class="grid">
 
 <div class="card">
 
 <h2>🏆 Recordes</h2>
 
 <p>Hip Thrust: 130kg</p>
+
 <p>Agachamento: 120kg</p>
+
 <p>Leg Press: 240kg</p>
+
 <p>Stiff: 120kg</p>
 
 </div>
 
 <div class="card">
 
-<h2>🏅 Conquistas</h2>
+<h2>🎖️ Conquistas</h2>
 
-<p>🥇 Ouro</p>
+<p>🥇 Primeira Semana</p>
+
+<p>🔥 7 Dias Seguidos</p>
+
 <p>💎 Diamante</p>
+
 <p>🏛️ Titã</p>
+
 <p>👑 Deus da Guerra</p>
 
 </div>
 
-</div>
+</section>
 
-<div class="card">
+<section class="card">
+
+<h2>📈 Evolução Física</h2>
+
+<p>💪 Braço: 40cm</p>
+
+<p>📏 Cintura: 81cm</p>
+
+<p>🏋️ Peito: 101cm</p>
+
+<p>🍑 Glúteo: 103cm</p>
+
+</section>
+
+<section class="card">
 
 <h2>🧠 Conselho do Gepetão</h2>
 
 <p id="mensagem">
-Continue avançando guerreiro. Cada treino conta.
+
+⚔️ Você não está competindo com os outros.
+Está competindo com o Daniel de ontem.
+
 </p>
 
-</div>
+</section>
 
 </div>
 
-<script>
-
-const treinos = {
-
-0:{
-nome:"🏃 RECUPERAÇÃO",
-lista:[
-"Cardio",
-"Alongamento",
-"Mobilidade",
-"Caminhada"
-]
-},
-
-1:{
-nome:"🔥 PUSH",
-lista:[
-"Supino Inclinado",
-"Supino Máquina",
-"Crucifixo",
-"Desenvolvimento",
-"Tríceps"
-]
-},
-
-2:{
-nome:"🦍 PULL",
-lista:[
-"Puxada",
-"Remada",
-"Pulldown",
-"Rosca Direta",
-"Rosca Martelo"
-]
-},
-
-3:{
-nome:"🍑 GLÚTEO + POSTERIOR",
-lista:[
-"Hip Thrust 130kg",
-"Mesa Flexora",
-"Stiff 120kg",
-"Abdutora",
-"Panturrilha"
-]
-},
-
-4:{
-nome:"🦵 LOWER",
-lista:[
-"Agachamento 120kg",
-"Leg Press 240kg",
-"Extensora",
-"Flexora",
-"Panturrilha"
-]
-},
-
-5:{
-nome:"💪 OMBRO + BRAÇO",
-lista:[
-"Desenvolvimento",
-"Elevação Lateral",
-"Rosca Direta",
-"Rosca Martelo",
-"Tríceps"
-]
-},
-
-6:{
-nome:"⚔️ PEITO + TRÍCEPS",
-lista:[
-"Supino Inclinado",
-"Crucifixo",
-"Peck Deck",
-"Tríceps Francês",
-"Tríceps Corda"
-]
-}
-
-};
-
-let xp =
-Number(localStorage.getItem("ares_xp")) || 1540;
-
-let bossHp =
-Number(localStorage.getItem("ares_boss_hp")) || 10000;
-
-function renderTreino(){
-
-const dia =
-document.getElementById("diaTreino").value;
-
-const treino =
-treinos[dia];
-
-let html =
-`<h3>${treino.nome}</h3><br>`;
-
-treino.lista.forEach(item=>{
-html += `• ${item}<br>`;
-});
-
-document.getElementById("treinoHoje")
-.innerHTML = html;
-
-}
-
-function atualizarTela(){
-
-document.getElementById("xp")
-.textContent =
-`XP Total: ${xp}`;
-
-document.getElementById("nivel")
-.textContent =
-`⚔️ Nível ${Math.floor(xp/100)+1}`;
-
-document.getElementById("bossHp")
-.textContent =
-`${bossHp.toLocaleString()} HP`;
-
-document.getElementById("bossBarra")
-.style.width =
-`${(bossHp/10000)*100}%`;
-
-}
-
-document
-.getElementById("diaTreino")
-.addEventListener(
-"change",
-renderTreino
-);
-
-document
-.querySelectorAll(".m")
-.forEach(box=>{
-
-box.addEventListener(
-"change",
-()=>{
-
-if(box.checked){
-
-xp += 50;
-bossHp -= 250;
-
-}else{
-
-xp -= 50;
-bossHp += 250;
-
-}
-
-localStorage.setItem("ares_xp",xp);
-localStorage.setItem("ares_boss_hp",bossHp);
-
-atualizarTela();
-
-});
-
-});
-
-renderTreino();
-atualizarTela();
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
