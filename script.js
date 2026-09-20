@@ -1,10 +1,10 @@
-// =====================================
-// ARES TRACKER 7.0
-// DANIEL AMARAL
-// =====================================
+/* =====================================
+   ARES TRACKER 7.0
+   DANIEL AMARAL
+===================================== */
 
 // =====================================
-// DADOS PRINCIPAIS
+// DADOS SALVOS
 // =====================================
 
 let xp =
@@ -28,44 +28,19 @@ localStorage.getItem(
 )
 ) || 0;
 
-let bossesDerrotados =
+let bossesMortos =
 Number(
 localStorage.getItem(
 "ares_bosses"
 )
 ) || 0;
 
-// =====================================
-// FRASES GEPETÃO
-// =====================================
-
-const frases = [
-
-"Disciplina vence motivação.",
-
-"Seu shape de amanhã depende do treino de hoje.",
-
-"Continue avançando guerreiro.",
-
-"Cada repetição aproxima São Paulo.",
-
-"A consistência constrói campeões.",
-
-"Hoje você planta o shape de amanhã.",
-
-"Você já chegou longe demais para desistir.",
-
-"Mais forte do que ontem.",
-
-"Projeto Tanquinho em andamento.",
-
-"Construa o físico que você admira.",
-
-"Um treino ruim ainda é melhor que nenhum treino.",
-
-"Foco no processo. O resultado vem."
-
-];
+let totalTreinos =
+Number(
+localStorage.getItem(
+"ares_treinos"
+)
+) || 0;
 
 // =====================================
 // ELEMENTOS
@@ -91,7 +66,7 @@ document.getElementById(
 "bossHp"
 );
 
-const bossHpArena =
+const bossHpArenaEl =
 document.getElementById(
 "bossHpArena"
 );
@@ -106,13 +81,13 @@ document.getElementById(
 "bossBarraArena"
 );
 
-const mensagemEl =
+const terminalARES =
 document.getElementById(
-"mensagem"
+"terminalARES"
 );
 
 // =====================================
-// SALVAR
+// SALVAR DADOS
 // =====================================
 
 function salvarDados(){
@@ -134,90 +109,266 @@ streak
 
 localStorage.setItem(
 "ares_bosses",
-bossesDerrotados
+bossesMortos
+);
+
+localStorage.setItem(
+"ares_treinos",
+totalTreinos
 );
 
 }
 
 // =====================================
-// CLASSE RPG
+// TERMINAL ARES
+// =====================================
+
+function logARES(texto){
+
+if(!terminalARES) return;
+
+const linha =
+document.createElement("p");
+
+linha.innerHTML =
+"> " + texto;
+
+terminalARES.prepend(
+linha
+);
+
+}
+
+// =====================================
+// XP
+// =====================================
+
+function ganharXP(valor){
+
+xp += valor;
+
+atualizarXP();
+
+salvarDados();
+
+}
+
+// =====================================
+// NIVEL
+// =====================================
+
+function calcularNivel(){
+
+return Math.floor(
+xp / 100
+) + 1;
+
+}
+
+// =====================================
+// ATUALIZAR XP
+// =====================================
+
+function atualizarXP(){
+
+if(xpEl){
+
+xpEl.textContent =
+xp + " XP";
+
+}
+
+const nivel =
+calcularNivel();
+
+if(nivelEl){
+
+nivelEl.textContent =
+"⚔️ Nível " + nivel;
+
+}
+
+atualizarClasse();
+
+atualizarEstatisticas();
+
+}
+
+// =====================================
+// CLASSES RPG
 // =====================================
 
 function atualizarClasse(){
 
+if(!classeEl) return;
+
 let classe =
-"🥉 Bronze";
+"🥈 Prata";
 
-if(xp >= 1000)
-classe = "🥇 Ouro";
+classeEl.className = "";
 
-if(xp >= 2000)
-classe = "💎 Diamante";
+if(xp >= 1000){
 
-if(xp >= 5000)
-classe = "🏛️ Titã";
+classe =
+"🥇 Ouro";
 
-if(xp >= 10000)
-classe = "👑 Deus da Guerra";
+}
 
-if(classeEl){
+if(xp >= 2000){
+
+classe =
+"💎 Diamante";
+
+classeEl.classList.add(
+"classeDiamante"
+);
+
+}
+
+if(xp >= 5000){
+
+classe =
+"🏛️ Titã";
+
+classeEl.classList.add(
+"classeTita"
+);
+
+}
+
+if(xp >= 10000){
+
+classe =
+"👑 Deus da Guerra";
+
+classeEl.classList.add(
+"classeDeus"
+);
+
+}
 
 classeEl.textContent =
 classe;
 
 }
+// =====================================
+// BOSS DA SEMANA
+// =====================================
+
+const bosses = [
+
+{
+nome:"👹 Minotauro",
+hp:10000,
+imagem:"https://i.imgur.com/W6X8K4A.png"
+},
+
+{
+nome:"🐉 Dragão Infernal",
+hp:15000,
+imagem:"https://i.imgur.com/3VesQzM.png"
+},
+
+{
+nome:"💀 Rei Esqueleto",
+hp:20000,
+imagem:"https://i.imgur.com/1Y7N6UL.png"
+},
+
+{
+nome:"🔥 Titã de Fogo",
+hp:25000,
+imagem:"https://i.imgur.com/xv8h0hI.png"
+},
+
+{
+nome:"⚡ Zeus Corrompido",
+hp:30000,
+imagem:"https://i.imgur.com/fJwYJ1w.png"
+}
+
+];
+
+// =====================================
+// BOSS ATUAL
+// =====================================
+
+let bossAtual =
+Number(
+localStorage.getItem(
+"ares_boss_atual"
+)
+) || 0;
+
+// =====================================
+// CARREGAR BOSS
+// =====================================
+
+function carregarBoss(){
+
+const boss =
+bosses[bossAtual];
+
+const bossNome =
+document.getElementById(
+"bossNomeArena"
+);
+
+const bossImagem =
+document.getElementById(
+"bossImagem"
+);
+
+if(bossNome){
+
+bossNome.textContent =
+boss.nome;
+
+}
+
+if(bossImagem){
+
+bossImagem.src =
+boss.imagem;
+
+}
+
+if(bossHp > boss.hp){
+
+bossHp =
+boss.hp;
+
+}
+
+atualizarBoss();
 
 }
 
 // =====================================
-// NÍVEL
-// =====================================
-
-function atualizarNivel(){
-
-const nivel =
-Math.floor(
-xp / 100
-) + 1;
-
-if(nivelEl){
-
-nivelEl.textContent =
-`⚔️ Nível ${nivel}`;
-
-}
-
-}
-
-// =====================================
-// BOSS
+// ATUALIZAR BOSS
 // =====================================
 
 function atualizarBoss(){
 
-const hpTexto =
-`${bossHp.toLocaleString()} HP`;
+const boss =
+bosses[bossAtual];
+
+const porcentagem =
+(bossHp / boss.hp) * 100;
 
 if(bossHpEl){
 
 bossHpEl.textContent =
-hpTexto;
+bossHp + " HP";
 
 }
 
-if(bossHpArena){
+if(bossHpArenaEl){
 
-bossHpArena.textContent =
-hpTexto;
+bossHpArenaEl.textContent =
+bossHp + " HP";
 
 }
-
-const porcentagem =
-
-Math.max(
-0,
-(bossHp / 10000) * 100
-);
 
 if(bossBarra){
 
@@ -236,165 +387,37 @@ porcentagem + "%";
 }
 
 // =====================================
-// FRASE ALEATÓRIA
+// CAUSAR DANO
 // =====================================
 
-function atualizarMensagem(){
+function causarDanoBoss(dano){
 
-if(!mensagemEl)
-return;
+bossHp -= dano;
 
-const indice =
+if(bossHp < 0){
 
-Math.floor(
-Math.random() *
-frases.length
+bossHp = 0;
+
+}
+
+mostrarDano(
+dano
 );
-
-mensagemEl.textContent =
-frases[indice];
-
-}
-
-// =====================================
-// LEVEL UP
-// =====================================
-
-let ultimoNivel =
-
-Number(
-localStorage.getItem(
-"ares_ultimo_nivel"
-)
-) || 1;
-
-function verificarLevelUp(){
-
-const nivelAtual =
-
-Math.floor(
-xp / 100
-) + 1;
-
-if(
-nivelAtual >
-ultimoNivel
-){
-
-const popup =
-document.getElementById(
-"levelUpPopup"
-);
-
-const novoNivel =
-document.getElementById(
-"novoNivel"
-);
-
-if(
-popup &&
-novoNivel
-){
-
-novoNivel.textContent =
-`NÍVEL ${nivelAtual}`;
-
-popup.style.display =
-"flex";
-
-setTimeout(()=>{
-
-popup.style.display =
-"none";
-
-},3000);
-
-}
-
-ultimoNivel =
-nivelAtual;
-
-localStorage.setItem(
-"ares_ultimo_nivel",
-ultimoNivel
-);
-
-}
-
-}
-
-// =====================================
-// TELA
-// =====================================
-
-function atualizarTela(){
-
-if(xpEl){
-
-xpEl.textContent =
-`XP Total: ${xp}`;
-
-}
-
-atualizarNivel();
-
-atualizarClasse();
 
 atualizarBoss();
 
 salvarDados();
 
-}
+if(bossHp <= 0){
 
-// =====================================
-// INICIAR
-// =====================================
-
-atualizarTela();
-
-atualizarMensagem();
-
-setInterval(()=>{
-
-atualizarMensagem();
-
-},30000);
-
-verificarLevelUp();
-// =====================================
-// MISSÕES DIÁRIAS
-// =====================================
-
-const missoes =
-document.querySelectorAll(
-".m"
-);
-
-let xpHoje =
-Number(
-localStorage.getItem(
-"ares_xp_hoje"
-)
-) || 0;
-
-function atualizarXpHoje(){
-
-const xpHojeEl =
-document.getElementById(
-"xpHoje"
-);
-
-if(xpHojeEl){
-
-xpHojeEl.textContent =
-`${xpHoje} XP`;
+matarBoss();
 
 }
 
 }
 
 // =====================================
-// DANO VISUAL NO BOSS
+// TEXTO DE DANO
 // =====================================
 
 function mostrarDano(valor){
@@ -408,7 +431,7 @@ dano.className =
 "danoBoss";
 
 dano.textContent =
-`-${valor}`;
+"-" + valor;
 
 document.body.appendChild(
 dano
@@ -423,166 +446,178 @@ dano.remove();
 }
 
 // =====================================
-// MISSÕES
+// MATAR BOSS
 // =====================================
 
-missoes.forEach(box=>{
+function matarBoss(){
 
-const salvo =
+bossesMortos++;
 
-localStorage.getItem(
-"missao_" +
-box.value
-);
+ganharXP(500);
 
-if(salvo === "1"){
-
-box.checked = true;
-
-}
-
-box.addEventListener(
-"change",
-()=>{
-
-if(box.checked){
-
-localStorage.setItem(
-"missao_" +
-box.value,
-"1"
-);
-
-xp += 50;
-
-xpHoje += 50;
-
-bossHp -= 250;
-
-mostrarDano(
-250
-);
-
-if(bossHp <= 0){
-
-bossHp = 10000;
-
-bossesDerrotados++;
-
-xp += 500;
-
-localStorage.setItem(
-"ares_bosses",
-bossesDerrotados
+logARES(
+"🏆 Boss derrotado!"
 );
 
 alert(
-"🏆 Boss derrotado! +500 XP"
+"🏆 Você derrotou o Boss da Semana!"
 );
+
+proximoBoss();
 
 }
 
-}else{
+// =====================================
+// PRÓXIMO BOSS
+// =====================================
 
-localStorage.removeItem(
-"missao_" +
-box.value
-);
+function proximoBoss(){
 
-xp -= 50;
+bossAtual++;
 
-xpHoje -= 50;
+if(
+bossAtual >= bosses.length
+){
 
-bossHp += 250;
+bossAtual = 0;
 
 }
+
+localStorage.setItem(
+"ares_boss_atual",
+bossAtual
+);
+
+bossHp =
+bosses[bossAtual].hp;
 
 salvarDados();
 
-atualizarTela();
+carregarBoss();
 
-atualizarXpHoje();
+}
+
+// =====================================
+// MISSÃO COMPLETA = DANO
+// =====================================
+
+document
+.querySelectorAll(
+".missaoCheck"
+)
+.forEach(check=>{
+
+check.addEventListener(
+"change",
+()=>{
+
+if(check.checked){
+
+ganharXP(25);
+
+causarDanoBoss(
+250
+);
+
+logARES(
+"⚔️ Dano causado ao Boss: 250"
+);
+
+}
 
 }
 );
 
 });
-
 // =====================================
-// CALENDÁRIO SEMANAL
+// CALENDÁRIO ARES
 // =====================================
-
-function iniciarCalendario(){
 
 const dias =
-
 document.querySelectorAll(
 ".dia"
 );
 
-dias.forEach(
-(dia,index)=>{
-
-const salvo =
-
+let diasConcluidos =
+JSON.parse(
 localStorage.getItem(
-"ares_dia_semana_" +
-index
-);
+"ares_dias"
+)
+) || [];
 
-if(salvo === "1"){
+// =====================================
+// CARREGAR CALENDÁRIO
+// =====================================
+
+function carregarCalendario(){
+
+dias.forEach((dia,index)=>{
+
+if(
+diasConcluidos.includes(index)
+){
 
 dia.classList.add(
 "diaConcluido"
 );
 
-dia.textContent =
-"🟩";
+dia.innerHTML = "✔";
 
 }
 
-dia.addEventListener(
-"click",
-()=>{
+dia.onclick = ()=>{
 
-dia.classList.toggle(
-"diaConcluido"
-);
+alternarDia(index);
+
+};
+
+});
+
+atualizarStreak();
+
+}
+
+// =====================================
+// MARCAR DIA
+// =====================================
+
+function alternarDia(index){
 
 if(
-dia.classList.contains(
-"diaConcluido"
-)
+diasConcluidos.includes(index)
 ){
 
-dia.textContent =
-"🟩";
-
-localStorage.setItem(
-"ares_dia_semana_" +
-index,
-"1"
+diasConcluidos =
+diasConcluidos.filter(
+d => d !== index
 );
 
 }else{
 
-dia.textContent =
-"⬜";
+diasConcluidos.push(index);
 
-localStorage.removeItem(
-"ares_dia_semana_" +
-index
+ganharXP(100);
+
+causarDanoBoss(500);
+
+totalTreinos++;
+
+logARES(
+"🏋️ Treino concluído!"
 );
 
 }
 
-calcularStreak();
-
-}
+localStorage.setItem(
+"ares_dias",
+JSON.stringify(
+diasConcluidos
+)
 );
 
-}
-);
+carregarCalendario();
+
+atualizarEstatisticas();
 
 }
 
@@ -590,52 +625,33 @@ calcularStreak();
 // STREAK
 // =====================================
 
-function calcularStreak(){
+function atualizarStreak(){
 
-const diasFeitos =
-
-document.querySelectorAll(
-".diaConcluido"
-).length;
-
-streak = diasFeitos;
+streak =
+diasConcluidos.length;
 
 const streakEl =
 document.getElementById(
-"streak"
+"streakAtual"
 );
 
 if(streakEl){
 
 streakEl.textContent =
-`🔥 Streak: ${streak}`;
+"🔥 Streak Atual: " +
+streak +
+" dias";
 
 }
 
-const streakAtual =
-document.getElementById(
-"streakAtual"
-);
-
-if(streakAtual){
-
-streakAtual.textContent =
-`${streak} dias`;
-
-}
-
-const melhor =
-
-Number(
+if(streak > Number(
 localStorage.getItem(
-"ares_melhor_streak"
+"ares_maior_streak"
 )
-) || 0;
-
-if(streak > melhor){
+) || 0){
 
 localStorage.setItem(
-"ares_melhor_streak",
+"ares_maior_streak",
 streak
 );
 
@@ -646,289 +662,379 @@ salvarDados();
 }
 
 // =====================================
-// RESET DIÁRIO
-// =====================================
-
-function verificarNovoDia(){
-
-const hoje =
-
-new Date()
-.toLocaleDateString();
-
-const ultimoDia =
-
-localStorage.getItem(
-"ares_data"
-);
-
-if(
-ultimoDia !== hoje
-){
-
-localStorage.setItem(
-"ares_data",
-hoje
-);
-
-xpHoje = 0;
-
-localStorage.setItem(
-"ares_xp_hoje",
-0
-);
-
-missoes.forEach(m=>{
-
-m.checked = false;
-
-localStorage.removeItem(
-"missao_" +
-m.value
-);
-
-});
-
-}
-
-}
-
-// =====================================
-// ESTATÍSTICAS BÁSICAS
+// ESTATÍSTICAS
 // =====================================
 
 function atualizarEstatisticas(){
 
-const xpStats =
+const xpTotal =
 document.getElementById(
-"xpStats"
+"xpTotal"
 );
 
-if(xpStats){
+const diasAtivos =
+document.getElementById(
+"diasAtivos"
+);
 
-xpStats.textContent =
+const bossesEl =
+document.getElementById(
+"bossesMortos"
+);
+
+const maiorStreak =
+document.getElementById(
+"maiorStreak"
+);
+
+const totalTreinosEl =
+document.getElementById(
+"totalTreinos"
+);
+
+const nivelAtual =
+document.getElementById(
+"nivelAtualStat"
+);
+
+if(xpTotal){
+
+xpTotal.textContent =
 xp;
 
 }
 
-const totalBoss =
-document.getElementById(
-"totalBoss"
-);
+if(diasAtivos){
 
-if(totalBoss){
-
-totalBoss.textContent =
-bossesDerrotados;
+diasAtivos.textContent =
+diasConcluidos.length;
 
 }
 
-const melhorStreak =
-document.getElementById(
-"melhorStreak"
-);
+if(bossesEl){
 
-if(melhorStreak){
+bossesEl.textContent =
+bossesMortos;
 
-melhorStreak.textContent =
+}
 
+if(maiorStreak){
+
+maiorStreak.textContent =
 localStorage.getItem(
-"ares_melhor_streak"
+"ares_maior_streak"
 ) || 0;
 
 }
 
+if(totalTreinosEl){
+
+totalTreinosEl.textContent =
+totalTreinos;
+
+}
+
+if(nivelAtual){
+
+nivelAtual.textContent =
+calcularNivel();
+
+}
+
 }
 
 // =====================================
-// INICIAR
+// CONQUISTAS
 // =====================================
 
-verificarNovoDia();
+function verificarConquistas(){
 
-iniciarCalendario();
+const conquistas =
+document.querySelectorAll(
+".conquista"
+);
 
-calcularStreak();
+if(
+xp >= 1000 &&
+conquistas[2]
+){
 
-atualizarXpHoje();
+conquistas[2]
+.classList.remove(
+"bloqueada"
+);
+
+}
+
+if(
+streak >= 7 &&
+conquistas[1]
+){
+
+conquistas[1]
+.classList.remove(
+"bloqueada"
+);
+
+}
+
+if(
+xp >= 2000 &&
+conquistas[3]
+){
+
+conquistas[3]
+.classList.remove(
+"bloqueada"
+);
+
+}
+
+if(
+xp >= 5000 &&
+conquistas[4]
+){
+
+conquistas[4]
+.classList.remove(
+"bloqueada"
+);
+
+}
+
+if(
+xp >= 10000 &&
+conquistas[5]
+){
+
+conquistas[5]
+.classList.remove(
+"bloqueada"
+);
+
+}
+
+}
+
+// =====================================
+// HALL DA FAMA
+// =====================================
+
+function atualizarHallDaFama(){
+
+const hallStreak =
+document.getElementById(
+"hallStreak"
+);
+
+if(hallStreak){
+
+hallStreak.textContent =
+(
+localStorage.getItem(
+"ares_maior_streak"
+) || 0
+)
++ " dias";
+
+}
+
+}
+
+// =====================================
+// INICIAR SISTEMA
+// =====================================
+
+carregarCalendario();
+
+atualizarXP();
+
+atualizarBoss();
+
+atualizarHallDaFama();
 
 atualizarEstatisticas();
+
+verificarConquistas();
+
+carregarBoss();
+
+logARES(
+"🚀 Sistema ARES iniciado."
+);
 // =====================================
-// TREINOS ARES 7.0
+// TREINOS ARES
 // =====================================
 
 const treinos = {
 
-0:{
-nome:"🏃 RECUPERAÇÃO",
-lista:[
-"30min Cardio",
-"Alongamento",
-"Mobilidade",
-"10.000 Passos"
-]
+segunda:[
+{
+nome:"Supino Reto",
+video:"https://www.youtube.com/embed/rT7DgCr-3pg"
 },
-
-1:{
-nome:"🔥 PUSH",
-lista:[
-"Supino Inclinado 4x10",
-"Supino Máquina 4x12",
-"Crucifixo 4x12",
-"Desenvolvimento 4x10",
-"Tríceps Corda 4x12"
-]
+{
+nome:"Supino Inclinado",
+video:"https://www.youtube.com/embed/DbFgADa2PL8"
 },
-
-2:{
-nome:"🦍 PULL",
-lista:[
-"Puxada Alta 4x10",
-"Remada Baixa 4x12",
-"Pulldown 4x12",
-"Rosca Direta 4x10",
-"Rosca Martelo 4x12"
-]
+{
+nome:"Crucifixo",
+video:"https://www.youtube.com/embed/eozdVDA78K0"
 },
-
-3:{
-nome:"🍑 GLÚTEO + POSTERIOR",
-lista:[
-"Hip Thrust 4x10",
-"Mesa Flexora 4x12",
-"Stiff 4x10",
-"Abdutora 4x15",
-"Panturrilha 4x15"
-]
-},
-
-4:{
-nome:"🦵 LOWER",
-lista:[
-"Agachamento 4x10",
-"Leg Press 4x12",
-"Extensora 4x12",
-"Flexora 4x12",
-"Panturrilha 4x15"
-]
-},
-
-5:{
-nome:"💪 OMBRO + BRAÇO",
-lista:[
-"Desenvolvimento 4x10",
-"Elevação Lateral 4x12",
-"Rosca Direta 4x10",
-"Rosca Martelo 4x12",
-"Tríceps Testa 4x12"
-]
-},
-
-6:{
-nome:"⚔️ PEITO + TRÍCEPS",
-lista:[
-"Supino Inclinado 4x10",
-"Crucifixo 4x12",
-"Peck Deck 4x12",
-"Tríceps Francês 4x12",
-"Tríceps Corda 4x12"
-]
+{
+nome:"Tríceps Corda",
+video:"https://www.youtube.com/embed/vB5OHsJ3EME"
 }
+],
+
+terca:[
+{
+nome:"Puxada Frontal",
+video:"https://www.youtube.com/embed/CAwf7n6Luuc"
+},
+{
+nome:"Remada Curvada",
+video:"https://www.youtube.com/embed/vT2GjY_Umpw"
+},
+{
+nome:"Pulldown",
+video:"https://www.youtube.com/embed/AOj7wR5M4xk"
+},
+{
+nome:"Rosca Direta",
+video:"https://www.youtube.com/embed/kwG2ipFRgfo"
+}
+],
+
+quarta:[
+{
+nome:"Hip Thrust",
+video:"https://www.youtube.com/embed/LM8XHLYJoYs"
+},
+{
+nome:"Agachamento",
+video:"https://www.youtube.com/embed/SW_C1A-rejs"
+},
+{
+nome:"Stiff",
+video:"https://www.youtube.com/embed/CQp7i7Z7W7A"
+},
+{
+nome:"Abdutora",
+video:"https://www.youtube.com/embed/G_8LItOiZ0Q"
+}
+],
+
+quinta:[
+{
+nome:"Leg Press",
+video:"https://www.youtube.com/embed/IZxyjW7MPJQ"
+},
+{
+nome:"Hack Squat",
+video:"https://www.youtube.com/embed/0tn5K9NlCfo"
+},
+{
+nome:"Extensora",
+video:"https://www.youtube.com/embed/YyvSfVjQeL0"
+},
+{
+nome:"Panturrilha",
+video:"https://www.youtube.com/embed/-M4-G8p8fmc"
+}
+],
+
+sexta:[
+{
+nome:"Desenvolvimento",
+video:"https://www.youtube.com/embed/qEwKCR5JCog"
+},
+{
+nome:"Elevação Lateral",
+video:"https://www.youtube.com/embed/3VcKaXpzqRo"
+},
+{
+nome:"Rosca Martelo",
+video:"https://www.youtube.com/embed/zC3nLlEvin4"
+},
+{
+nome:"Tríceps Testa",
+video:"https://www.youtube.com/embed/d_KZxkY_0cM"
+}
+],
+
+sabado:[
+{
+nome:"Supino Máquina",
+video:"https://www.youtube.com/embed/rT7DgCr-3pg"
+},
+{
+nome:"Cross Over",
+video:"https://www.youtube.com/embed/taI4XduLpTk"
+},
+{
+nome:"Paralela",
+video:"https://www.youtube.com/embed/2z8JmcrW-As"
+},
+{
+nome:"Tríceps Francês",
+video:"https://www.youtube.com/embed/_gsUck-7M74"
+}
+]
 
 };
 
 // =====================================
-// VÍDEOS EXERCÍCIOS
+// CARREGAR TREINO
 // =====================================
 
-const videos = {
+function carregarTreino(){
 
-"Supino Inclinado 4x10":
-"https://www.youtube.com/results?search_query=supino+inclinado",
-
-"Supino Máquina 4x12":
-"https://www.youtube.com/results?search_query=supino+maquina",
-
-"Crucifixo 4x12":
-"https://www.youtube.com/results?search_query=crucifixo",
-
-"Desenvolvimento 4x10":
-"https://www.youtube.com/results?search_query=desenvolvimento+ombro",
-
-"Hip Thrust 4x10":
-"https://www.youtube.com/results?search_query=hip+thrust",
-
-"Agachamento 4x10":
-"https://www.youtube.com/results?search_query=agachamento+livre",
-
-"Leg Press 4x12":
-"https://www.youtube.com/results?search_query=leg+press"
-
-};
-
-// =====================================
-// ELEMENTOS
-// =====================================
-
-const seletorDia =
+const seletor =
 document.getElementById(
 "diaTreino"
 );
 
-const treinoHojeEl =
+const tabela =
 document.getElementById(
-"treinoHoje"
+"tabelaTreinoBody"
 );
 
-const corpoTreino =
-document.getElementById(
-"corpoTreino"
-);
+if(!seletor || !tabela) return;
 
-// =====================================
-// RENDER TREINO
-// =====================================
-
-function renderTreino(dia){
+const dia =
+seletor.value;
 
 const treino =
 treinos[dia];
 
-if(!treino)
-return;
+tabela.innerHTML = "";
 
-if(treinoHojeEl){
+treino.forEach(ex=>{
 
-treinoHojeEl.innerHTML =
-`<h3>${treino.nome}</h3>`;
-
-}
-
-if(corpoTreino){
-
-let html = "";
-
-treino.lista.forEach(ex=>{
-
-html += `
+tabela.innerHTML += `
 
 <tr>
 
-<td>${ex}</td>
+<td>${ex.nome}</td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
 
 <td>
 
-<input
-type="number"
-placeholder="Peso">
+<button
+class="btnVideo"
+data-video="${ex.video}">
 
-</td>
+▶ Ver
 
-<td>
-
-<input
-type="number"
-placeholder="Reps">
+</button>
 
 </td>
 
@@ -940,122 +1046,32 @@ class="checkExercicio">
 
 </td>
 
-<td>
-
-<button
-class="btnVideo"
-onclick="abrirVideo('${ex}')">
-
-🎥 Ver
-
-</button>
-
-</td>
-
 </tr>
 
 `;
 
 });
 
-corpoTreino.innerHTML =
-html;
-
-}
-
-atualizarProgresso();
+ativarVideos();
+ativarChecks();
 
 }
 
 // =====================================
-// ABRIR VÍDEO
+// TROCA DE DIA
 // =====================================
 
-function abrirVideo(exercicio){
-
-const url =
-
-videos[exercicio] ||
-
-"https://www.youtube.com/results?search_query=" +
-encodeURIComponent(exercicio);
-
-window.open(
-url,
-"_blank"
+const diaTreino =
+document.getElementById(
+"diaTreino"
 );
 
-}
+if(diaTreino){
 
-// =====================================
-// TROCA DIA
-// =====================================
-
-if(seletorDia){
-
-seletorDia.addEventListener(
+diaTreino.addEventListener(
 "change",
-function(){
-
-const dia =
-Number(
-this.value
+carregarTreino
 );
-
-localStorage.setItem(
-"ares_dia",
-dia
-);
-
-renderTreino(
-dia
-);
-
-}
-);
-
-}
-
-// =====================================
-// CARREGAR DIA
-// =====================================
-
-function carregarDiaSalvo(){
-
-if(!seletorDia)
-return;
-
-const diaSalvo =
-
-Number(
-localStorage.getItem(
-"ares_dia"
-)
-);
-
-if(!isNaN(diaSalvo)){
-
-seletorDia.value =
-diaSalvo;
-
-renderTreino(
-diaSalvo
-);
-
-}else{
-
-const hoje =
-new Date()
-.getDay();
-
-seletorDia.value =
-hoje;
-
-renderTreino(
-hoje
-);
-
-}
 
 }
 
@@ -1063,34 +1079,24 @@ hoje
 // PROGRESSO TREINO
 // =====================================
 
-function atualizarProgresso(){
+function atualizarProgressoTreino(){
 
 const checks =
-
 document.querySelectorAll(
 ".checkExercicio"
 );
 
-if(
-checks.length === 0
-)
-return;
-
-let feitos = 0;
-
-checks.forEach(c=>{
-
-if(c.checked)
-feitos++;
-
-});
+const feitos =
+document.querySelectorAll(
+".checkExercicio:checked"
+);
 
 const porcentagem =
-
-Math.round(
-(feitos/checks.length)
-*100
-);
+checks.length
+?
+(feitos.length / checks.length) * 100
+:
+0;
 
 const barra =
 document.getElementById(
@@ -1112,81 +1118,137 @@ porcentagem + "%";
 if(texto){
 
 texto.textContent =
-
-`${feitos}/${checks.length} (${porcentagem}%)`;
-
-}
-
-}
-
-// =====================================
-// CHECKBOX TREINO
-// =====================================
-
-document.addEventListener(
-"change",
-function(e){
-
-if(
-e.target.classList.contains(
-"checkExercicio"
+Math.round(
+porcentagem
 )
-){
-
-const linha =
-
-e.target.closest("tr");
-
-if(
-e.target.checked
-){
-
-linha.classList.add(
-"treinoFeito"
-);
-
-}else{
-
-linha.classList.remove(
-"treinoFeito"
-);
-
-}
-
-atualizarProgresso();
++ "% concluído";
 
 }
 
 }
+
+// =====================================
+// CHECK EXERCÍCIOS
+// =====================================
+
+function ativarChecks(){
+
+document
+.querySelectorAll(
+".checkExercicio"
+)
+.forEach(check=>{
+
+check.addEventListener(
+"change",
+()=>{
+
+atualizarProgressoTreino();
+
+if(check.checked){
+
+ganharXP(20);
+
+causarDanoBoss(100);
+
+}
+
+}
 );
+
+});
+
+}
 
 // =====================================
 // HISTÓRICO
 // =====================================
 
-let historicoTreinos =
+function salvarHistoricoTreino(){
 
+const historico =
 JSON.parse(
 localStorage.getItem(
-"ares_historico_treinos"
+"ares_historico"
 )
 ) || [];
 
-let recordes =
+historico.unshift({
 
+data:
+new Date()
+.toLocaleDateString(),
+
+xp:xp,
+
+nivel:
+calcularNivel()
+
+});
+
+localStorage.setItem(
+"ares_historico",
+JSON.stringify(
+historico
+)
+);
+
+renderHistorico();
+
+}
+
+// =====================================
+// RENDER HISTÓRICO
+// =====================================
+
+function renderHistorico(){
+
+const div =
+document.getElementById(
+"historicoTreinos"
+);
+
+if(!div) return;
+
+const historico =
 JSON.parse(
 localStorage.getItem(
-"ares_recordes"
+"ares_historico"
 )
-) || {};
+) || [];
+
+div.innerHTML = "";
+
+historico
+.slice(0,20)
+.forEach(item=>{
+
+div.innerHTML += `
+
+<div class="historicoCard">
+
+<h3>
+📅 ${item.data}
+</h3>
+
+<p>
+XP: ${item.xp}
+</p>
+
+<p>
+Nível: ${item.nivel}
+</p>
+
+</div>
+
+`;
+
+});
+
+}
 
 // =====================================
-// INICIAR
-// =====================================
-
-carregarDiaSalvo();
-// =====================================
-// BOTÃO SALVAR TREINO
+// SALVAR TREINO
 // =====================================
 
 const salvarTreinoBtn =
@@ -1196,477 +1258,100 @@ document.getElementById(
 
 if(salvarTreinoBtn){
 
-salvarTreinoBtn.addEventListener(
+salvarTreinoBtn
+.addEventListener(
 "click",
-salvarTreino
-);
+()=>{
 
-}
+ganharXP(100);
 
-// =====================================
-// SALVAR TREINO
-// =====================================
+causarDanoBoss(500);
 
-function salvarTreino(){
-
-const linhas =
-
-document.querySelectorAll(
-"#corpoTreino tr"
-);
-
-if(
-linhas.length === 0
-){
-
-alert(
-"Selecione um treino primeiro."
-);
-
-return;
-
-}
-
-const treinoSalvo = [];
-
-let exerciciosFeitos = 0;
-
-// =====================================
-// PERCORRER TREINO
-// =====================================
-
-linhas.forEach(linha=>{
-
-const exercicio =
-
-linha.cells[0]
-.textContent;
-
-const inputs =
-
-linha.querySelectorAll(
-"input"
-);
-
-const peso =
-
-Number(
-inputs[0]?.value || 0
-);
-
-const reps =
-
-Number(
-inputs[1]?.value || 0
-);
-
-const feito =
-
-inputs[2]?.checked || false;
-
-if(feito){
-
-exerciciosFeitos++;
-
-}
-
-treinoSalvo.push({
-
-exercicio,
-peso,
-reps,
-feito
-
-});
-
-// =====================================
-// RECORDE
-// =====================================
-
-if(feito){
-
-if(
-!recordes[exercicio]
-){
-
-recordes[exercicio] =
-peso;
-
-}
-
-if(
-peso >
-recordes[exercicio]
-){
-
-recordes[exercicio] =
-peso;
-
-alert(
-`🏆 Novo Recorde!
-${exercicio}
-${peso}kg`
-);
-
-}
-
-}
-
-});
-
-// =====================================
-// SALVAR TREINO
-// =====================================
-
-const treinoDia = {
-
-data:
-new Date()
-.toLocaleDateString(),
-
-dia:
-document.getElementById(
-"diaTreino"
-)?.value,
-
-treino:
-treinoSalvo
-
-};
-
-historicoTreinos.push(
-treinoDia
-);
-
-localStorage.setItem(
-
-"ares_historico_treinos",
-
-JSON.stringify(
-historicoTreinos
-)
-
-);
-
-localStorage.setItem(
-
-"ares_recordes",
-
-JSON.stringify(
-recordes
-)
-
-);
-
-// =====================================
-// XP TREINO
-// =====================================
-
-xp += 100;
-
-if(
-exerciciosFeitos >= 5
-){
-
-xp += 50;
-
-}
-
-salvarDados();
-
-atualizarTela();
-
-renderHistorico();
-
-atualizarRecordes();
-
-atualizarEstatisticasTreino();
-
-atualizarHallDaFama();
-
-alert(
-"🔥 Treino salvo com sucesso!"
-);
-
-}
-
-// =====================================
-// RECORDES
-// =====================================
-
-function atualizarRecordes(){
-
-const area =
-
-document.getElementById(
-"recordes"
-);
-
-if(!area)
-return;
-
-let html = "";
-
-for(
-const exercicio
-in recordes
-){
-
-html += `
-
-<div class="recordeCard">
-
-<h3>
-
-${exercicio}
-
-</h3>
-
-<p>
-
-${recordes[exercicio]} kg
-
-</p>
-
-</div>
-
-`;
-
-}
-
-area.innerHTML =
-html;
-
-}
-
-// =====================================
-// HISTÓRICO
-// =====================================
-
-function renderHistorico(){
-
-const area =
-
-document.getElementById(
-"historicoTreinos"
-);
-
-if(!area)
-return;
-
-let html = "";
-
-historicoTreinos
-.slice()
-.reverse()
-.forEach(t=>{
-
-html += `
-
-<div class="historicoCard">
-
-<h3>
-
-📅 ${t.data}
-
-</h3>
-
-`;
-
-t.treino.forEach(ex=>{
-
-if(ex.feito){
-
-html += `
-
-<p>
-
-✅ ${ex.exercicio}
-
-- ${ex.peso}kg
-
-x ${ex.reps}
-
-</p>
-
-`;
-
-}
-
-});
-
-html +=
-`</div>`;
-
-});
-
-area.innerHTML =
-html;
-
-}
-
-// =====================================
-// ESTATÍSTICAS TREINO
-// =====================================
-
-function atualizarEstatisticasTreino(){
-
-const totalTreinos =
-
-document.getElementById(
-"totalTreinos"
-);
-
-if(totalTreinos){
-
-totalTreinos.textContent =
-historicoTreinos.length;
-
-}
-
-}
-
-// =====================================
-// HALL DA FAMA
-// =====================================
-
-function atualizarHallDaFama(){
-
-const supino =
-
-document.querySelector(
-"#hallSupino"
-);
-
-const hip =
-
-document.querySelector(
-"#hallHip"
-);
-
-const leg =
-
-document.querySelector(
-"#hallLeg"
-);
-
-if(
-supino &&
-recordes[
-"Supino Inclinado 4x10"
-]
-){
-
-supino.textContent =
-
-recordes[
-"Supino Inclinado 4x10"
-] + " kg";
-
-}
-
-if(
-hip &&
-recordes[
-"Hip Thrust 4x10"
-]
-){
-
-hip.textContent =
-
-recordes[
-"Hip Thrust 4x10"
-] + " kg";
-
-}
-
-if(
-leg &&
-recordes[
-"Leg Press 4x12"
-]
-){
-
-leg.textContent =
-
-recordes[
-"Leg Press 4x12"
-] + " kg";
-
-}
-
-}
-
-// =====================================
-// TERMINAL ARES
-// =====================================
-
-function logARES(texto){
-
-const terminal =
-
-document.getElementById(
-"terminalARES"
-);
-
-if(!terminal)
-return;
-
-const linha =
-document.createElement(
-"p"
-);
-
-linha.textContent =
-texto;
-
-terminal.prepend(
-linha
-);
-
-}
-
-// =====================================
-// REGISTRAR EVENTO
-// =====================================
+salvarHistoricoTreino();
 
 logARES(
-"⚔️ Sistema iniciado."
+"🏋️ Treino salvo com sucesso."
 );
 
-logARES(
-"🏛️ Bem-vindo ao ARES."
+alert(
+"Treino registrado!"
 );
 
+}
+);
+
+}
+
 // =====================================
-// INICIAR
+// INICIAR TREINOS
 // =====================================
 
-atualizarRecordes();
+carregarTreino();
 
 renderHistorico();
-
-atualizarEstatisticasTreino();
-
-atualizarHallDaFama();
 // =====================================
 // EVOLUÇÃO FÍSICA
 // =====================================
 
-let historicoMedidas =
+function salvarMedidas(){
 
+const medidas = {
+
+data:
+new Date().toLocaleDateString(),
+
+peso:
+document.getElementById("peso")?.value || 0,
+
+bf:
+document.getElementById("bf")?.value || 0,
+
+peito:
+document.getElementById("peito")?.value || 0,
+
+cintura:
+document.getElementById("cintura")?.value || 0,
+
+braco:
+document.getElementById("braco")?.value || 0,
+
+coxa:
+document.getElementById("coxa")?.value || 0
+
+};
+
+const historico =
 JSON.parse(
 localStorage.getItem(
 "ares_medidas"
 )
 ) || [];
 
+historico.push(
+medidas
+);
+
+localStorage.setItem(
+"ares_medidas",
+JSON.stringify(
+historico
+)
+);
+
+renderHistoricoMedidas();
+renderGraficos();
+
+logARES(
+"📏 Medidas corporais atualizadas."
+);
+
+}
+
 // =====================================
-// SALVAR MEDIDAS
+// BOTÃO SALVAR MEDIDAS
 // =====================================
 
 const salvarMedidasBtn =
-
 document.getElementById(
 "salvarMedidas"
 );
@@ -1680,146 +1365,58 @@ salvarMedidas
 
 }
 
-function salvarMedidas(){
-
-const registro = {
-
-data:
-new Date()
-.toLocaleDateString(),
-
-peso:
-Number(
-document.getElementById(
-"pesoInput"
-)?.value || 0
-),
-
-bf:
-Number(
-document.getElementById(
-"bfInput"
-)?.value || 0
-),
-
-braco:
-Number(
-document.getElementById(
-"bracoInput"
-)?.value || 0
-),
-
-peito:
-Number(
-document.getElementById(
-"peitoInput"
-)?.value || 0
-),
-
-cintura:
-Number(
-document.getElementById(
-"cinturaInput"
-)?.value || 0
-),
-
-gluteo:
-Number(
-document.getElementById(
-"gluteoInput"
-)?.value || 0
-),
-
-coxa:
-Number(
-document.getElementById(
-"coxaInput"
-)?.value || 0
-),
-
-panturrilha:
-Number(
-document.getElementById(
-"panturrilhaInput"
-)?.value || 0
-)
-
-};
-
-historicoMedidas.push(
-registro
-);
-
-localStorage.setItem(
-
-"ares_medidas",
-
-JSON.stringify(
-historicoMedidas
-)
-
-);
-
-xp += 50;
-
-salvarDados();
-
-atualizarTela();
-
-atualizarEvolucao();
-
-gerarGraficos();
-
-renderMedidas();
-
-verificarConquistas();
-
-alert(
-"📈 Evolução salva!"
-);
-
-}
-
 // =====================================
-// EVOLUÇÃO
+// HISTÓRICO MEDIDAS
 // =====================================
 
-function atualizarEvolucao(){
+function renderHistoricoMedidas(){
 
-if(
-historicoMedidas.length === 0
+const div =
+document.getElementById(
+"historicoMedidas"
+);
+
+if(!div) return;
+
+const historico =
+JSON.parse(
+localStorage.getItem(
+"ares_medidas"
 )
-return;
+) || [];
 
-const ultimo =
+div.innerHTML = "";
 
-historicoMedidas[
-historicoMedidas.length - 1
-];
+historico
+.slice()
+.reverse()
+.forEach(item=>{
 
-const pesoAtual =
-document.getElementById(
-"pesoAtual"
-);
+div.innerHTML += `
 
-const bfAtual =
-document.getElementById(
-"bfAtual"
-);
+<div class="historicoCard">
 
-if(pesoAtual){
+<h3>
+📅 ${item.data}
+</h3>
 
-pesoAtual.textContent =
-`${ultimo.peso} kg`;
+<p>⚖️ Peso: ${item.peso} kg</p>
 
-}
+<p>🔥 BF: ${item.bf}%</p>
 
-if(bfAtual){
+<p>🏋️ Peito: ${item.peito} cm</p>
 
-bfAtual.textContent =
-`${ultimo.bf}%`;
+<p>📏 Cintura: ${item.cintura} cm</p>
 
-}
+<p>💪 Braço: ${item.braco} cm</p>
+
+<p>🦵 Coxa: ${item.coxa} cm</p>
+
+</div>
+
+`;
+
+});
 
 }
 
@@ -1830,126 +1427,84 @@ bfAtual.textContent =
 let graficoPeso;
 let graficoBF;
 
-function gerarGraficos(){
+function renderGraficos(){
 
-if(
-typeof Chart ===
-"undefined"
+const historico =
+JSON.parse(
+localStorage.getItem(
+"ares_medidas"
 )
-return;
+) || [];
 
 const labels =
-
-historicoMedidas.map(
-m => m.data
+historico.map(
+m=>m.data
 );
 
 const pesos =
-
-historicoMedidas.map(
-m => m.peso
+historico.map(
+m=>Number(m.peso)
 );
 
 const bfs =
-
-historicoMedidas.map(
-m => m.bf
+historico.map(
+m=>Number(m.bf)
 );
 
 // PESO
 
-const canvasPeso =
-
+const pesoCanvas =
 document.getElementById(
 "graficoPeso"
 );
 
-if(canvasPeso){
+if(pesoCanvas){
 
-if(graficoPeso){
-
+if(graficoPeso)
 graficoPeso.destroy();
-
-}
 
 graficoPeso =
 new Chart(
-
-canvasPeso,
-
+pesoCanvas,
 {
-
 type:"line",
-
 data:{
-
 labels,
-
 datasets:[{
-
 label:"Peso",
-
-data:pesos,
-
-borderWidth:3,
-
-tension:.3
-
+data:pesos
 }]
-
 }
-
 }
-
 );
 
 }
 
 // BF
 
-const canvasBF =
-
+const bfCanvas =
 document.getElementById(
 "graficoBF"
 );
 
-if(canvasBF){
+if(bfCanvas){
 
-if(graficoBF){
-
+if(graficoBF)
 graficoBF.destroy();
-
-}
 
 graficoBF =
 new Chart(
-
-canvasBF,
-
+bfCanvas,
 {
-
 type:"line",
-
 data:{
-
 labels,
-
 datasets:[{
-
-label:"BF",
-
-data:bfs,
-
-borderWidth:3,
-
-tension:.3
-
+label:"BF %",
+data:bfs
 }]
-
 }
-
 }
-
 );
 
 }
@@ -1957,198 +1512,123 @@ tension:.3
 }
 
 // =====================================
-// HISTÓRICO MEDIDAS
+// UPLOAD DE FOTOS
 // =====================================
 
-function renderMedidas(){
+function carregarFoto(
+inputId,
+imgId,
+storage
+){
 
-const area =
-
+const input =
 document.getElementById(
-"historicoMedidas"
+inputId
 );
 
-if(!area)
-return;
+const img =
+document.getElementById(
+imgId
+);
 
-let html = "";
+if(!input || !img) return;
 
-historicoMedidas
-.slice()
-.reverse()
-.forEach(m=>{
+input.addEventListener(
+"change",
+e=>{
 
-html += `
+const arquivo =
+e.target.files[0];
 
-<div class="historicoCard">
+if(!arquivo) return;
 
-<h3>
-📅 ${m.data}
-</h3>
+const leitor =
+new FileReader();
 
-<p>⚖️ Peso: ${m.peso}kg</p>
+leitor.onload =
+ev=>{
 
-<p>🧬 BF: ${m.bf}%</p>
-
-<p>💪 Braço: ${m.braco}cm</p>
-
-<p>🏛️ Peito: ${m.peito}cm</p>
-
-<p>📏 Cintura: ${m.cintura}cm</p>
-
-<p>🍑 Glúteo: ${m.gluteo}cm</p>
-
-<p>🦵 Coxa: ${m.coxa}cm</p>
-
-<p>🔥 Panturrilha: ${m.panturrilha}cm</p>
-
-</div>
-
-`;
-
-});
-
-area.innerHTML =
-html;
-
-}
-
-// =====================================
-// CONQUISTAS
-// =====================================
-
-let conquistas =
-
-JSON.parse(
-localStorage.getItem(
-"ares_conquistas"
-)
-) || [];
-
-function desbloquearConquista(nome){
-
-if(
-conquistas.includes(nome)
-)
-return;
-
-conquistas.push(nome);
+img.src =
+ev.target.result;
 
 localStorage.setItem(
-
-"ares_conquistas",
-
-JSON.stringify(
-conquistas
-)
-
+storage,
+ev.target.result
 );
 
-renderConquistas();
+};
 
-logARES(
-`🏆 ${nome}`
+leitor.readAsDataURL(
+arquivo
 );
 
 }
-
-function verificarConquistas(){
-
-if(
-historicoTreinos.length >= 1
-){
-
-desbloquearConquista(
-"⚔️ Primeiro Treino"
 );
 
-}
-
-if(
-historicoTreinos.length >= 30
-){
-
-desbloquearConquista(
-"🏛️ Titã da Consistência"
+const salva =
+localStorage.getItem(
+storage
 );
 
-}
+if(salva){
 
-if(
-xp >= 2000
-){
-
-desbloquearConquista(
-"💎 Classe Diamante"
-);
-
-}
-
-if(
-xp >= 5000
-){
-
-desbloquearConquista(
-"🏛️ Classe Titã"
-);
-
-}
-
-if(
-xp >= 10000
-){
-
-desbloquearConquista(
-"👑 Deus da Guerra"
-);
+img.src = salva;
 
 }
 
 }
 
-function renderConquistas(){
-
-const area =
-
-document.getElementById(
-"conquistas"
+carregarFoto(
+"fotoAntesInput",
+"fotoAntes",
+"ares_foto_antes"
 );
 
-if(!area)
-return;
-
-area.innerHTML =
-conquistas.map(c=>
-
-`<div class="conquista">${c}</div>`
-
-).join("");
-
-}
+carregarFoto(
+"fotoDepoisInput",
+"fotoDepois",
+"ares_foto_depois"
+);
 
 // =====================================
 // BACKUP JSON
 // =====================================
 
-function exportarBackup(){
+const exportarBtn =
+document.getElementById(
+"exportarDados"
+);
+
+if(exportarBtn){
+
+exportarBtn.addEventListener(
+"click",
+()=>{
 
 const dados = {
 
 xp,
 bossHp,
 streak,
-bossesDerrotados,
-historicoTreinos,
-historicoMedidas,
-recordes,
-conquistas
+
+medidas:
+JSON.parse(
+localStorage.getItem(
+"ares_medidas"
+)
+),
+
+historico:
+JSON.parse(
+localStorage.getItem(
+"ares_historico"
+)
+)
 
 };
 
 const blob =
-
 new Blob(
-
 [
 JSON.stringify(
 dados,
@@ -2156,12 +1636,9 @@ null,
 2
 )
 ],
-
 {
-type:
-"application/json"
+type:"application/json"
 }
-
 );
 
 const link =
@@ -2179,99 +1656,164 @@ link.download =
 
 link.click();
 
-}
-
-const btnBackup =
-
-document.getElementById(
-"exportarDados"
-);
-
-if(btnBackup){
-
-btnBackup.addEventListener(
-"click",
-exportarBackup
-);
-
-}
-
-// =====================================
-// TÍTULOS RPG
-// =====================================
-
-function atualizarTitulos(){
-
-const titulos =
-
-document.querySelectorAll(
-".tituloCard"
-);
-
-titulos.forEach(t=>{
-
-const texto =
-t.textContent;
-
-if(
-texto.includes("Guerreiro")
-){
-
-t.classList.remove(
-"bloqueado"
-);
-
-}
-
-if(
-xp >= 2000 &&
-texto.includes("Campeão")
-){
-
-t.classList.remove(
-"bloqueado"
-);
-
-}
-
-if(
-xp >= 5000 &&
-texto.includes("Titã")
-){
-
-t.classList.remove(
-"bloqueado"
-);
-
-}
-
-if(
-xp >= 10000 &&
-texto.includes("Deus")
-){
-
-t.classList.remove(
-"bloqueado"
-);
-
-}
-
 });
+}
+
+// =====================================
+// LEVEL UP POPUP
+// =====================================
+
+function mostrarLevelUp(){
+
+const popup =
+document.getElementById(
+"levelUpPopup"
+);
+
+const novoNivel =
+document.getElementById(
+"novoNivel"
+);
+
+if(!popup) return;
+
+novoNivel.textContent =
+"NÍVEL "
++
+calcularNivel();
+
+popup.style.display =
+"flex";
+
+setTimeout(()=>{
+
+popup.style.display =
+"none";
+
+},3000);
 
 }
 
 // =====================================
-// INICIAR FINAL
+// CLASSES RPG
 // =====================================
 
-atualizarEvolucao();
+function atualizarClasseRPG(){
 
-gerarGraficos();
+const classe =
+document.getElementById(
+"classe"
+);
 
-renderMedidas();
+if(!classe) return;
 
-renderConquistas();
+classe.className = "";
 
-verificarConquistas();
+if(xp >= 10000){
 
-atualizarTitulos();
+classe.classList.add(
+"classeDeus"
+);
+
+}
+
+else if(xp >= 5000){
+
+classe.classList.add(
+"classeTita"
+);
+
+}
+
+else if(xp >= 2000){
+
+classe.classList.add(
+"classeDiamante"
+);
+
+}
+
+}
+
+// =====================================
+// METAS AUTOMÁTICAS
+// =====================================
+
+function atualizarMetas(){
+
+const pesoAtual =
+Number(
+document.getElementById(
+"peso"
+)?.value || 0
+);
+
+const bfAtual =
+Number(
+document.getElementById(
+"bf"
+)?.value || 0
+);
+
+const barraPeso =
+document.getElementById(
+"barraMetaPeso"
+);
+
+const barraBF =
+document.getElementById(
+"barraMetaBF"
+);
+
+if(barraPeso){
+
+const percPeso =
+Math.min(
+100,
+(pesoAtual / 85) * 100
+);
+
+barraPeso.style.width =
+percPeso + "%";
+
+}
+
+if(barraBF){
+
+const percBF =
+Math.min(
+100,
+(15 / Math.max(bfAtual,1))
+*100
+);
+
+barraBF.style.width =
+percBF + "%";
+
+}
+
+}
+
+// =====================================
+// INICIALIZAÇÃO FINAL
+// =====================================
+
+renderHistoricoMedidas();
+
+renderGraficos();
+
+atualizarClasseRPG();
+
+atualizarMetas();
+
+logARES(
+"⚔️ ARES TRACKER 7.0 ONLINE"
+);
+
+logARES(
+"👑 Bem-vindo, Daniel."
+);
+
+logARES(
+"🔥 Projeto ARES iniciado."
+);
