@@ -8,10 +8,10 @@ const xpElemento =
 document.getElementById("xp");
 
 const bossHpElemento =
-document.getElementById("bosshp");
+document.getElementById("bossHp");
 
 const bossBarra =
-document.getElementById("bossbar");
+document.getElementById("bossBarra");
 
 const mensagem =
 document.getElementById("mensagem");
@@ -21,101 +21,97 @@ document.querySelectorAll(".missao input");
 
 function atualizarTela() {
 
-xpElemento.textContent = xp;
+  xpElemento.textContent =
+  `XP Total: ${xp}`;
 
-bossHpElemento.textContent =
-bossHp.toLocaleString();
+  bossHpElemento.textContent =
+  `${bossHp.toLocaleString()} HP`;
 
-const porcentagem =
-(bossHp / 10000) * 100;
+  const porcentagem =
+  Math.max((bossHp / 10000) * 100,0);
 
-bossBarra.style.width =
-porcentagem + "%";
+  bossBarra.style.width =
+  porcentagem + "%";
 
-if (xp >= 5000) {
+  if (xp >= 5000) {
 
-document.getElementById("classe")
-.textContent =
-"👑 Semideus";
+    document.getElementById("classe")
+    .textContent =
+    "👑 Semideus";
 
-} else if (xp >= 3000) {
+  } else if (xp >= 3000) {
 
-document.getElementById("classe")
-.textContent =
-"🏛️ Titã";
+    document.getElementById("classe")
+    .textContent =
+    "🏛️ Titã";
 
-} else if (xp >= 1000) {
+  } else if (xp >= 1000) {
 
-document.getElementById("classe")
-.textContent =
-"🥇 Ouro";
+    document.getElementById("classe")
+    .textContent =
+    "🥇 Ouro";
 
-} else {
+  } else {
 
-document.getElementById("classe")
-.textContent =
-"🥈 Prata";
-}
+    document.getElementById("classe")
+    .textContent =
+    "🥈 Prata";
+  }
 
-const nivel =
-Math.floor(xp / 100);
+  const nivel =
+  Math.floor(xp / 100) + 1;
 
-document.getElementById("nivel")
-.textContent =
-`⚔️ Nível ${nivel}`;
-
+  document.getElementById("nivel")
+  .textContent =
+  `⚔️ Nível ${nivel}`;
 }
 
 checkboxes.forEach((box) => {
 
-box.addEventListener(
-"change",
-() => {
+  box.addEventListener(
+    "change",
+    () => {
 
-if (box.checked) {
+      if (box.checked) {
 
-xp += 50;
+        xp += 50;
 
-bossHp -= 250;
+        bossHp -= 250;
 
-if (bossHp <= 0) {
+        if (bossHp <= 0) {
 
-alert(
-"🏆 Boss derrotado! +500 XP"
-);
+          alert(
+          "🏆 Boss derrotado! +500 XP"
+          );
 
-xp += 500;
+          xp += 500;
 
-bossHp = 10000;
+          bossHp = 10000;
 
-mensagem.textContent =
-"🔥 Você derrotou o Boss da Semana!";
+          mensagem.textContent =
+          "🔥 Você derrotou o Boss da Semana!";
+        }
 
-}
+      } else {
 
-} else {
+        xp -= 50;
 
-xp -= 50;
+        bossHp += 250;
+      }
 
-bossHp += 250;
+      localStorage.setItem(
+        "ares_xp",
+        xp
+      );
 
-}
+      localStorage.setItem(
+        "ares_boss_hp",
+        bossHp
+      );
 
-localStorage.setItem(
-"ares_xp",
-xp
-);
-
-localStorage.setItem(
-"ares_boss_hp",
-bossHp
-);
-
-atualizarTela();
-
-}
-);
-
+      atualizarTela();
+    }
+  );
 });
 
 atualizarTela();
