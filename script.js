@@ -257,3 +257,4 @@ atualizarTela();
 renderTreino();
 
 atualizarTela();
+console.log("ARES CARREGADO");
