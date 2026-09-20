@@ -970,7 +970,7 @@ if(!treinos[dia]){
 
 tabela.innerHTML = `
 <tr>
-<td colspan="7">
+<td colspan="6">
 Treino não encontrado
 </td>
 </tr>
@@ -993,20 +993,16 @@ tabela.innerHTML += `
 
 <td>${ex.nome}</td>
 
-<td>
-<input type="number">
-</td>
+<td>${ex.series}</td>
+
+<td>${ex.reps}</td>
 
 <td>
-<input type="number">
-</td>
 
-<td>
-<input type="number">
-</td>
+<input
+type="number"
+placeholder="${ex.carga}">
 
-<td>
-<input type="number">
 </td>
 
 <td>
@@ -1039,7 +1035,6 @@ ativarVideos();
 ativarChecks();
 
 }
-
 function ativarVideos(){
 
 document
