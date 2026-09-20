@@ -1889,21 +1889,24 @@ video,
 }
 function ativarVideos(){
 
-document
-.querySelectorAll(".btnVideo")
-.forEach(btn=>{
+const botoes =
+document.querySelectorAll(".btnVideo");
 
-btn.addEventListener(
-"click",
-function(){
+botoes.forEach(btn=>{
+
+btn.onclick = function(){
+
+const video =
+this.getAttribute("data-video");
+
+alert(video);
 
 window.open(
-this.dataset.video,
+video,
 "_blank"
 );
 
-}
-);
+};
 
 });
 
