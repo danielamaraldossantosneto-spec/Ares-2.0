@@ -1,36 +1,78 @@
-const missoes = document.querySelectorAll(".missao");
+let xp =
+Number(localStorage.getItem("ares_xp")) || 1540;
 
-let xp = Number(localStorage.getItem("ares_xp")) || 1540;
-let bossHp = Number(localStorage.getItem("ares_boss")) || 10000;
+let bossHp =
+Number(localStorage.getItem("ares_boss_hp")) || 10000;
 
-const xpTexto = document.getElementById("xp");
-const hpTexto = document.getElementById("bosshp");
-const barraBoss = document.getElementById("bossbar");
+const xpElemento =
+document.getElementById("xp");
 
-function atualizar() {
+const bossHpElemento =
+document.getElementById("bosshp");
 
-xpTexto.innerText = xp;
+const bossBarra =
+document.getElementById("bossbar");
 
-hpTexto.innerText = bossHp;
+const mensagem =
+document.getElementById("mensagem");
+
+const checkboxes =
+document.querySelectorAll(".missao input");
+
+function atualizarTela() {
+
+xpElemento.textContent = xp;
+
+bossHpElemento.textContent =
+bossHp.toLocaleString();
 
 const porcentagem =
 (bossHp / 10000) * 100;
 
-barraBoss.style.width =
+bossBarra.style.width =
 porcentagem + "%";
+
+if (xp >= 5000) {
+
+document.getElementById("classe")
+.textContent =
+"👑 Semideus";
+
+} else if (xp >= 3000) {
+
+document.getElementById("classe")
+.textContent =
+"🏛️ Titã";
+
+} else if (xp >= 1000) {
+
+document.getElementById("classe")
+.textContent =
+"🥇 Ouro";
+
+} else {
+
+document.getElementById("classe")
+.textContent =
+"🥈 Prata";
+}
+
+const nivel =
+Math.floor(xp / 100);
+
+document.getElementById("nivel")
+.textContent =
+`⚔️ Nível ${nivel}`;
 
 }
 
-missoes.forEach((missao) => {
+checkboxes.forEach((box) => {
 
-const checkbox =
-missao.querySelector("input");
-
-checkbox.addEventListener(
+box.addEventListener(
 "change",
 () => {
 
-if (checkbox.checked) {
+if (box.checked) {
 
 xp += 50;
 
@@ -45,6 +87,9 @@ alert(
 xp += 500;
 
 bossHp = 10000;
+
+mensagem.textContent =
+"🔥 Você derrotou o Boss da Semana!";
 
 }
 
@@ -62,15 +107,15 @@ xp
 );
 
 localStorage.setItem(
-"ares_boss",
+"ares_boss_hp",
 bossHp
 );
 
-atualizar();
+atualizarTela();
 
 }
 );
 
 });
 
-atualizar();
+atualizarTela();
