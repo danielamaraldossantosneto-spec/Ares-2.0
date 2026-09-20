@@ -869,117 +869,78 @@ logARES(
 const treinos = {
 
 segunda:[
-{
-nome:"Supino Reto",
-video:"https://www.youtube.com/embed/rT7DgCr-3pg"
-},
-{
-nome:"Supino Inclinado",
-video:"https://www.youtube.com/embed/DbFgADa2PL8"
-},
-{
-nome:"Crucifixo",
-video:"https://www.youtube.com/embed/eozdVDA78K0"
-},
-{
-nome:"Tríceps Corda",
-video:"https://www.youtube.com/embed/vB5OHsJ3EME"
-}
+
+{nome:"Supino Reto Barra",series:4,reps:"8-10",carga:"100",video:"https://www.youtube.com/embed/rT7DgCr-3pg"},
+{nome:"Supino Inclinado Halter",series:4,reps:"10-12",carga:"34",video:"https://www.youtube.com/embed/DbFgADa2PL8"},
+{nome:"Supino Máquina",series:4,reps:"10-12",carga:"100",video:"https://www.youtube.com/embed/rT7DgCr-3pg"},
+{nome:"Crucifixo Máquina",series:3,reps:"12-15",carga:"70",video:"https://www.youtube.com/embed/eozdVDA78K0"},
+{nome:"Cross Over",series:3,reps:"12-15",carga:"25",video:"https://www.youtube.com/embed/taI4XduLpTk"},
+{nome:"Desenvolvimento Máquina",series:4,reps:"10-12",carga:"60",video:"https://www.youtube.com/embed/qEwKCR5JCog"},
+{nome:"Tríceps Corda",series:4,reps:"12-15",carga:"35",video:"https://www.youtube.com/embed/vB5OHsJ3EME"},
+{nome:"Tríceps Testa",series:3,reps:"10-12",carga:"30",video:"https://www.youtube.com/embed/d_KZxkY_0cM"}
+
 ],
 
 terca:[
-{
-nome:"Puxada Frontal",
-video:"https://www.youtube.com/embed/CAwf7n6Luuc"
-},
-{
-nome:"Remada Curvada",
-video:"https://www.youtube.com/embed/vT2GjY_Umpw"
-},
-{
-nome:"Pulldown",
-video:"https://www.youtube.com/embed/AOj7wR5M4xk"
-},
-{
-nome:"Rosca Direta",
-video:"https://www.youtube.com/embed/kwG2ipFRgfo"
-}
+
+{nome:"Puxada Frontal",series:4,reps:"8-10",carga:"70",video:"https://www.youtube.com/embed/CAwf7n6Luuc"},
+{nome:"Remada Curvada",series:4,reps:"8-10",carga:"80",video:"https://www.youtube.com/embed/vT2GjY_Umpw"},
+{nome:"Remada Baixa",series:4,reps:"10-12",carga:"70",video:"https://www.youtube.com/embed/GZbfZ033f74"},
+{nome:"Pulldown",series:3,reps:"12-15",carga:"50",video:"https://www.youtube.com/embed/AOj7wR5M4xk"},
+{nome:"Face Pull",series:3,reps:"12-15",carga:"35",video:"https://www.youtube.com/embed/eIq5CB9JfKE"},
+{nome:"Rosca Direta",series:4,reps:"10-12",carga:"40",video:"https://www.youtube.com/embed/kwG2ipFRgfo"},
+{nome:"Rosca Martelo",series:3,reps:"10-12",carga:"20",video:"https://www.youtube.com/embed/zC3nLlEvin4"},
+{nome:"Abdominal",series:4,reps:"20",carga:"Peso corporal",video:"https://www.youtube.com/embed/1919eTCoESo"}
+
 ],
 
 quarta:[
-{
-nome:"Hip Thrust",
-video:"https://www.youtube.com/embed/LM8XHLYJoYs"
-},
-{
-nome:"Agachamento",
-video:"https://www.youtube.com/embed/SW_C1A-rejs"
-},
-{
-nome:"Stiff",
-video:"https://www.youtube.com/embed/CQp7i7Z7W7A"
-},
-{
-nome:"Abdutora",
-video:"https://www.youtube.com/embed/G_8LItOiZ0Q"
-}
+
+{nome:"Hip Thrust",series:4,reps:"10",carga:"180",video:"https://www.youtube.com/embed/LM8XHLYJoYs"},
+{nome:"Agachamento Livre",series:4,reps:"10",carga:"120",video:"https://www.youtube.com/embed/SW_C1A-rejs"},
+{nome:"Stiff",series:4,reps:"10",carga:"80",video:"https://www.youtube.com/embed/CQp7i7Z7W7A"},
+{nome:"Mesa Flexora",series:4,reps:"12",carga:"60",video:"https://www.youtube.com/embed/1Tq3QdYUuHs"},
+{nome:"Abdutora",series:4,reps:"15",carga:"80",video:"https://www.youtube.com/embed/G_8LItOiZ0Q"},
+{nome:"Glúteo Cabo",series:3,reps:"15",carga:"20",video:"https://www.youtube.com/embed/5jJ6kQ6R9L8"},
+{nome:"Panturrilha Sentado",series:4,reps:"20",carga:"60",video:"https://www.youtube.com/embed/-M4-G8p8fmc"}
+
 ],
 
 quinta:[
-{
-nome:"Leg Press",
-video:"https://www.youtube.com/embed/IZxyjW7MPJQ"
-},
-{
-nome:"Hack Squat",
-video:"https://www.youtube.com/embed/0tn5K9NlCfo"
-},
-{
-nome:"Extensora",
-video:"https://www.youtube.com/embed/YyvSfVjQeL0"
-},
-{
-nome:"Panturrilha",
-video:"https://www.youtube.com/embed/-M4-G8p8fmc"
-}
+
+{nome:"Leg Press 45",series:4,reps:"10",carga:"240",video:"https://www.youtube.com/embed/IZxyjW7MPJQ"},
+{nome:"Hack Squat",series:4,reps:"10",carga:"100",video:"https://www.youtube.com/embed/0tn5K9NlCfo"},
+{nome:"Extensora",series:4,reps:"12",carga:"70",video:"https://www.youtube.com/embed/YyvSfVjQeL0"},
+{nome:"Afundo",series:3,reps:"12",carga:"20",video:"https://www.youtube.com/embed/QOVaHwm-Q6U"},
+{nome:"Cadeira Flexora",series:4,reps:"12",carga:"60",video:"https://www.youtube.com/embed/1Tq3QdYUuHs"},
+{nome:"Panturrilha Leg Press",series:4,reps:"20",carga:"140",video:"https://www.youtube.com/embed/-M4-G8p8fmc"}
+
 ],
 
 sexta:[
-{
-nome:"Desenvolvimento",
-video:"https://www.youtube.com/embed/qEwKCR5JCog"
-},
-{
-nome:"Elevação Lateral",
-video:"https://www.youtube.com/embed/3VcKaXpzqRo"
-},
-{
-nome:"Rosca Martelo",
-video:"https://www.youtube.com/embed/zC3nLlEvin4"
-},
-{
-nome:"Tríceps Testa",
-video:"https://www.youtube.com/embed/d_KZxkY_0cM"
-}
+
+{nome:"Desenvolvimento Halter",series:4,reps:"10",carga:"30",video:"https://www.youtube.com/embed/qEwKCR5JCog"},
+{nome:"Elevação Lateral",series:4,reps:"12",carga:"16",video:"https://www.youtube.com/embed/3VcKaXpzqRo"},
+{nome:"Elevação Frontal",series:3,reps:"12",carga:"16",video:"https://www.youtube.com/embed/-t7fuZ0KhDA"},
+{nome:"Face Pull",series:3,reps:"15",carga:"35",video:"https://www.youtube.com/embed/eIq5CB9JfKE"},
+{nome:"Rosca Direta",series:4,reps:"10",carga:"40",video:"https://www.youtube.com/embed/kwG2ipFRgfo"},
+{nome:"Rosca Martelo",series:3,reps:"12",carga:"20",video:"https://www.youtube.com/embed/zC3nLlEvin4"},
+{nome:"Tríceps Testa",series:3,reps:"12",carga:"30",video:"https://www.youtube.com/embed/d_KZxkY_0cM"},
+{nome:"Tríceps Corda",series:3,reps:"15",carga:"35",video:"https://www.youtube.com/embed/vB5OHsJ3EME"}
+
 ],
 
 sabado:[
-{
-nome:"Supino Máquina",
-video:"https://www.youtube.com/embed/rT7DgCr-3pg"
-},
-{
-nome:"Cross Over",
-video:"https://www.youtube.com/embed/taI4XduLpTk"
-},
-{
-nome:"Paralela",
-video:"https://www.youtube.com/embed/2z8JmcrW-As"
-},
-{
-nome:"Tríceps Francês",
-video:"https://www.youtube.com/embed/_gsUck-7M74"
-}
+
+{nome:"Supino Inclinado",series:4,reps:"8-10",carga:"34",video:"https://www.youtube.com/embed/DbFgADa2PL8"},
+{nome:"Supino Máquina",series:4,reps:"10-12",carga:"100",video:"https://www.youtube.com/embed/rT7DgCr-3pg"},
+{nome:"Cross Over",series:3,reps:"12-15",carga:"25",video:"https://www.youtube.com/embed/taI4XduLpTk"},
+{nome:"Crucifixo",series:3,reps:"12-15",carga:"18",video:"https://www.youtube.com/embed/eozdVDA78K0"},
+{nome:"Paralela",series:3,reps:"Falha",carga:"Peso corporal",video:"https://www.youtube.com/embed/2z8JmcrW-As"},
+{nome:"Tríceps Francês",series:3,reps:"12",carga:"20",video:"https://www.youtube.com/embed/_gsUck-7M74"},
+{nome:"Tríceps Corda",series:3,reps:"15",carga:"35",video:"https://www.youtube.com/embed/vB5OHsJ3EME"},
+{nome:"Abdominal",series:4,reps:"20",carga:"Peso corporal",video:"https://www.youtube.com/embed/1919eTCoESo"}
+
 ]
 
 };
