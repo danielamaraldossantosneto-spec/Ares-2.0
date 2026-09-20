@@ -6,18 +6,1022 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ARES TRACKER 7.0</title>
+<title>ARES TRACKER 7.0 - Daniel Amaral</title>
 
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
 <body>
 
-<h1>ARES TRACKER 7.0</h1>
+<div class="fundoGlow"></div>
+<div class="fundoGlow2"></div>
+<div class="fundoGlow3"></div>
+
+<div class="container">
+
+<!-- ===================================== -->
+<!-- HERO -->
+<!-- ===================================== -->
+
+<section class="hero">
+
+<div class="heroOverlay">
+
+<h1>
+⚔️ ARES TRACKER 7.0
+</h1>
+
+<p>
+Projeto Tanquinho São Paulo
+</p>
+
+<div class="heroBadges">
+
+<span>
+🔥 Projeto ARES
+</span>
+
+<span>
+🍑 Hip Thrust 130kg
+</span>
+
+<span>
+⚖️ 79kg
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- DASHBOARD -->
+<!-- ===================================== -->
+
+<div class="dashboard">
+
+<!-- PERFIL -->
+
+<section class="card perfilCard">
+
+<div class="avatarBox">
+
+<img
+src="daniel.jpeg"
+alt="Daniel Amaral">
+
+</div>
+
+<div class="perfilInfo">
+
+<h2>
+Daniel Amaral
+</h2>
+
+<p id="classe" class="classeDiamante">
+💎 Diamante
+</p>
+
+<p id="nivel">
+⚔️ Nível 24
+</p>
+
+<p id="xp">
+XP Total: 2540
+</p>
+
+<div class="barraXP">
+
+<div id="barraXP"></div>
+
+</div>
+
+<p style="margin-top:10px;">
+🔥 Streak Atual: <span id="streak">1</span> dia
+</p>
+
+</div>
+
+</section>
+
+<!-- META PESO / BF -->
+
+<section class="card">
+
+<h2>
+🎯 Projeto Tanquinho SP
+</h2>
+
+<p>
+Peso Atual
+</p>
+
+<div class="metaBar">
+
+<div id="barraMetaPeso"></div>
+
+</div>
+
+<p style="margin-top:10px;">
+Meta: 75kg
+</p>
+
+<br>
+
+<p>
+BF Atual
+</p>
+
+<div class="metaBar">
+
+<div id="barraMetaBF"></div>
+
+</div>
+
+<p style="margin-top:10px;">
+Meta BF: 10%
+</p>
+
+</section>
+
+</div>
+
+<!-- ===================================== -->
+<!-- BOSS DA SEMANA -->
+<!-- ===================================== -->
+
+<section class="card bossCard">
+
+<h2>
+👹 Boss da Semana
+</h2>
+
+<div class="bossArea">
+
+<div class="bossAvatar">
+👹
+</div>
+
+<div class="bossInfo">
+
+<h3 id="bossNome">
+MINOTAURO
+</h3>
+
+<p>
+Recompensa: +500 XP
+</p>
+
+<div class="bossBar">
+
+<div id="bossBarra"></div>
+
+</div>
+
+<p id="bossHp">
+6500 HP
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================== -->
+<!-- MISSÕES DIÁRIAS -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+🎯 Missões Diárias
+</h2>
+
+<div class="missoes">
+
+<div class="missao">
+<label>🏋️ Treino Completo</label>
+<span>+50 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+<div class="missao">
+<label>🚶 10.000 Passos</label>
+<span>+30 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+<div class="missao">
+<label>❤️ 30 min Cardio</label>
+<span>+30 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+<div class="missao">
+<label>💧 Beber 3L Água</label>
+<span>+20 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+<div class="missao">
+<label>🍗 Bater Proteína</label>
+<span>+30 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+<div class="missao">
+<label>😴 Dormir 7h+</label>
+<span>+20 XP</span>
+<input type="checkbox" class="missaoCheck">
+</div>
+
+</div>
+
+<p id="xpHoje">
+XP Hoje: 0
+</p>
+
+</section>
+
+<!-- ===================================== -->
+<!-- CALENDÁRIO ARES -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📅 Calendário ARES
+</h2>
+
+<div class="calendario">
+
+<div class="diaBox">
+<span>DOM</span>
+<div class="dia" data-dia="0"></div>
+</div>
+
+<div class="diaBox">
+<span>SEG</span>
+<div class="dia" data-dia="1"></div>
+</div>
+
+<div class="diaBox">
+<span>TER</span>
+<div class="dia" data-dia="2"></div>
+</div>
+
+<div class="diaBox">
+<span>QUA</span>
+<div class="dia" data-dia="3"></div>
+</div>
+
+<div class="diaBox">
+<span>QUI</span>
+<div class="dia" data-dia="4"></div>
+</div>
+
+<div class="diaBox">
+<span>SEX</span>
+<div class="dia" data-dia="5"></div>
+</div>
+
+<div class="diaBox">
+<span>SÁB</span>
+<div class="dia" data-dia="6"></div>
+</div>
+
+</div>
+
+<p id="streakAtual">
+🔥 Streak Atual: 1 dia
+</p>
+
+</section>
+
+<!-- ===================================== -->
+<!-- TREINOS ARES -->
+<!-- ===================================== -->
+
+<section class="card treinoCard">
+
+<h2>
+🏋️ Treinos ARES
+</h2>
+
+<label>
+Selecionar Dia
+</label>
+
+<select id="diaTreino">
+
+<option value="segunda">
+Segunda - Push
+</option>
+
+<option value="terca">
+Terça - Pull
+</option>
+
+<option value="quarta">
+Quarta - Glúteo + Posterior
+</option>
+
+<option value="quinta">
+Quinta - Lower
+</option>
+
+<option value="sexta">
+Sexta - Ombro + Braços
+</option>
+
+<option value="sabado">
+Sábado - Peito + Tríceps
+</option>
+
+</select>
+
+<div id="treinoHoje">
+
+<h3>
+⚔️ Carregando treino...
+</h3>
+
+</div>
+
+</section>
+<!-- ===================================== -->
+<!-- PROGRESSO DO TREINO -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📈 Progresso do Treino
+</h2>
+
+<div class="treinoProgress">
+
+<div id="barraTreino"></div>
+
+</div>
+
+<p id="textoProgresso">
+0% concluído
+</p>
+
+</section>
+
+<!-- ===================================== -->
+<!-- TABELA DE TREINO -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+⚔️ Registro do Treino
+</h2>
+
+<table class="tabelaTreino">
+
+<thead>
+
+<tr>
+
+<th>Exercício</th>
+
+<th>S1</th>
+
+<th>S2</th>
+
+<th>S3</th>
+
+<th>S4</th>
+
+<th>Vídeo</th>
+
+<th>OK</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tabelaTreinoBody">
+
+<tr>
+
+<td>Supino Reto</td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td>
+
+<button
+class="btnVideo"
+data-video="https://www.youtube.com/embed/rT7DgCr-3pg">
+
+▶ Ver
+
+</button>
+
+</td>
+
+<td>
+
+<input
+type="checkbox"
+class="checkExercicio">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Supino Inclinado</td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td>
+
+<button
+class="btnVideo"
+data-video="https://www.youtube.com/embed/DbFgADa2PL8">
+
+▶ Ver
+
+</button>
+
+</td>
+
+<td>
+
+<input
+type="checkbox"
+class="checkExercicio">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Crucifixo</td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td>
+
+<button
+class="btnVideo"
+data-video="https://www.youtube.com/embed/eozdVDA78K0">
+
+▶ Ver
+
+</button>
+
+</td>
+
+<td>
+
+<input
+type="checkbox"
+class="checkExercicio">
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Tríceps Corda</td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td><input type="number"></td>
+
+<td>
+
+<button
+class="btnVideo"
+data-video="https://www.youtube.com/embed/vB5OHsJ3EME">
+
+▶ Ver
+
+</button>
+
+</td>
+
+<td>
+
+<input
+type="checkbox"
+class="checkExercicio">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<button id="salvarTreino">
+💾 Salvar Treino
+</button>
+
+</section>
+
+<!-- ===================================== -->
+<!-- MODAL DE VÍDEO -->
+<!-- ===================================== -->
+
+<div
+id="videoModal"
+class="videoModal">
+
+<div class="videoContainer">
+
+<span
+id="fecharVideo"
+class="fecharVideo">
+
+✖
+
+</span>
+
+<iframe
+id="videoFrame"
+width="100%"
+height="500"
+src=""
+frameborder="0"
+allowfullscreen>
+
+</iframe>
+
+</div>
+
+</div>
+<!-- ===================================== -->
+<!-- EVOLUÇÃO FÍSICA -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📏 Evolução Física
+</h2>
+
+<div class="gridMedidas">
+
+<div>
+<label>Peso (kg)</label>
+<input type="number" id="peso">
+</div>
+
+<div>
+<label>BF (%)</label>
+<input type="number" id="bf">
+</div>
+
+<div>
+<label>Braço (cm)</label>
+<input type="number" id="braco">
+</div>
+
+<div>
+<label>Peito (cm)</label>
+<input type="number" id="peito">
+</div>
+
+<div>
+<label>Cintura (cm)</label>
+<input type="number" id="cintura">
+</div>
+
+<div>
+<label>Glúteo (cm)</label>
+<input type="number" id="gluteo">
+</div>
+
+<div>
+<label>Coxa (cm)</label>
+<input type="number" id="coxa">
+</div>
+
+<div>
+<label>Panturrilha (cm)</label>
+<input type="number" id="panturrilha">
+</div>
+
+</div>
+
+<button id="salvarMedidas">
+💾 Salvar Medidas
+</button>
+
+</section>
+
+<!-- ===================================== -->
+<!-- META DE PESO -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+🎯 Meta de Peso
+</h2>
+
+<p>
+Atual: <span id="pesoAtualMeta">79</span> kg
+</p>
+
+<p>
+Meta: <span id="pesoMeta">75</span> kg
+</p>
+
+<div class="metaBar">
+
+<div id="barraMetaPeso">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- META BF -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+🔥 Meta de BF
+</h2>
+
+<p>
+Atual: <span id="bfAtualMeta">15</span> %
+</p>
+
+<p>
+Meta: <span id="bfMeta">10</span> %
+</p>
+
+<div class="metaBar">
+
+<div id="barraMetaBF">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- GRÁFICO PESO -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📈 Evolução do Peso
+</h2>
+
+<canvas id="graficoPeso">
+
+</canvas>
+
+</section>
+
+<!-- ===================================== -->
+<!-- GRÁFICO BF -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📉 Evolução do BF
+</h2>
+
+<canvas id="graficoBF">
+
+</canvas>
+
+</section>
+
+<!-- ===================================== -->
+<!-- HISTÓRICO DE MEDIDAS -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📚 Histórico de Medidas
+</h2>
+
+<div id="historicoMedidas">
+
+</div>
+
+</section>
+<!-- ===================================== -->
+<!-- CONQUISTAS -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+🏆 Conquistas
+</h2>
+
+<div id="conquistas">
+
+<div class="conquista">
+🥇 Primeiro Treino
+</div>
+
+<div class="conquista bloqueada">
+🔥 7 Dias de Streak
+</div>
+
+<div class="conquista bloqueada">
+⚔️ 1000 XP
+</div>
+
+<div class="conquista bloqueada">
+💎 Classe Diamante
+</div>
+
+<div class="conquista bloqueada">
+🏛️ Classe Titã
+</div>
+
+<div class="conquista bloqueada">
+👑 Deus da Guerra
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- ESTATÍSTICAS GERAIS -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+📊 Estatísticas Gerais
+</h2>
+
+<div class="estatisticasGrid">
+
+<div class="estatisticaCard">
+<h3>Treinos</h3>
+<span id="totalTreinos">0</span>
+</div>
+
+<div class="estatisticaCard">
+<h3>XP Total</h3>
+<span id="xpTotal">1540</span>
+</div>
+
+<div class="estatisticaCard">
+<h3>Dias Ativos</h3>
+<span id="diasAtivos">0</span>
+</div>
+
+<div class="estatisticaCard">
+<h3>Bosses Mortos</h3>
+<span id="bossesMortos">0</span>
+</div>
+
+<div class="estatisticaCard">
+<h3>Maior Streak</h3>
+<span id="maiorStreak">0</span>
+</div>
+
+<div class="estatisticaCard">
+<h3>Nível Atual</h3>
+<span id="nivelAtualStat">15</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- TÍTULOS RPG -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+👑 Títulos Desbloqueados
+</h2>
+
+<div class="titulosGrid">
+
+<div class="tituloCard">
+🥇 Guerreiro
+</div>
+
+<div class="tituloCard bloqueado">
+⚔️ Campeão
+</div>
+
+<div class="tituloCard bloqueado">
+💎 Diamante
+</div>
+
+<div class="tituloCard bloqueado">
+🏛️ Titã
+</div>
+
+<div class="tituloCard bloqueado">
+👑 Deus da Guerra
+</div>
+
+<div class="tituloCard bloqueado">
+🔥 Ares Encarnado
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- HALL DA FAMA -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+🏛️ Hall da Fama
+</h2>
+
+<div id="hallDaFama">
+
+<div class="famaCard">
+🏋️ Maior Supino
+<p id="hallSupino">0 kg</p>
+</div>
+
+<div class="famaCard">
+🍑 Maior Hip Thrust
+<p id="hallHip">0 kg</p>
+</div>
+
+<div class="famaCard">
+🦵 Maior Leg Press
+<p id="hallLeg">0 kg</p>
+</div>
+
+<div class="famaCard">
+🔥 Melhor Streak
+<p id="hallStreak">0 dias</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- TERMINAL ARES -->
+<!-- ===================================== -->
+
+<section class="card terminalCard">
+
+<h2>
+🖥️ Terminal ARES
+</h2>
+
+<div id="terminalARES">
+
+<p>Sistema iniciado...</p>
+
+<p>Bem-vindo ao Projeto ARES.</p>
+
+<p>Aguardando próxima conquista...</p>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- BACKUP -->
+<!-- ===================================== -->
+
+<section class="card">
+
+<h2>
+💾 Backup de Dados
+</h2>
+
+<p>
+Exporte todos os seus dados do Projeto ARES.
+</p>
+
+<button id="exportarDados">
+
+⬇ Exportar Backup
+
+</button>
+
+</section>
+
+<!-- ===================================== -->
+<!-- POPUP LEVEL UP -->
+<!-- ===================================== -->
+
+<div id="levelUpPopup">
+
+<div class="popupContent">
+
+<h1>
+⚔️ LEVEL UP
+</h1>
+
+<h2 id="novoNivel">
+NÍVEL 1
+</h2>
+
+<p>
+Seu poder aumentou.
+</p>
+
+</div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- FOOTER -->
+<!-- ===================================== -->
+
+<footer>
+
+<h3>
+⚔️ PROJETO ARES 7.0
+</h3>
+
+<p>
+Daniel Amaral • Civil Engineer
+</p>
+
+<p>
+🔥 Forjando o Shape Todos os Dias
+</p>
+
+</footer>
+
+<!-- ===================================== -->
+<!-- EFEITOS DE FUNDO -->
+<!-- ===================================== -->
+
+<div class="fundoGlow"></div>
+<div class="fundoGlow2"></div>
+<div class="fundoGlow3"></div>
+
+<!-- ===================================== -->
+<!-- CHART.JS -->
+<!-- ===================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- ===================================== -->
+<!-- SCRIPT -->
+<!-- ===================================== -->
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
