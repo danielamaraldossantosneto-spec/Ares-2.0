@@ -6,7 +6,7 @@ lista:[
 "30 min Cardio",
 "Alongamento",
 "Mobilidade",
-"10.000 passos"
+"10.000 Passos"
 ]
 },
 
@@ -78,6 +78,22 @@ lista:[
 
 };
 
+const frases = [
+
+"⚔️ Você não está competindo com os outros. Está competindo com o Daniel de ontem.",
+
+"🔥 O shape é construído quando ninguém está olhando.",
+
+"🏛️ Disciplina vence motivação.",
+
+"💪 Um treino ruim ainda é melhor que nenhum treino.",
+
+"👑 Continue avançando guerreiro.",
+
+"🔥 Cada repetição te aproxima de São Paulo."
+
+];
+
 let xp =
 Number(localStorage.getItem("ares_xp")) || 1540;
 
@@ -98,11 +114,7 @@ let html =
 treino.lista.forEach(item=>{
 
 html += `
-<div style="
-background:#1e293b;
-padding:12px;
-border-radius:10px;
-margin-bottom:8px;">
+<div class="exercicio">
 ${item}
 </div>
 `;
@@ -156,6 +168,21 @@ document
 
 }
 
+function atualizarMensagem(){
+
+const frase =
+frases[
+Math.floor(
+Math.random() * frases.length
+)
+];
+
+document
+.getElementById("mensagem")
+.textContent = frase;
+
+}
+
 function atualizarTela(){
 
 document
@@ -166,20 +193,25 @@ document
 document
 .getElementById("nivel")
 .textContent =
-`⚔️ Nível ${Math.floor(xp/100)+1}`;
+`⚔️ Nível ${Math.floor(xp / 100)+1}`;
 
 document
 .getElementById("bossHp")
 .textContent =
 `${bossHp.toLocaleString()} HP`;
 
+const porcentagem =
+Math.max(
+(bossHp / 10000) * 100,
+0
+);
+
 document
 .getElementById("bossBarra")
 .style.width =
-`${Math.max((bossHp/10000)*100,0)}%`;
+`${porcentagem}%`;
 
 atualizarClasse();
-
 atualizarBoss();
 
 }
@@ -207,6 +239,7 @@ bossHp -= 250;
 if(bossHp <= 0){
 
 xp += 500;
+
 bossHp = 10000;
 
 alert(
@@ -240,3 +273,9 @@ atualizarTela();
 
 renderTreino();
 atualizarTela();
+atualizarMensagem();
+
+setInterval(
+atualizarMensagem,
+15000
+);
