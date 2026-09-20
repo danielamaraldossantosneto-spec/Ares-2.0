@@ -1,9 +1,18 @@
+// =====================================
+// ARES TRACKER 6.1
+// Daniel Amaral
+// =====================================
+
+// =====================================
+// TREINOS
+// =====================================
+
 const treinos = {
 
 0:{
 nome:"🏃 RECUPERAÇÃO",
 lista:[
-"30 min Cardio",
+"30min Cardio",
 "Alongamento",
 "Mobilidade",
 "10.000 Passos"
@@ -35,22 +44,22 @@ lista:[
 3:{
 nome:"🍑 GLÚTEO + POSTERIOR",
 lista:[
-"Hip Thrust 130kg 4x10",
+"Hip Thrust 4x10",
 "Mesa Flexora 4x12",
-"Stiff 120kg 4x10",
+"Stiff 4x10",
 "Abdutora 4x15",
-"Panturrilha 4x20"
+"Panturrilha 4x15"
 ]
 },
 
 4:{
 nome:"🦵 LOWER",
 lista:[
-"Agachamento 120kg 4x10",
-"Leg Press 240kg 4x12",
+"Agachamento 4x10",
+"Leg Press 4x12",
 "Extensora 4x12",
 "Flexora 4x12",
-"Panturrilha 4x20"
+"Panturrilha 4x15"
 ]
 },
 
@@ -61,7 +70,7 @@ lista:[
 "Elevação Lateral 4x12",
 "Rosca Direta 4x10",
 "Rosca Martelo 4x12",
-"Tríceps Francês 4x12"
+"Tríceps Testa 4x12"
 ]
 },
 
@@ -69,8 +78,8 @@ lista:[
 nome:"⚔️ PEITO + TRÍCEPS",
 lista:[
 "Supino Inclinado 4x10",
-"Peck Deck 4x12",
 "Crucifixo 4x12",
+"Peck Deck 4x12",
 "Tríceps Francês 4x12",
 "Tríceps Corda 4x12"
 ]
@@ -78,167 +87,124 @@ lista:[
 
 };
 
+// =====================================
+// FRASES GEPETÃO
+// =====================================
+
 const frases = [
 
-"⚔️ Você não está competindo com os outros. Está competindo com o Daniel de ontem.",
+"Disciplina vence motivação.",
 
-"🔥 O shape é construído quando ninguém está olhando.",
+"Seu shape de amanhã depende do treino de hoje.",
 
-"🏛️ Disciplina vence motivação.",
+"Continue avançando guerreiro.",
 
-"💪 Um treino ruim ainda é melhor que nenhum treino.",
+"Cada repetição aproxima São Paulo.",
 
-"👑 Continue avançando guerreiro.",
+"A consistência constrói campeões.",
 
-"🔥 Cada repetição te aproxima de São Paulo."
+"Hoje você planta o shape de amanhã.",
+
+"Você já chegou longe demais para desistir.",
+
+"Mais forte do que ontem.",
+
+"Projeto Tanquinho em andamento.",
+
+"Construa o físico que você admira."
 
 ];
 
-// =========================
-// ARES TRACKER 6.0
-// =========================
-
-// =========================
-// DADOS
-// =========================
+// =====================================
+// DADOS SALVOS
+// =====================================
 
 let xp =
-Number(localStorage.getItem("ares_xp")) || 1540;
+Number(
+localStorage.getItem(
+"ares_xp"
+)
+) || 1540;
 
 let bossHp =
-Number(localStorage.getItem("ares_boss_hp")) || 10000;
+Number(
+localStorage.getItem(
+"ares_boss_hp"
+)
+) || 10000;
 
 let streak =
-Number(localStorage.getItem("ares_streak")) || 0;
+Number(
+localStorage.getItem(
+"ares_streak"
+)
+) || 0;
 
-// =========================
-// TREINOS
-// =========================
-
-const treinos = {
-
-1:{
-nome:"🔥 PUSH",
-lista:[
-"Supino Inclinado",
-"Supino Máquina",
-"Crucifixo",
-"Desenvolvimento",
-"Elevação Lateral",
-"Tríceps Corda",
-"Tríceps Francês"
-]
-},
-
-2:{
-nome:"🦍 PULL",
-lista:[
-"Puxada Alta",
-"Remada Baixa",
-"Remada Articulada",
-"Pulldown",
-"Rosca Direta",
-"Rosca Martelo"
-]
-},
-
-3:{
-nome:"🍑 GLÚTEO + POSTERIOR",
-lista:[
-"Hip Thrust",
-"Mesa Flexora",
-"Stiff",
-"Abdutora",
-"Glúteo Máquina",
-"Panturrilha"
-]
-},
-
-4:{
-nome:"🦵 LOWER",
-lista:[
-"Agachamento",
-"Leg Press",
-"Extensora",
-"Flexora",
-"Panturrilha"
-]
-},
-
-5:{
-nome:"💪 OMBRO + BRAÇO",
-lista:[
-"Desenvolvimento",
-"Elevação Lateral",
-"Elevação Frontal",
-"Rosca Direta",
-"Rosca Scott",
-"Tríceps Francês"
-]
-},
-
-6:{
-nome:"⚔️ PEITO + TRÍCEPS",
-lista:[
-"Supino Inclinado",
-"Supino Máquina",
-"Peck Deck",
-"Crucifixo",
-"Tríceps Corda",
-"Tríceps Francês"
-]
-},
-
-0:{
-nome:"🏃 RECUPERAÇÃO",
-lista:[
-"Cardio",
-"Alongamento",
-"Mobilidade",
-"Caminhada"
-]
-}
-
-};
-
-// =========================
+// =====================================
 // ELEMENTOS
-// =========================
+// =====================================
 
 const xpEl =
-document.getElementById("xp");
-
-const nivelEl =
-document.getElementById("nivel");
-
-const classeEl =
-document.getElementById("classe");
+document.getElementById(
+"xp"
+);
 
 const bossHpEl =
-document.getElementById("bossHp");
+document.getElementById(
+"bossHp"
+);
 
 const bossBarra =
-document.getElementById("bossBarra");
+document.getElementById(
+"bossBarra"
+);
 
-const bossNome =
-document.getElementById("bossNome");
+const nivelEl =
+document.getElementById(
+"nivel"
+);
 
-const mensagem =
-document.getElementById("mensagem");
+const classeEl =
+document.getElementById(
+"classe"
+);
 
-const treinoHoje =
-document.getElementById("treinoHoje");
+const mensagemEl =
+document.getElementById(
+"mensagem"
+);
 
-const seletorDia =
-document.getElementById("diaTreino");
+// =====================================
+// SALVAR DADOS
+// =====================================
 
-// =========================
+function salvarDados(){
+
+localStorage.setItem(
+"ares_xp",
+xp
+);
+
+localStorage.setItem(
+"ares_boss_hp",
+bossHp
+);
+
+localStorage.setItem(
+"ares_streak",
+streak
+);
+
+}
+
+// =====================================
 // CLASSE
-// =========================
+// =====================================
 
 function atualizarClasse(){
 
-let classe = "🥈 Prata";
+let classe =
+"🥈 Prata";
 
 if(xp >= 1000)
 classe = "🥇 Ouro";
@@ -252,46 +218,49 @@ classe = "🏛️ Titã";
 if(xp >= 10000)
 classe = "👑 Deus da Guerra";
 
-classeEl.textContent = classe;
+if(classeEl){
+
+classeEl.textContent =
+classe;
 
 }
 
-// =========================
+}
+
+// =====================================
 // NÍVEL
-// =========================
+// =====================================
 
 function atualizarNivel(){
 
 const nivel =
-Math.floor(xp / 100) + 1;
+Math.floor(
+xp / 100
+) + 1;
+
+if(nivelEl){
 
 nivelEl.textContent =
 `⚔️ Nível ${nivel}`;
 
 }
 
-// =========================
+}
+
+// =====================================
 // BOSS
-// =========================
+// =====================================
 
 function atualizarBoss(){
 
-let nome =
-"🐺 Lobo Sombrio";
-
-if(xp >= 1000)
-nome = "👹 Minotauro";
-
-if(xp >= 3000)
-nome = "🐉 Dragão Ancião";
-
-if(xp >= 5000)
-nome = "⚔️ Ares";
-
-bossNome.textContent = nome;
+if(bossHpEl){
 
 bossHpEl.textContent =
-bossHp.toLocaleString() + " HP";
+`${bossHp.toLocaleString()} HP`;
+
+}
+
+if(bossBarra){
 
 const porcentagem =
 Math.max(
@@ -304,29 +273,16 @@ porcentagem + "%";
 
 }
 
-// =========================
-// MENSAGENS
-// =========================
+}
 
-const frases = [
-
-"Disciplina vence motivação.",
-
-"O shape é construído quando ninguém está olhando.",
-
-"Um treino ruim ainda é melhor que nenhum treino.",
-
-"Você está mais perto do tanquinho do que ontem.",
-
-"Cada repetição conta.",
-
-"O projeto São Paulo está em andamento.",
-
-"Você não precisa estar motivado para ser consistente."
-
-];
+// =====================================
+// FRASE ALEATÓRIA
+// =====================================
 
 function atualizarMensagem(){
+
+if(!mensagemEl)
+return;
 
 const indice =
 Math.floor(
@@ -334,83 +290,14 @@ Math.random() *
 frases.length
 );
 
-mensagem.textContent =
+mensagemEl.textContent =
 frases[indice];
 
 }
 
-// =========================
-// TREINO
-// =========================
-
-function renderTreino(dia){
-
-const treino =
-treinos[dia];
-
-if(!treino) return;
-
-let html =
-`<h3>${treino.nome}</h3><br>`;
-
-treino.lista.forEach(ex => {
-
-html += `
-<div class="exercicio">
-${ex}
-</div>
-`;
-
-});
-
-treinoHoje.innerHTML =
-html;
-
-}
-
-// =========================
-// SELEÇÃO DE DIA
-// =========================
-
-if(seletorDia){
-
-seletorDia.addEventListener(
-"change",
-function(){
-
-renderTreino(
-this.value
-);
-
-}
-);
-
-}
-
-// =========================
-// CALENDÁRIO
-// =========================
-
-document
-.querySelectorAll(".dia")
-.forEach(item => {
-
-item.addEventListener(
-"click",
-function(){
-
-this.classList.toggle(
-"diaConcluido"
-);
-
-}
-);
-
-});
-
-// =========================
+// =====================================
 // TELA
-// =========================
+// =====================================
 
 function atualizarTela(){
 
@@ -427,22 +314,319 @@ atualizarClasse();
 
 atualizarBoss();
 
-atualizarMensagem();
+salvarDados();
 
 }
 
-// =========================
-// INICIALIZAÇÃO
-// =========================
-
-renderTreino(
-new Date().getDay()
-);
+// =====================================
+// INICIAR
+// =====================================
 
 atualizarTela();
-// =========================
+
+atualizarMensagem();
+// =====================================
+// TREINOS DINÂMICOS
+// =====================================
+
+const seletorDia =
+document.getElementById(
+"diaTreino"
+);
+
+const treinoHojeEl =
+document.getElementById(
+"treinoHoje"
+);
+
+const corpoTreino =
+document.getElementById(
+"corpoTreino"
+);
+
+// =====================================
+// GERAR TABELA TREINO
+// =====================================
+
+function renderTreino(dia){
+
+const treino =
+treinos[dia];
+
+if(!treino)
+return;
+
+// CASO ESTEJA USANDO DIV
+
+if(treinoHojeEl){
+
+let html = `
+<h3>${treino.nome}</h3>
+`;
+
+treino.lista.forEach(ex=>{
+
+html += `
+<div class="exercicio">
+${ex}
+</div>
+`;
+
+});
+
+treinoHojeEl.innerHTML =
+html;
+
+}
+
+// CASO ESTEJA USANDO TABELA
+
+if(corpoTreino){
+
+let linhas = "";
+
+treino.lista.forEach(ex=>{
+
+linhas += `
+
+<tr>
+
+<td>${ex}</td>
+
+<td>
+<input
+type="number"
+placeholder="Peso">
+</td>
+
+<td>
+<input
+type="number"
+placeholder="Reps">
+</td>
+
+<td>
+<input
+type="checkbox"
+class="checkExercicio">
+</td>
+
+</tr>
+
+`;
+
+});
+
+corpoTreino.innerHTML =
+linhas;
+
+}
+
+}
+
+// =====================================
+// SELECIONAR DIA
+// =====================================
+
+if(seletorDia){
+
+seletorDia.addEventListener(
+"change",
+function(){
+
+const dia =
+Number(
+this.value
+);
+
+localStorage.setItem(
+"ares_dia",
+dia
+);
+
+renderTreino(
+dia
+);
+
+}
+);
+
+}
+
+// =====================================
+// CARREGAR DIA SALVO
+// =====================================
+
+function carregarDiaSalvo(){
+
+if(!seletorDia)
+return;
+
+const diaSalvo =
+
+Number(
+localStorage.getItem(
+"ares_dia"
+)
+);
+
+if(
+!isNaN(diaSalvo)
+){
+
+seletorDia.value =
+diaSalvo;
+
+renderTreino(
+diaSalvo
+);
+
+}
+else{
+
+const hoje =
+new Date()
+.getDay();
+
+seletorDia.value =
+hoje;
+
+renderTreino(
+hoje
+);
+
+}
+
+}
+
+// =====================================
+// EXERCÍCIOS CONCLUÍDOS
+// =====================================
+
+document.addEventListener(
+"change",
+function(e){
+
+if(
+e.target.classList.contains(
+"checkExercicio"
+)
+){
+
+const linha =
+e.target.closest("tr");
+
+if(!linha)
+return;
+
+if(
+e.target.checked
+){
+
+linha.classList.add(
+"treinoFeito"
+);
+
+}
+else{
+
+linha.classList.remove(
+"treinoFeito"
+);
+
+}
+
+}
+
+}
+);
+
+// =====================================
+// PROGRESSO TREINO
+// =====================================
+
+function atualizarProgresso(){
+
+const checks =
+document.querySelectorAll(
+".checkExercicio"
+);
+
+if(checks.length === 0)
+return;
+
+let feitos = 0;
+
+checks.forEach(c=>{
+
+if(c.checked)
+feitos++;
+
+});
+
+const porcentagem =
+Math.round(
+(feitos / checks.length)
+* 100
+);
+
+const barra =
+document.getElementById(
+"barraTreino"
+);
+
+const texto =
+document.getElementById(
+"textoProgresso"
+);
+
+if(barra){
+
+barra.style.width =
+porcentagem + "%";
+
+}
+
+if(texto){
+
+texto.textContent =
+
+`${feitos}/${checks.length}
+(${porcentagem}%)`;
+
+}
+
+}
+
+// =====================================
+// OUVIR CHECKS
+// =====================================
+
+document.addEventListener(
+"change",
+function(e){
+
+if(
+e.target.classList.contains(
+"checkExercicio"
+)
+){
+
+atualizarProgresso();
+
+}
+
+}
+);
+
+// =====================================
+// INICIAR TREINOS
+// =====================================
+
+carregarDiaSalvo();
+// =====================================
 // MISSÕES DIÁRIAS
-// =========================
+// =====================================
 
 const missoes =
 document.querySelectorAll(".m");
@@ -454,12 +638,12 @@ localStorage.getItem(
 )
 ) || 0;
 
+function atualizarXpHoje(){
+
 const xpHojeEl =
 document.getElementById(
 "xpHoje"
 );
-
-function atualizarXpHoje(){
 
 if(xpHojeEl){
 
@@ -470,11 +654,15 @@ xpHoje;
 
 }
 
-missoes.forEach(box => {
+// =====================================
+// MISSÕES
+// =====================================
+
+missoes.forEach(box=>{
 
 box.addEventListener(
 "change",
-() => {
+()=>{
 
 if(box.checked){
 
@@ -493,8 +681,6 @@ xp += 500;
 alert(
 "🏆 Boss derrotado! +500 XP"
 );
-
-somarBoss();
 
 }
 
@@ -519,50 +705,22 @@ atualizarXpHoje();
 
 });
 
-// =========================
-// LOCAL STORAGE
-// =========================
-
-function salvarDados(){
-
-localStorage.setItem(
-"ares_xp",
-xp
-);
-
-localStorage.setItem(
-"ares_boss_hp",
-bossHp
-);
-
-localStorage.setItem(
-"ares_streak",
-streak
-);
-
-localStorage.setItem(
-"ares_xp_hoje",
-xpHoje
-);
-
-}
-
-// =========================
+// =====================================
 // CALENDÁRIO
-// =========================
+// =====================================
 
-function carregarCalendario(){
+function iniciarCalendario(){
 
 const dias =
 document.querySelectorAll(
 ".dia"
 );
 
-dias.forEach((dia,i)=>{
+dias.forEach((dia,index)=>{
 
 const salvo =
 localStorage.getItem(
-"ares_dia_"+i
+"ares_dia_semana_" + index
 );
 
 if(salvo === "1"){
@@ -594,7 +752,7 @@ dia.textContent =
 "🟩";
 
 localStorage.setItem(
-"ares_dia_"+i,
+"ares_dia_semana_" + index,
 "1"
 );
 
@@ -604,7 +762,7 @@ dia.textContent =
 "⬜";
 
 localStorage.removeItem(
-"ares_dia_"+i
+"ares_dia_semana_" + index
 );
 
 }
@@ -618,41 +776,40 @@ calcularStreak();
 
 }
 
-// =========================
+// =====================================
 // STREAK
-// =========================
+// =====================================
 
 function calcularStreak(){
 
-const dias =
+const diasFeitos =
 document.querySelectorAll(
 ".diaConcluido"
-);
+).length;
 
-streak =
-dias.length;
+streak = diasFeitos;
 
 const streakEl =
 document.getElementById(
-"streakAtual"
+"streak"
 );
 
 if(streakEl){
 
 streakEl.textContent =
-streak;
+`🔥 Streak: ${streak} dias`;
 
 }
 
-const streakPerfil =
+const streakAtual =
 document.getElementById(
-"streak"
+"streakAtual"
 );
 
-if(streakPerfil){
+if(streakAtual){
 
-streakPerfil.textContent =
-`🔥 Streak: ${streak} dias`;
+streakAtual.textContent =
+streak;
 
 }
 
@@ -660,159 +817,9 @@ salvarDados();
 
 }
 
-// =========================
-// CONQUISTAS
-// =========================
-
-function verificarConquistas(){
-
-const area =
-document.getElementById(
-"conquistas"
-);
-
-if(!area) return;
-
-if(streak >= 7){
-
-if(
-!document.getElementById(
-"conq7"
-)
-){
-
-area.innerHTML += `
-<div
-id="conq7"
-class="conquista">
-🔥 7 Dias Seguidos
-</div>
-`;
-
-}
-
-}
-
-if(xp >= 2000){
-
-if(
-!document.getElementById(
-"conqDiamante"
-)
-){
-
-area.innerHTML += `
-<div
-id="conqDiamante"
-class="conquista">
-💎 Classe Diamante
-</div>
-`;
-
-}
-
-}
-
-if(xp >= 5000){
-
-if(
-!document.getElementById(
-"conqTita"
-)
-){
-
-area.innerHTML += `
-<div
-id="conqTita"
-class="conquista">
-🏛️ Classe Titã
-</div>
-`;
-
-}
-
-}
-
-}
-
-// =========================
-// BOSS DERROTADO
-// =========================
-
-function somarBoss(){
-
-let totalBoss =
-
-Number(
-localStorage.getItem(
-"ares_bosses"
-)
-) || 0;
-
-totalBoss++;
-
-localStorage.setItem(
-"ares_bosses",
-totalBoss
-);
-
-const totalBossEl =
-document.getElementById(
-"totalBoss"
-);
-
-if(totalBossEl){
-
-totalBossEl.textContent =
-totalBoss;
-
-}
-
-}
-
-// =========================
-// ESTATÍSTICAS
-// =========================
-
-function carregarStats(){
-
-const totalBoss =
-
-Number(
-localStorage.getItem(
-"ares_bosses"
-)
-) || 0;
-
-const bossEl =
-document.getElementById(
-"totalBoss"
-);
-
-if(bossEl){
-
-bossEl.textContent =
-totalBoss;
-
-}
-
-const xpTotalEl =
-document.getElementById(
-"xpTotal"
-);
-
-if(xpTotalEl){
-
-xpTotalEl.textContent =
-xp;
-
-}
-
-}
-
-// =========================
+// =====================================
 // RESET DIÁRIO
-// =========================
+// =====================================
 
 function verificarNovoDia(){
 
@@ -847,606 +854,195 @@ localStorage.setItem(
 
 }
 
-// =========================
-// CHAMADAS
-// =========================
+// =====================================
+// ESTATÍSTICAS
+// =====================================
 
-verificarNovoDia();
+function atualizarEstatisticas(){
 
-carregarCalendario();
-
-calcularStreak();
-
-carregarStats();
-
-verificarConquistas();
-
-atualizarXpHoje();
-// =========================
-// EVOLUÇÃO FÍSICA
-// =========================
-
-const pesoInput =
-document.getElementById("pesoInput");
-
-const bfInput =
-document.getElementById("bfInput");
-
-const bracoInput =
-document.getElementById("bracoInput");
-
-const peitoInput =
-document.getElementById("peitoInput");
-
-const cinturaInput =
-document.getElementById("cinturaInput");
-
-const gluteoInput =
-document.getElementById("gluteoInput");
-
-const coxaInput =
-document.getElementById("coxaInput");
-
-const panturrilhaInput =
-document.getElementById("panturrilhaInput");
-
-const salvarMedidasBtn =
-document.getElementById("salvarMedidas");
-
-// =========================
-// CARREGAR HISTÓRICO
-// =========================
-
-let historicoPeso =
-JSON.parse(
-localStorage.getItem("ares_historico_peso")
-) || [];
-
-let historicoBF =
-JSON.parse(
-localStorage.getItem("ares_historico_bf")
-) || [];
-
-let historicoMedidas =
-JSON.parse(
-localStorage.getItem("ares_historico_medidas")
-) || [];
-
-// =========================
-// SALVAR MEDIDAS
-// =========================
-
-if(salvarMedidasBtn){
-
-salvarMedidasBtn.addEventListener(
-"click",
-()=>{
-
-const data = new Date()
-.toLocaleDateString();
-
-const peso =
-Number(pesoInput.value);
-
-const bf =
-Number(bfInput.value);
-
-const medidas = {
-
-data,
-
-braco:
-Number(bracoInput.value),
-
-peito:
-Number(peitoInput.value),
-
-cintura:
-Number(cinturaInput.value),
-
-gluteo:
-Number(gluteoInput.value),
-
-coxa:
-Number(coxaInput.value),
-
-panturrilha:
-Number(panturrilhaInput.value)
-
-};
-
-if(peso){
-
-historicoPeso.push({
-data,
-valor:peso
-});
-
-localStorage.setItem(
-"ares_historico_peso",
-JSON.stringify(
-historicoPeso
-)
-);
-
+const totalTreinos =
 document.getElementById(
-"pesoAtual"
-).textContent =
-peso + "kg";
-
-}
-
-if(bf){
-
-historicoBF.push({
-data,
-valor:bf
-});
-
-localStorage.setItem(
-"ares_historico_bf",
-JSON.stringify(
-historicoBF
-)
+"totalTreinos"
 );
 
-document.getElementById(
-"bfAtual"
-).textContent =
-bf + "%";
+if(totalTreinos){
 
-}
+const historico =
 
-historicoMedidas.push(
-medidas
-);
-
-localStorage.setItem(
-"ares_historico_medidas",
-JSON.stringify(
-historicoMedidas
-)
-);
-
-atualizarGraficos();
-
-alert(
-"💾 Medidas salvas!"
-);
-
-}
-);
-
-}
-
-// =========================
-// GRÁFICO PESO
-// =========================
-
-let graficoPeso;
-
-// =========================
-// GRÁFICO BF
-// =========================
-
-let graficoBF;
-
-// =========================
-// GRÁFICO MEDIDAS
-// =========================
-
-let graficoMedidas;
-
-// =========================
-// ATUALIZAR GRÁFICOS
-// =========================
-
-function atualizarGraficos(){
-
-// PESO
-
-const labelsPeso =
-historicoPeso.map(
-i => i.data
-);
-
-const dadosPeso =
-historicoPeso.map(
-i => i.valor
-);
-
-const ctxPeso =
-document
-.getElementById(
-"graficoPeso"
-);
-
-if(ctxPeso){
-
-if(graficoPeso){
-
-graficoPeso.destroy();
-
-}
-
-graficoPeso =
-new Chart(
-ctxPeso,
-{
-type:"line",
-
-data:{
-
-labels:
-labelsPeso,
-
-datasets:[{
-
-label:
-"Peso",
-
-data:
-dadosPeso,
-
-borderWidth:3
-
-}]
-
-}
-
-}
-);
-
-}
-
-// BF
-
-const labelsBF =
-historicoBF.map(
-i => i.data
-);
-
-const dadosBF =
-historicoBF.map(
-i => i.valor
-);
-
-const ctxBF =
-document
-.getElementById(
-"graficoBF"
-);
-
-if(ctxBF){
-
-if(graficoBF){
-
-graficoBF.destroy();
-
-}
-
-graficoBF =
-new Chart(
-ctxBF,
-{
-type:"line",
-
-data:{
-
-labels:
-labelsBF,
-
-datasets:[{
-
-label:
-"BF",
-
-data:
-dadosBF,
-
-borderWidth:3
-
-}]
-
-}
-
-}
-);
-
-}
-
-// MEDIDAS
-
-const ctxMedidas =
-document
-.getElementById(
-"graficoMedidas"
-);
-
-if(
-ctxMedidas &&
-historicoMedidas.length > 0
-){
-
-if(graficoMedidas){
-
-graficoMedidas.destroy();
-
-}
-
-graficoMedidas =
-new Chart(
-ctxMedidas,
-{
-
-type:"line",
-
-data:{
-
-labels:
-historicoMedidas.map(
-i => i.data
-),
-
-datasets:[
-
-{
-label:"Braço",
-data:
-historicoMedidas.map(
-i => i.braco
-)
-},
-
-{
-label:"Peito",
-data:
-historicoMedidas.map(
-i => i.peito
-)
-},
-
-{
-label:"Cintura",
-data:
-historicoMedidas.map(
-i => i.cintura
-)
-},
-
-{
-label:"Glúteo",
-data:
-historicoMedidas.map(
-i => i.gluteo
-)
-}
-
-]
-
-}
-
-}
-);
-
-}
-
-}
-
-// =========================
-// CARREGAR ÚLTIMO REGISTRO
-// =========================
-
-function carregarUltimasMedidas(){
-
-if(
-historicoPeso.length > 0
-){
-
-const ultimoPeso =
-
-historicoPeso[
-historicoPeso.length - 1
-];
-
-document.getElementById(
-"pesoAtual"
-).textContent =
-ultimoPeso.valor + "kg";
-
-}
-
-if(
-historicoBF.length > 0
-){
-
-const ultimoBF =
-
-historicoBF[
-historicoBF.length - 1
-];
-
-document.getElementById(
-"bfAtual"
-).textContent =
-ultimoBF.valor + "%";
-
-}
-
-}
-
-// =========================
-// INICIALIZAÇÃO
-// =========================
-
-carregarUltimasMedidas();
-
-atualizarGraficos();
-// =========================
-// HISTÓRICO DE TREINOS
-// =========================
-
-let historicoTreinos =
 JSON.parse(
 localStorage.getItem(
 "ares_historico_treinos"
 )
 ) || [];
 
-// =========================
-// RECORDES
-// =========================
+totalTreinos.textContent =
+historico.length;
+
+}
+
+const totalBoss =
+document.getElementById(
+"totalBoss"
+);
+
+if(totalBoss){
+
+const bosses =
+
+Number(
+localStorage.getItem(
+"ares_bosses"
+)
+) || 0;
+
+totalBoss.textContent =
+bosses;
+
+}
+
+}
+
+// =====================================
+// FRASE AUTOMÁTICA
+// =====================================
+
+setInterval(()=>{
+
+atualizarMensagem();
+
+},30000);
+
+// =====================================
+// INICIAR
+// =====================================
+
+verificarNovoDia();
+
+iniciarCalendario();
+
+calcularStreak();
+
+atualizarXpHoje();
+
+atualizarEstatisticas();
+// =====================================
+// HISTÓRICO DE TREINOS
+// =====================================
+
+let historicoTreinos =
+
+JSON.parse(
+localStorage.getItem(
+"ares_historico_treinos"
+)
+) || [];
 
 let recordes =
+
 JSON.parse(
 localStorage.getItem(
 "ares_recordes"
 )
-) || {
+) || {};
 
-"Hip Thrust":130,
-"Agachamento":120,
-"Leg Press":240,
-"Stiff":120
+// =====================================
+// BOTÃO SALVAR TREINO
+// =====================================
 
-};
-
-// =========================
-// SALVAR TREINO
-// =========================
-
-const btnSalvarTreino =
+const salvarTreinoBtn =
 document.getElementById(
 "salvarTreino"
 );
 
-if(btnSalvarTreino){
+if(salvarTreinoBtn){
 
-btnSalvarTreino.addEventListener(
+salvarTreinoBtn.addEventListener(
 "click",
 salvarTreino
 );
 
 }
 
-// =========================
+// =====================================
 // SALVAR TREINO
-// =========================
+// =====================================
 
 function salvarTreino(){
-
-const dia =
-document.getElementById(
-"diaTreino"
-).value;
-
-const treinoNome =
-treinos[dia].nome;
-
-const data =
-new Date()
-.toLocaleDateString();
-
-const treinoSalvo = {
-
-data,
-dia,
-treino:treinoNome,
-exercicios:[]
-
-};
 
 const linhas =
 document.querySelectorAll(
 "#corpoTreino tr"
 );
 
+if(linhas.length === 0){
+
+alert(
+"Selecione um treino primeiro."
+);
+
+return;
+
+}
+
+const treinoSalvo = [];
+
 linhas.forEach(linha=>{
 
 const exercicio =
-linha.querySelector(
-"td"
-).innerText;
+linha.cells[0].innerText;
 
-const numeros =
+const inputs =
 linha.querySelectorAll(
-"input[type='number']"
+"input"
 );
-
-let maiorPeso = 0;
-
-let series = [];
-
-for(
-let i=0;
-i<numeros.length;
-i+=2
-){
 
 const peso =
 Number(
-numeros[i].value
-) || 0;
+inputs[0]?.value || 0
+);
 
 const reps =
 Number(
-numeros[i+1].value
-) || 0;
+inputs[1]?.value || 0
+);
 
-if(
-peso > maiorPeso
-){
+const feito =
+inputs[2]?.checked || false;
 
-maiorPeso =
-peso;
+treinoSalvo.push({
 
-}
-
-series.push({
-
+exercicio,
 peso,
-reps
+reps,
+feito
 
 });
 
-}
+// =====================================
+// RECORDE AUTOMÁTICO
+// =====================================
 
-treinoSalvo.exercicios.push({
-
-nome:exercicio,
-series
-
-});
-
-// =========================
-// RECORDES
-// =========================
-
-if(maiorPeso > 0){
+if(feito){
 
 if(
 !recordes[exercicio]
 ){
 
-recordes[
-exercicio
-] = maiorPeso;
+recordes[exercicio] =
+peso;
 
 }
 
-else if(
-maiorPeso >
-recordes[
-exercicio
-]
+if(
+peso >
+recordes[exercicio]
 ){
 
-recordes[
-exercicio
-] = maiorPeso;
+recordes[exercicio] =
+peso;
 
 alert(
-`🏆 Novo recorde em ${exercicio}: ${maiorPeso}kg`
+`🏆 Novo recorde em ${exercicio}: ${peso}kg`
 );
 
 }
@@ -1455,113 +1051,109 @@ alert(
 
 });
 
-historicoTreinos.push(
+const treinoDia = {
+
+data:
+new Date()
+.toLocaleDateString(),
+
+dia:
+document.getElementById(
+"diaTreino"
+)?.value,
+
+treino:
 treinoSalvo
+
+};
+
+historicoTreinos.push(
+treinoDia
 );
 
 localStorage.setItem(
+
 "ares_historico_treinos",
+
 JSON.stringify(
 historicoTreinos
 )
+
 );
 
 localStorage.setItem(
+
 "ares_recordes",
+
 JSON.stringify(
 recordes
 )
+
 );
+
+xp += 100;
+
+salvarDados();
+
+atualizarTela();
 
 atualizarRecordes();
 
 renderHistorico();
 
 alert(
-"💾 Treino salvo!"
+"🔥 Treino salvo com sucesso!"
 );
 
 }
 
-// =========================
-// RENDER RECORDES
-// =========================
+// =====================================
+// RECORDES
+// =====================================
 
 function atualizarRecordes(){
 
-const hip =
+const area =
 document.getElementById(
-"recHip"
+"recordes"
 );
 
-if(
-hip &&
-recordes["Hip Thrust"]
+if(!area)
+return;
+
+let html = "";
+
+for(
+const exercicio
+in recordes
 ){
 
-hip.textContent =
-recordes[
-"Hip Thrust"
-] + "kg";
+html += `
+
+<div class="recordeCard">
+
+<h3>
+${exercicio}
+</h3>
+
+<p>
+${recordes[exercicio]} kg
+</p>
+
+</div>
+
+`;
 
 }
 
-const agach =
-document.getElementById(
-"recAgachamento"
-);
-
-if(
-agach &&
-recordes["Agachamento"]
-){
-
-agach.textContent =
-recordes[
-"Agachamento"
-] + "kg";
+area.innerHTML =
+html;
 
 }
 
-const leg =
-document.getElementById(
-"recLeg"
-);
-
-if(
-leg &&
-recordes["Leg Press"]
-){
-
-leg.textContent =
-recordes[
-"Leg Press"
-] + "kg";
-
-}
-
-const stiff =
-document.getElementById(
-"recStiff"
-);
-
-if(
-stiff &&
-recordes["Stiff"]
-){
-
-stiff.textContent =
-recordes[
-"Stiff"
-] + "kg";
-
-}
-
-}
-
-// =========================
+// =====================================
 // HISTÓRICO
-// =========================
+// =====================================
 
 function renderHistorico(){
 
@@ -1570,41 +1162,50 @@ document.getElementById(
 "historicoTreinos"
 );
 
-if(!area) return;
-
-if(
-historicoTreinos.length === 0
-){
-
-area.innerHTML =
-"Nenhum treino registrado.";
-
+if(!area)
 return;
-
-}
 
 let html = "";
 
 historicoTreinos
 .slice()
 .reverse()
-.forEach(item=>{
+.forEach(t=>{
 
 html += `
 
 <div class="historicoCard">
 
 <h3>
-${item.data}
+📅 ${t.data}
 </h3>
 
+`;
+
+t.treino.forEach(ex=>{
+
+if(ex.feito){
+
+html += `
+
 <p>
-${item.treino}
+
+✅ ${ex.exercicio}
+
+- ${ex.peso}kg
+
+x ${ex.reps}
+
 </p>
 
-</div>
-
 `;
+
+}
+
+});
+
+html +=
+`</div>`;
 
 });
 
@@ -1613,101 +1214,11 @@ html;
 
 }
 
-// =========================
-// CICLOS DE 30 DIAS
-// =========================
+// =====================================
+// ESTATÍSTICAS
+// =====================================
 
-function atualizarCiclo(){
-
-const inicioProjeto =
-
-new Date(
-"2026-09-01"
-);
-
-const hoje =
-new Date();
-
-const dias = Math.floor(
-
-(
-hoje - inicioProjeto
-)
-
-/
-
-86400000
-
-);
-
-const ciclo =
-
-Math.floor(
-dias / 30
-)
-
-+ 1;
-
-const progresso =
-
-(
-(dias % 30)
-
-/
-
-30
-)
-
-* 100;
-
-const cicloEl =
-document.getElementById(
-"cicloAtual"
-);
-
-if(cicloEl){
-
-cicloEl.textContent =
-
-`Ciclo ${ciclo} • Dias ${
-(dias % 30)+1
-}/30`;
-
-}
-
-const barra =
-document.getElementById(
-"barraCiclo"
-);
-
-if(barra){
-
-barra.style.width =
-progresso + "%";
-
-}
-
-const restante =
-document.getElementById(
-"diasRestantes"
-);
-
-if(restante){
-
-restante.textContent =
-
-`${30-(dias%30)}
-dias para próximo ciclo`;
-
-}
-
-}
-
-// =========================
-// TOTAL DE TREINOS
-// =========================
-
-function atualizarTotalTreinos(){
+function atualizarEstatisticasTreino(){
 
 const total =
 document.getElementById(
@@ -1723,274 +1234,782 @@ historicoTreinos.length;
 
 }
 
-// =========================
-// INICIALIZAÇÃO
-// =========================
-
-renderHistorico();
+// =====================================
+// INICIAR
+// =====================================
 
 atualizarRecordes();
 
-atualizarTotalTreinos();
+renderHistorico();
 
-atualizarCiclo();
-// =========================
-// PARTE 5 - ARES PREMIUM
-// =========================
+atualizarEstatisticasTreino();
+// =====================================
+// EVOLUÇÃO FÍSICA
+// =====================================
 
-// =========================
-// PROGRESSO DO TREINO
-// =========================
+let historicoMedidas =
 
-function atualizarProgressoTreino(){
+JSON.parse(
+localStorage.getItem(
+"ares_medidas"
+)
+) || [];
 
-const checks =
-document.querySelectorAll(
-"#corpoTreino input[type='checkbox']"
+// =====================================
+// BOTÃO SALVAR MEDIDAS
+// =====================================
+
+const salvarMedidasBtn =
+document.getElementById(
+"salvarMedidas"
 );
 
-if(checks.length === 0) return;
+if(salvarMedidasBtn){
 
-let feitos = 0;
+salvarMedidasBtn.addEventListener(
+"click",
+salvarMedidas
+);
 
-checks.forEach(c=>{
+}
 
-if(c.checked) feitos++;
+// =====================================
+// SALVAR MEDIDAS
+// =====================================
+
+function salvarMedidas(){
+
+const peso =
+Number(
+document.getElementById(
+"pesoInput"
+)?.value || 0
+);
+
+const bf =
+Number(
+document.getElementById(
+"bfInput"
+)?.value || 0
+);
+
+const braco =
+Number(
+document.getElementById(
+"bracoInput"
+)?.value || 0
+);
+
+const peito =
+Number(
+document.getElementById(
+"peitoInput"
+)?.value || 0
+);
+
+const cintura =
+Number(
+document.getElementById(
+"cinturaInput"
+)?.value || 0
+);
+
+const gluteo =
+Number(
+document.getElementById(
+"gluteoInput"
+)?.value || 0
+);
+
+const coxa =
+Number(
+document.getElementById(
+"coxaInput"
+)?.value || 0
+);
+
+const panturrilha =
+Number(
+document.getElementById(
+"panturrilhaInput"
+)?.value || 0
+);
+
+const registro = {
+
+data:
+new Date()
+.toLocaleDateString(),
+
+peso,
+bf,
+braco,
+peito,
+cintura,
+gluteo,
+coxa,
+panturrilha
+
+};
+
+historicoMedidas.push(
+registro
+);
+
+localStorage.setItem(
+
+"ares_medidas",
+
+JSON.stringify(
+historicoMedidas
+)
+
+);
+
+atualizarEvolucao();
+
+gerarGraficos();
+
+alert(
+"📈 Medidas salvas!"
+);
+
+}
+
+// =====================================
+// EVOLUÇÃO FÍSICA
+// =====================================
+
+function atualizarEvolucao(){
+
+if(
+historicoMedidas.length === 0
+)
+return;
+
+const ultimo =
+
+historicoMedidas[
+historicoMedidas.length - 1
+];
+
+const pesoAtual =
+document.getElementById(
+"pesoAtual"
+);
+
+const bfAtual =
+document.getElementById(
+"bfAtual"
+);
+
+if(pesoAtual){
+
+pesoAtual.textContent =
+`${ultimo.peso} kg`;
+
+}
+
+if(bfAtual){
+
+bfAtual.textContent =
+`${ultimo.bf}%`;
+
+}
+
+}
+
+// =====================================
+// GRÁFICOS
+// =====================================
+
+let graficoPeso;
+let graficoBF;
+
+function gerarGraficos(){
+
+if(
+typeof Chart ===
+"undefined"
+)
+return;
+
+const labels =
+historicoMedidas.map(
+m => m.data
+);
+
+const pesos =
+historicoMedidas.map(
+m => m.peso
+);
+
+const bfs =
+historicoMedidas.map(
+m => m.bf
+);
+
+// =====================
+// PESO
+// =====================
+
+const pesoCanvas =
+document.getElementById(
+"graficoPeso"
+);
+
+if(pesoCanvas){
+
+if(graficoPeso){
+
+graficoPeso.destroy();
+
+}
+
+graficoPeso =
+new Chart(
+
+pesoCanvas,
+
+{
+
+type:"line",
+
+data:{
+
+labels,
+
+datasets:[{
+
+label:"Peso",
+
+data:pesos,
+
+borderWidth:3,
+
+tension:.3
+
+}]
+
+}
+
+}
+
+);
+
+}
+
+// =====================
+// BF
+// =====================
+
+const bfCanvas =
+document.getElementById(
+"graficoBF"
+);
+
+if(bfCanvas){
+
+if(graficoBF){
+
+graficoBF.destroy();
+
+}
+
+graficoBF =
+new Chart(
+
+bfCanvas,
+
+{
+
+type:"line",
+
+data:{
+
+labels,
+
+datasets:[{
+
+label:"BF",
+
+data:bfs,
+
+borderWidth:3,
+
+tension:.3
+
+}]
+
+}
+
+}
+
+);
+
+}
+
+}
+
+// =====================================
+// TABELA DE MEDIDAS
+// =====================================
+
+function renderMedidas(){
+
+const area =
+document.getElementById(
+"historicoMedidas"
+);
+
+if(!area)
+return;
+
+let html = "";
+
+historicoMedidas
+.slice()
+.reverse()
+.forEach(m=>{
+
+html += `
+
+<div class="historicoCard">
+
+<h3>
+📅 ${m.data}
+</h3>
+
+<p>⚖️ Peso: ${m.peso}kg</p>
+
+<p>🧬 BF: ${m.bf}%</p>
+
+<p>💪 Braço: ${m.braco}cm</p>
+
+<p>🏛️ Peito: ${m.peito}cm</p>
+
+<p>📏 Cintura: ${m.cintura}cm</p>
+
+<p>🍑 Glúteo: ${m.gluteo}cm</p>
+
+<p>🦵 Coxa: ${m.coxa}cm</p>
+
+<p>🔥 Panturrilha: ${m.panturrilha}cm</p>
+
+</div>
+
+`;
 
 });
 
-const porcentagem =
-Math.round(
-(feitos / checks.length) * 100
+area.innerHTML =
+html;
+
+}
+
+// =====================================
+// INICIAR
+// =====================================
+
+atualizarEvolucao();
+
+gerarGraficos();
+
+renderMedidas();
+// =====================================
+// CONQUISTAS
+// =====================================
+
+let conquistas =
+
+JSON.parse(
+localStorage.getItem(
+"ares_conquistas"
+)
+) || [];
+
+// =====================================
+// DESBLOQUEAR CONQUISTA
+// =====================================
+
+function desbloquearConquista(nome){
+
+if(
+conquistas.includes(nome)
+)
+return;
+
+conquistas.push(nome);
+
+localStorage.setItem(
+
+"ares_conquistas",
+
+JSON.stringify(
+conquistas
+)
+
 );
 
-let barra =
-document.getElementById(
-"barraTreino"
+renderConquistas();
+
+alert(
+`🏆 Nova conquista: ${nome}`
 );
 
-let texto =
+}
+
+// =====================================
+// VERIFICAR CONQUISTAS
+// =====================================
+
+function verificarConquistas(){
+
+// PRIMEIRO TREINO
+
+if(
+historicoTreinos.length >= 1
+){
+
+desbloquearConquista(
+"⚔️ Primeiro Treino"
+);
+
+}
+
+// 7 TREINOS
+
+if(
+historicoTreinos.length >= 7
+){
+
+desbloquearConquista(
+"🔥 7 Dias de Guerra"
+);
+
+}
+
+// 30 TREINOS
+
+if(
+historicoTreinos.length >= 30
+){
+
+desbloquearConquista(
+"🏛️ Titã da Consistência"
+);
+
+}
+
+// XP
+
+if(
+xp >= 2000
+){
+
+desbloquearConquista(
+"💎 Diamante"
+);
+
+}
+
+if(
+xp >= 5000
+){
+
+desbloquearConquista(
+"🏛️ Titã"
+);
+
+}
+
+if(
+xp >= 10000
+){
+
+desbloquearConquista(
+"👑 Deus da Guerra"
+);
+
+}
+
+// BOSS
+
+const bosses =
+Number(
+localStorage.getItem(
+"ares_bosses"
+)
+) || 0;
+
+if(
+bosses >= 1
+){
+
+desbloquearConquista(
+"👹 Primeiro Boss"
+);
+
+}
+
+}
+
+// =====================================
+// RENDER CONQUISTAS
+// =====================================
+
+function renderConquistas(){
+
+const area =
 document.getElementById(
-"textoProgresso"
+"conquistas"
+);
+
+if(!area)
+return;
+
+let html = "";
+
+conquistas.forEach(c=>{
+
+html += `
+
+<div class="conquista">
+
+${c}
+
+</div>
+
+`;
+
+});
+
+area.innerHTML =
+html;
+
+}
+
+// =====================================
+// LEVEL UP
+// =====================================
+
+let ultimoNivel =
+
+Number(
+localStorage.getItem(
+"ares_ultimo_nivel"
+)
+) || 1;
+
+function verificarLevelUp(){
+
+const nivelAtual =
+
+Math.floor(
+xp / 100
+) + 1;
+
+if(
+nivelAtual >
+ultimoNivel
+){
+
+alert(
+`⚔️ LEVEL UP!
+Nível ${nivelAtual}`
+);
+
+ultimoNivel =
+nivelAtual;
+
+localStorage.setItem(
+"ares_ultimo_nivel",
+ultimoNivel
+);
+
+}
+
+}
+
+// =====================================
+// META PESO
+// =====================================
+
+function atualizarMetaPeso(){
+
+if(
+historicoMedidas.length === 0
+)
+return;
+
+const ultimo =
+
+historicoMedidas[
+historicoMedidas.length - 1
+];
+
+const metaPeso = 75;
+
+const progresso =
+
+Math.max(
+
+0,
+
+Math.min(
+
+100,
+
+((79 - ultimo.peso)
+/
+(79 - metaPeso))
+* 100
+
+)
+
+);
+
+const barra =
+document.getElementById(
+"barraMetaPeso"
 );
 
 if(barra){
 
 barra.style.width =
-porcentagem + "%";
-
-}
-
-if(texto){
-
-texto.textContent =
-`${feitos}/${checks.length} exercícios (${porcentagem}%)`;
+progresso + "%";
 
 }
 
 }
 
-// =========================
-// CHECKBOX COM BRILHO
-// =========================
+// =====================================
+// META BF
+// =====================================
 
-document.addEventListener(
-"change",
-e=>{
+function atualizarMetaBF(){
 
 if(
-e.target.type ===
-"checkbox"
-){
-
-const linha =
-e.target.closest("tr");
-
-if(linha){
-
-if(e.target.checked){
-
-linha.classList.add(
-"treinoFeito"
-);
-
-}else{
-
-linha.classList.remove(
-"treinoFeito"
-);
-
-}
-
-}
-
-atualizarProgressoTreino();
-
-}
-
-}
-);
-
-// =========================
-// TREINOS PERSONALIZADOS
-// =========================
-
-let treinosCustom =
-
-JSON.parse(
-localStorage.getItem(
-"ares_treinos_custom"
+historicoMedidas.length === 0
 )
-) || {};
+return;
 
-function salvarTreinosCustom(){
+const ultimo =
 
-localStorage.setItem(
-"ares_treinos_custom",
-JSON.stringify(
-treinosCustom
-)
-);
-
-}
-
-// =========================
-// ADICIONAR EXERCÍCIO
-// =========================
-
-function adicionarExercicio(){
-
-const nome =
-prompt(
-"Nome do exercício:"
-);
-
-if(!nome) return;
-
-const dia =
-document.getElementById(
-"diaTreino"
-).value;
-
-if(
-!treinosCustom[dia]
-){
-
-treinosCustom[dia] = [];
-
-}
-
-treinosCustom[dia].push(
-nome
-);
-
-salvarTreinosCustom();
-
-renderTreino(dia);
-
-}
-
-// =========================
-// BOTÃO
-// =========================
-
-const btnAdd =
-document.getElementById(
-"addExercicio"
-);
-
-if(btnAdd){
-
-btnAdd.addEventListener(
-"click",
-adicionarExercicio
-);
-
-}
-
-// =========================
-// FRASES GEPETÃO
-// =========================
-
-const frasesPremium = [
-
-"Disciplina vence motivação.",
-
-"Seu shape de amanhã depende do treino de hoje.",
-
-"Quando ninguém acredita, continue.",
-
-"Você não chegou até aqui para desistir agora.",
-
-"Cada repetição aproxima São Paulo.",
-
-"Hoje é um ótimo dia para evoluir.",
-
-"Seu concorrente treinou hoje. E você?",
-
-"Mais forte do que ontem.",
-
-"Projeto Tanquinho em andamento.",
-
-"Construa o físico que você admira."
-
+historicoMedidas[
+historicoMedidas.length - 1
 ];
 
-function conselhoAleatorio(){
+const meta = 10;
 
-const indice =
-Math.floor(
-Math.random()
-*
-frasesPremium.length
+const progresso =
+
+Math.max(
+
+0,
+
+Math.min(
+
+100,
+
+((14 - ultimo.bf)
+/
+(14 - meta))
+* 100
+
+)
+
 );
 
-const msg =
+const barra =
 document.getElementById(
-"mensagem"
+"barraMetaBF"
 );
 
-if(msg){
+if(barra){
 
-msg.textContent =
-frasesPremium[indice];
+barra.style.width =
+progresso + "%";
 
 }
 
 }
 
-setInterval(
-conselhoAleatorio,
-30000
+// =====================================
+// CICLO 30 DIAS
+// =====================================
+
+function verificarCiclo(){
+
+const inicio =
+
+localStorage.getItem(
+"ares_inicio_ciclo"
 );
 
-// =========================
+if(!inicio){
+
+localStorage.setItem(
+"ares_inicio_ciclo",
+Date.now()
+);
+
+return;
+
+}
+
+const dias =
+
+Math.floor(
+
+(
+Date.now() -
+Number(inicio)
+)
+
+/
+
+86400000
+
+);
+
+if(
+dias >= 30
+){
+
+alert(
+"🔥 Novo ciclo de treino iniciado!"
+);
+
+localStorage.setItem(
+"ares_inicio_ciclo",
+Date.now()
+);
+
+}
+
+}
+
+// =====================================
 // EXPORTAR BACKUP
-// =========================
+// =====================================
 
-function exportarDados(){
+function exportarBackup(){
 
 const dados = {
 
 xp,
-
 bossHp,
-
 streak,
-
-recordes,
-
-historicoPeso,
-
-historicoBF,
-
+historicoTreinos,
 historicoMedidas,
-
-historicoTreinos
+recordes,
+conquistas
 
 };
 
 const blob =
+
 new Blob(
 
 [
@@ -2008,130 +2027,49 @@ type:
 
 );
 
-const a =
-document.createElement(
-"a"
-);
+const link =
+document.createElement("a");
 
-a.href =
-URL.createObjectURL(
-blob
-);
+link.href =
+URL.createObjectURL(blob);
 
-a.download =
-"ares_backup.json";
+link.download =
+"ARES_BACKUP.json";
 
-a.click();
+link.click();
 
 }
 
-// =========================
-// BOTÃO EXPORTAR
-// =========================
+// =====================================
+// BOTÃO BACKUP
+// =====================================
 
-const btnExportar =
+const btnBackup =
 document.getElementById(
 "exportarDados"
 );
 
-if(btnExportar){
+if(btnBackup){
 
-btnExportar.addEventListener(
+btnBackup.addEventListener(
 "click",
-exportarDados
+exportarBackup
 );
 
 }
 
-// =========================
-// CONQUISTAS AVANÇADAS
-// =========================
+// =====================================
+// INICIAR
+// =====================================
 
-function verificarConquistasAvancadas(){
+renderConquistas();
 
-const area =
-document.getElementById(
-"conquistas"
-);
+verificarConquistas();
 
-if(!area) return;
+verificarLevelUp();
 
-if(
-historicoTreinos.length >= 50
-){
+verificarCiclo();
 
-if(
-!document.getElementById(
-"conq50"
-)
-){
+atualizarMetaPeso();
 
-area.innerHTML +=
-
-`<div
-id="conq50"
-class="conquista">
-🏋️ 50 Treinos
-</div>`;
-
-}
-
-}
-
-if(
-historicoTreinos.length >= 100
-){
-
-if(
-!document.getElementById(
-"conq100"
-)
-){
-
-area.innerHTML +=
-
-`<div
-id="conq100"
-class="conquista">
-🔥 100 Treinos
-</div>`;
-
-}
-
-}
-
-if(xp >= 10000){
-
-if(
-!document.getElementById(
-"conqGod"
-)
-){
-
-area.innerHTML +=
-
-`<div
-id="conqGod"
-class="conquista">
-👑 Deus da Guerra
-</div>`;
-
-}
-
-}
-
-}
-
-// =========================
-// INICIALIZAÇÃO FINAL
-// =========================
-
-verificarConquistasAvancadas();
-
-atualizarProgressoTreino();
-
-conselhoAleatorio();
-
-console.log(
-"🏛️ ARES TRACKER 6.0 CARREGADO"
-);
+atualizarMetaBF();
