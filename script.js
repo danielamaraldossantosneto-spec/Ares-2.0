@@ -1887,3 +1887,24 @@ video,
 });
 
 }
+function ativarVideos(){
+
+document
+.querySelectorAll(".btnVideo")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+function(){
+
+window.open(
+this.dataset.video,
+"_blank"
+);
+
+}
+);
+
+});
+
+}
