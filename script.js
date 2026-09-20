@@ -1005,6 +1005,20 @@ if(!seletor || !tabela) return;
 const dia =
 seletor.value;
 
+if(!treinos[dia]){
+
+tabela.innerHTML = `
+<tr>
+<td colspan="7">
+Treino não encontrado
+</td>
+</tr>
+`;
+
+return;
+
+}
+
 const treino =
 treinos[dia];
 
@@ -1018,13 +1032,21 @@ tabela.innerHTML += `
 
 <td>${ex.nome}</td>
 
-<td><input type="number"></td>
+<td>
+<input type="number">
+</td>
 
-<td><input type="number"></td>
+<td>
+<input type="number">
+</td>
 
-<td><input type="number"></td>
+<td>
+<input type="number">
+</td>
 
-<td><input type="number"></td>
+<td>
+<input type="number">
+</td>
 
 <td>
 
@@ -1054,6 +1076,30 @@ class="checkExercicio">
 
 ativarVideos();
 ativarChecks();
+
+}
+
+function ativarVideos(){
+
+document
+.querySelectorAll(".btnVideo")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+()=>{
+
+const url =
+btn.dataset.video;
+
+window.open(
+url,
+"_blank"
+);
+
+});
+
+});
 
 }
 
@@ -1817,3 +1863,27 @@ logARES(
 logARES(
 "🔥 Projeto ARES iniciado."
 );
+function ativarVideos(){
+
+document
+.querySelectorAll(".btnVideo")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+()=>{
+
+const video =
+btn.dataset.video;
+
+window.open(
+video,
+"videoARES",
+"width=900,height=600"
+);
+
+});
+
+});
+
+}
