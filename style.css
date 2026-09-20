@@ -1,421 +1,369 @@
-/* ================================= */
-/* ARES TRACKER 6.0 */
-/* BASE */
-/* ================================= */
+/* =====================================
+   ARES TRACKER 7.0
+   DANIEL AMARAL
+===================================== */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
 }
 
-html{
-scroll-behavior:smooth;
+:root{
+
+--bg:#060816;
+--card:#10172b;
+--card2:#131d35;
+
+--azul:#00e5ff;
+--roxo:#8b5cf6;
+--verde:#00ff9d;
+--vermelho:#ff4d6d;
+--ouro:#ffd700;
+
+--texto:#ffffff;
+--texto2:#9ca3af;
+
+--sombra:
+0 0 20px rgba(0,229,255,.25);
+
 }
 
 body{
 
 background:
-linear-gradient(
-180deg,
-#050816 0%,
-#0f172a 40%,
-#111827 100%
+radial-gradient(
+circle at top,
+#101c3b,
+#060816
 );
+
+font-family:
+"Segoe UI",
+sans-serif;
 
 color:white;
 
 min-height:100vh;
 
-padding:20px;
-
 overflow-x:hidden;
 
 }
 
-/* ================================= */
-/* CONTAINER */
-/* ================================= */
+/* =====================================
+   FUNDO FUTURISTA
+===================================== */
+
+.fundoGlow,
+.fundoGlow2,
+.fundoGlow3{
+
+position:fixed;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+z-index:-1;
+
+}
+
+.fundoGlow{
+
+width:350px;
+height:350px;
+
+background:#00e5ff;
+
+top:-100px;
+left:-100px;
+
+opacity:.15;
+
+}
+
+.fundoGlow2{
+
+width:400px;
+height:400px;
+
+background:#8b5cf6;
+
+right:-150px;
+top:150px;
+
+opacity:.15;
+
+}
+
+.fundoGlow3{
+
+width:300px;
+height:300px;
+
+background:#00ff9d;
+
+bottom:-120px;
+left:35%;
+
+opacity:.10;
+
+}
+
+/* =====================================
+   CONTAINER
+===================================== */
 
 .container{
+
+width:95%;
 
 max-width:1400px;
 
 margin:auto;
 
+padding:25px;
+
 }
 
-/* ================================= */
-/* GRID */
-/* ================================= */
+/* =====================================
+   HEADER
+===================================== */
 
-.grid{
+header{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+header h1{
+
+font-size:3rem;
+
+font-weight:800;
+
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#8b5cf6,
+#00ff9d
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:
+transparent;
+
+margin-bottom:10px;
+
+}
+
+header p{
+
+color:var(--texto2);
+
+font-size:1rem;
+
+}
+
+/* =====================================
+   GRID PRINCIPAL
+===================================== */
+
+.dashboard{
 
 display:grid;
 
 grid-template-columns:
 repeat(
 auto-fit,
-minmax(350px,1fr)
+minmax(280px,1fr)
 );
 
 gap:20px;
 
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
-/* ================================= */
-/* HERO */
-/* ================================= */
-
-.hero{
-
-position:relative;
-
-margin-bottom:30px;
-
-overflow:hidden;
-
-border-radius:30px;
-
-background:
-rgba(255,255,255,.03);
-
-backdrop-filter:
-blur(10px);
-
-border:
-1px solid
-rgba(255,255,255,.05);
-
-}
-
-.banner{
-
-width:100%;
-
-height:350px;
-
-object-fit:cover;
-
-display:block;
-
-filter:
-brightness(.75);
-
-}
-
-.hero-content{
-
-position:absolute;
-
-bottom:40px;
-
-left:40px;
-
-z-index:10;
-
-}
-
-.hero h1{
-
-font-size:3rem;
-
-font-weight:800;
-
-color:#facc15;
-
-margin-bottom:10px;
-
-text-shadow:
-0 0 20px
-rgba(250,204,21,.4);
-
-}
-
-.hero p{
-
-font-size:1.1rem;
-
-color:#e2e8f0;
-
-}
-
-/* ================================= */
-/* BADGES */
-/* ================================= */
-
-.hero-badges{
-
-display:flex;
-
-gap:10px;
-
-margin-top:15px;
-
-flex-wrap:wrap;
-
-}
-
-.badge{
-
-padding:10px 18px;
-
-background:
-rgba(250,204,21,.15);
-
-border:
-1px solid
-rgba(250,204,21,.25);
-
-border-radius:999px;
-
-color:#facc15;
-
-font-size:.9rem;
-
-font-weight:600;
-
-backdrop-filter:
-blur(8px);
-
-}
-
-/* ================================= */
-/* CARDS */
-/* ================================= */
+/* =====================================
+   CARDS
+===================================== */
 
 .card{
 
 background:
-rgba(17,24,39,.8);
+rgba(16,23,43,.85);
 
 backdrop-filter:
-blur(10px);
-
-padding:25px;
-
-border-radius:25px;
+blur(15px);
 
 border:
 1px solid
-rgba(255,255,255,.05);
+rgba(255,255,255,.08);
 
-margin-bottom:20px;
+border-radius:24px;
 
-transition:.35s;
+padding:25px;
+
+box-shadow:
+var(--sombra);
+
+transition:.3s;
 
 }
 
 .card:hover{
 
 transform:
-translateY(-5px);
+translateY(-4px);
 
 box-shadow:
 0 0 30px
-rgba(250,204,21,.12);
+rgba(0,229,255,.35);
 
 }
+
+/* =====================================
+   TITULOS
+===================================== */
 
 .card h2{
 
-color:#facc15;
+font-size:1.2rem;
 
-margin-bottom:20px;
+margin-bottom:15px;
 
-font-size:1.5rem;
+color:var(--azul);
+
+font-weight:700;
+
+}
+/* =====================================
+   XP / NÍVEL / CLASSE
+===================================== */
+
+.statsGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(220px,1fr)
+);
+
+gap:20px;
+
+margin-bottom:25px;
 
 }
 
-/* ================================= */
-/* PERFIL */
-/* ================================= */
+.statCard{
 
-.perfil{
+background:
+linear-gradient(
+135deg,
+rgba(0,229,255,.12),
+rgba(139,92,246,.12)
+);
 
-display:flex;
+border-radius:20px;
 
-align-items:center;
+padding:25px;
 
-gap:25px;
+text-align:center;
 
-}
-
-.avatar{
-
-width:150px;
-
-height:150px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:4px solid #facc15;
-
-box-shadow:
-0 0 25px
-rgba(250,204,21,.35);
+border:
+1px solid
+rgba(255,255,255,.08);
 
 }
 
-.perfil-info{
+.statCard h3{
 
-flex:1;
+font-size:.95rem;
+
+color:var(--texto2);
+
+margin-bottom:10px;
 
 }
 
-.perfil-info h2{
+.statCard span{
 
 font-size:2rem;
 
-margin-bottom:10px;
+font-weight:800;
+
+color:white;
 
 }
 
-.perfil-info p{
+/* =====================================
+   XP CARD
+===================================== */
 
-margin-bottom:10px;
+#xp{
 
-color:#cbd5e1;
+font-size:2rem;
 
-font-size:1rem;
+font-weight:800;
 
-}
+color:var(--verde);
 
-/* ================================= */
-/* XP BAR */
-/* ================================= */
-
-.xp-box{
-
-margin-top:15px;
+text-shadow:
+0 0 15px
+rgba(0,255,157,.6);
 
 }
 
-.barra{
+/* =====================================
+   NÍVEL
+===================================== */
 
-width:100%;
+#nivel{
 
-height:18px;
+font-size:1.4rem;
 
-background:#1e293b;
+font-weight:700;
 
-border-radius:999px;
-
-overflow:hidden;
+color:var(--ouro);
 
 }
 
-.xpBarra{
+/* =====================================
+   CLASSE
+===================================== */
 
-height:100%;
+#classe{
 
-width:25%;
+font-size:1.3rem;
+
+font-weight:700;
 
 background:
 linear-gradient(
 90deg,
-#facc15,
-#fde047
+#00e5ff,
+#8b5cf6
 );
 
-transition:.5s;
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:
+transparent;
 
 }
 
-/* ================================= */
-/* OBJETIVOS */
-/* ================================= */
+/* =====================================
+   BOSS CARD
+===================================== */
 
-.objetivos{
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-}
-
-.meta-item{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:10px;
-
-}
-
-.meta-item label{
-
-color:#94a3b8;
-
-}
-
-.meta-item span{
-
-font-weight:bold;
-
-font-size:1rem;
-
-}
-
-.pesoBarra{
-
-width:70%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-#22c55e,
-#4ade80
-);
-
-}
-
-.bfBarra{
-
-width:50%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-#38bdf8,
-#0ea5e9
-);
-
-}
-
-/* ================================= */
-/* HR */
-/* ================================= */
-
-hr{
-
-border:none;
-
-height:1px;
-
-background:
-rgba(255,255,255,.08);
-
-margin:15px 0;
-
-}
-/* ================================= */
-/* BOSS DA SEMANA */
-/* ================================= */
-
-.boss-card{
+.bossCard{
 
 position:relative;
 
@@ -423,23 +371,145 @@ overflow:hidden;
 
 }
 
-.boss-area{
+.bossCard::before{
 
-display:flex;
+content:"";
 
-align-items:center;
+position:absolute;
 
-gap:25px;
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,77,109,.08),
+transparent
+);
+
+pointer-events:none;
 
 }
 
-.boss-avatar{
+/* =====================================
+   BOSS INFO
+===================================== */
 
-width:120px;
+#bossNome{
 
-height:120px;
+font-size:1.5rem;
 
-border-radius:50%;
+font-weight:800;
+
+margin-bottom:15px;
+
+color:#ff6b81;
+
+text-align:center;
+
+}
+
+#bossHp{
+
+text-align:center;
+
+font-size:1.3rem;
+
+font-weight:700;
+
+margin-top:10px;
+
+}
+
+/* =====================================
+   BARRA BOSS
+===================================== */
+
+.bossBar{
+
+width:100%;
+
+height:24px;
+
+background:
+rgba(255,255,255,.08);
+
+border-radius:999px;
+
+overflow:hidden;
+
+margin-top:15px;
+
+}
+
+#bossBarra{
+
+width:100%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#ff4d6d,
+#ff6b81
+);
+
+border-radius:999px;
+
+transition:.4s;
+
+box-shadow:
+0 0 15px
+rgba(255,77,109,.7);
+
+}
+
+/* =====================================
+   ARENA DE COMBATE
+===================================== */
+
+.arenaCard{
+
+position:relative;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,77,109,.08),
+rgba(139,92,246,.08)
+);
+
+}
+
+.arenaHeader{
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.arenaHeader h2{
+
+font-size:2rem;
+
+margin-bottom:8px;
+
+}
+
+.arenaHeader p{
+
+color:var(--texto2);
+
+}
+
+/* =====================================
+   BOSS ARENA
+===================================== */
+
+.arenaBoss{
 
 display:flex;
 
@@ -447,143 +517,446 @@ align-items:center;
 
 justify-content:center;
 
-font-size:4rem;
+gap:30px;
 
-background:
-linear-gradient(
-135deg,
-#7f1d1d,
-#dc2626
-);
-
-box-shadow:
-0 0 30px
-rgba(220,38,38,.5);
-
-animation:
-bossPulse 3s infinite;
+flex-wrap:wrap;
 
 }
 
-.boss-info{
+.bossImagem img{
+
+width:180px;
+
+filter:
+drop-shadow(
+0 0 25px
+rgba(255,77,109,.6)
+);
+
+animation:
+flutuar 3s ease-in-out infinite;
+
+}
+
+@keyframes flutuar{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+/* =====================================
+   INFO BOSS ARENA
+===================================== */
+
+.arenaInfo{
 
 flex:1;
 
+min-width:250px;
+
 }
 
-.boss-info h3{
+#bossNomeArena{
 
 font-size:2rem;
 
 margin-bottom:10px;
 
-color:#f87171;
+color:#ff6b81;
 
 }
 
-.preenchida{
+#bossHpArena{
 
-height:100%;
+margin-top:10px;
 
-width:100%;
-
-background:
-linear-gradient(
-90deg,
-#dc2626,
-#ef4444
-);
-
-transition:.5s;
-
-}
-
-@keyframes bossPulse{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-
-/* ================================= */
-/* MISSÕES */
-/* ================================= */
-
-.missao{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:15px;
-
-margin-bottom:12px;
-
-border-radius:15px;
-
-background:
-rgba(255,255,255,.03);
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.missao:hover{
-
-background:
-rgba(250,204,21,.08);
-
-transform:
-translateX(5px);
-
-}
-
-.missao input{
-
-transform:scale(1.4);
-
-cursor:pointer;
-
-}
-
-.missao span{
-
-color:#22c55e;
+font-size:1.3rem;
 
 font-weight:700;
 
 }
 
-.missaoResumo{
+/* =====================================
+   BARRA ARENA
+===================================== */
 
-margin-top:20px;
+.bossBarArena{
 
-font-size:1.1rem;
+width:100%;
 
-font-weight:bold;
+height:28px;
 
-color:#facc15;
+background:
+rgba(255,255,255,.08);
+
+border-radius:999px;
+
+overflow:hidden;
 
 }
 
-/* ================================= */
-/* CALENDÁRIO */
-/* ================================= */
+#bossBarraArena{
 
-.calendar{
+width:100%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#ff4d6d,
+#ff884d
+);
+
+transition:.5s;
+
+box-shadow:
+0 0 20px
+rgba(255,77,109,.8);
+
+}
+
+/* =====================================
+   DANO FLUTUANTE
+===================================== */
+
+.danoBoss{
+
+position:fixed;
+
+top:120px;
+
+left:50%;
+
+transform:
+translateX(-50%);
+
+font-size:2rem;
+
+font-weight:800;
+
+color:#ff4d6d;
+
+animation:
+dano 1s forwards;
+
+pointer-events:none;
+
+z-index:9999;
+
+}
+
+@keyframes dano{
+
+0%{
+
+opacity:1;
+
+transform:
+translateX(-50%)
+translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+translateX(-50%)
+translateY(-80px);
+
+}
+
+}
+/* =====================================
+   TREINOS
+===================================== */
+
+.treinoCard{
+
+background:
+linear-gradient(
+135deg,
+rgba(0,229,255,.05),
+rgba(139,92,246,.05)
+);
+
+}
+
+#diaTreino{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:14px;
+
+background:#0f172a;
+
+color:white;
+
+font-size:1rem;
+
+margin-bottom:20px;
+
+outline:none;
+
+}
+
+/* =====================================
+   TABELA TREINO
+===================================== */
+
+.tabelaTreino{
+
+width:100%;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+border-radius:16px;
+
+}
+
+.tabelaTreino th{
+
+background:
+rgba(0,229,255,.15);
+
+padding:14px;
+
+font-size:.9rem;
+
+text-transform:uppercase;
+
+letter-spacing:1px;
+
+}
+
+.tabelaTreino td{
+
+padding:12px;
+
+border-bottom:
+1px solid
+rgba(255,255,255,.05);
+
+}
+
+.tabelaTreino tr:hover{
+
+background:
+rgba(255,255,255,.03);
+
+}
+
+/* =====================================
+   INPUTS TREINO
+===================================== */
+
+.tabelaTreino input[type="number"]{
+
+width:90px;
+
+padding:10px;
+
+border:none;
+
+border-radius:10px;
+
+background:#0f172a;
+
+color:white;
+
+text-align:center;
+
+}
+
+.tabelaTreino input[type="checkbox"]{
+
+transform:scale(1.3);
+
+cursor:pointer;
+
+}
+
+/* =====================================
+   TREINO FEITO
+===================================== */
+
+.treinoFeito{
+
+background:
+rgba(0,255,157,.08);
+
+}
+
+.treinoFeito td{
+
+color:#00ff9d;
+
+font-weight:600;
+
+}
+
+/* =====================================
+   BOTÃO VÍDEO
+===================================== */
+
+.btnVideo{
+
+border:none;
+
+padding:10px 14px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:700;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#8b5cf6,
+#00e5ff
+);
+
+transition:.3s;
+
+}
+
+.btnVideo:hover{
+
+transform:
+translateY(-2px)
+scale(1.05);
+
+box-shadow:
+0 0 20px
+rgba(0,229,255,.5);
+
+}
+
+/* =====================================
+   BOTÃO SALVAR TREINO
+===================================== */
+
+#salvarTreino{
+
+width:100%;
+
+padding:16px;
+
+margin-top:20px;
+
+border:none;
+
+border-radius:16px;
+
+cursor:pointer;
+
+font-size:1rem;
+
+font-weight:800;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#00ff9d,
+#00e5ff
+);
+
+transition:.3s;
+
+}
+
+#salvarTreino:hover{
+
+transform:
+translateY(-3px);
+
+box-shadow:
+0 0 25px
+rgba(0,255,157,.4);
+
+}
+
+/* =====================================
+   PROGRESSO TREINO
+===================================== */
+
+.progressoTreino{
+
+margin-top:20px;
+
+}
+
+.barraContainer{
+
+width:100%;
+
+height:22px;
+
+background:
+rgba(255,255,255,.08);
+
+border-radius:999px;
+
+overflow:hidden;
+
+}
+
+#barraTreino{
+
+width:0%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#00ff9d,
+#00e5ff
+);
+
+transition:.4s;
+
+}
+
+#textoProgresso{
+
+margin-top:10px;
+
+text-align:center;
+
+font-weight:700;
+
+}
+
+/* =====================================
+   CALENDÁRIO SEMANAL
+===================================== */
+
+.calendario{
 
 display:grid;
 
@@ -596,26 +969,9 @@ margin-top:20px;
 
 }
 
-.diaSemana{
-
-text-align:center;
-
-font-weight:bold;
-
-color:#94a3b8;
-
-padding:10px;
-
-}
-
 .dia{
 
 height:60px;
-
-border-radius:15px;
-
-background:
-rgba(255,255,255,.04);
 
 display:flex;
 
@@ -623,9 +979,14 @@ align-items:center;
 
 justify-content:center;
 
-font-size:1.5rem;
-
 cursor:pointer;
+
+border-radius:14px;
+
+background:
+rgba(255,255,255,.05);
+
+font-weight:700;
 
 transition:.3s;
 
@@ -633,10 +994,11 @@ transition:.3s;
 
 .dia:hover{
 
-background:
-rgba(250,204,21,.12);
+transform:
+translateY(-3px);
 
-transform:scale(1.05);
+background:
+rgba(0,229,255,.15);
 
 }
 
@@ -645,341 +1007,91 @@ transform:scale(1.05);
 background:
 linear-gradient(
 135deg,
-#16a34a,
-#22c55e
-) !important;
+#00ff9d,
+#00e5ff
+);
 
-box-shadow:
-0 0 20px
-rgba(34,197,94,.5);
+color:#000;
+
+font-weight:900;
 
 }
 
-.streakBox{
+/* =====================================
+   STREAK
+===================================== */
 
-margin-top:20px;
+.streakCard{
+
+text-align:center;
+
+}
+
+#streak{
+
+font-size:2rem;
+
+font-weight:800;
+
+color:#ff884d;
+
+text-shadow:
+0 0 15px
+rgba(255,136,77,.5);
+
+}
+
+#streakAtual{
 
 font-size:1.2rem;
 
-font-weight:bold;
-
-color:#facc15;
-
-}
-
-/* ================================= */
-/* TREINOS */
-/* ================================= */
-
-#diaTreino{
-
-width:100%;
-
-padding:14px;
-
-border:none;
-
-outline:none;
-
-border-radius:15px;
-
-background:#1e293b;
+margin-top:10px;
 
 color:white;
 
-font-size:1rem;
+}
+
+/* =====================================
+   TREINO HOJE
+===================================== */
+
+#treinoHoje h3{
+
+font-size:1.5rem;
+
+margin-bottom:15px;
+
+color:#00e5ff;
+
+text-align:center;
 
 }
 
-#treinoHoje{
+/* =====================================
+   RESPONSIVO
+===================================== */
 
-margin-top:20px;
-
-}
-
-.exercicio{
-
-padding:15px;
-
-margin-bottom:10px;
-
-border-radius:12px;
-
-background:
-rgba(255,255,255,.03);
-
-transition:.3s;
-
-cursor:pointer;
-
-}
-
-.exercicio:hover{
-
-background:
-rgba(250,204,21,.08);
-
-transform:
-translateX(5px);
-
-}
-
-/* ================================= */
-/* TABELA TREINO */
-/* ================================= */
+@media(max-width:768px){
 
 .tabelaTreino{
 
-width:100%;
+display:block;
 
-border-collapse:collapse;
-
-margin-top:20px;
+overflow-x:auto;
 
 }
 
-.tabelaTreino th{
-
-background:#1e293b;
-
-padding:12px;
-
-color:#facc15;
-
-}
-
-.tabelaTreino td{
-
-padding:10px;
-
-border-bottom:
-1px solid
-rgba(255,255,255,.05);
-
-text-align:center;
-
-}
-
-.tabelaTreino input{
-
-width:65px;
-
-padding:8px;
-
-border:none;
-
-border-radius:8px;
-
-background:#1e293b;
-
-color:white;
-
-margin:2px;
-
-text-align:center;
-
-}
-
-.tabelaTreino input:focus{
-
-outline:
-2px solid #facc15;
-
-}
-
-/* ================================= */
-/* EXERCÍCIO CONCLUÍDO */
-/* ================================= */
-
-.treinoFeito{
-
-background:
-rgba(34,197,94,.2);
-
-box-shadow:
-0 0 20px
-rgba(34,197,94,.4);
-
-transition:.3s;
-
-}
-
-/* ================================= */
-/* BOTÕES */
-/* ================================= */
-
-button{
-
-padding:14px 22px;
-
-border:none;
-
-border-radius:15px;
-
-cursor:pointer;
-
-font-weight:bold;
-
-font-size:1rem;
-
-background:
-linear-gradient(
-135deg,
-#facc15,
-#fde047
-);
-
-color:#111827;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:
-translateY(-3px);
-
-box-shadow:
-0 0 20px
-rgba(250,204,21,.35);
-
-}
-
-/* ================================= */
-/* RECORDES */
-/* ================================= */
-
-#recordes{
-
-display:grid;
+.calendario{
 
 grid-template-columns:
-repeat(
-auto-fit,
-minmax(180px,1fr)
-);
-
-gap:15px;
+repeat(4,1fr);
 
 }
 
-.recordeCard{
-
-padding:20px;
-
-border-radius:20px;
-
-text-align:center;
-
-background:
-linear-gradient(
-135deg,
-rgba(250,204,21,.08),
-rgba(250,204,21,.02)
-);
-
-border:
-1px solid
-rgba(250,204,21,.15);
-
 }
-
-.recordeCard h3{
-
-margin-bottom:10px;
-
-color:#facc15;
-
-}
-
-.recordeCard p{
-
-font-size:1.4rem;
-
-font-weight:bold;
-
-}
-/* ================================= */
-/* EVOLUÇÃO FÍSICA */
-/* ================================= */
-
-.form-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(220px,1fr)
-);
-
-gap:15px;
-
-}
-
-.campo{
-
-display:flex;
-
-flex-direction:column;
-
-gap:8px;
-
-}
-
-.campo label{
-
-font-weight:600;
-
-color:#cbd5e1;
-
-}
-
-.campo input{
-
-padding:12px;
-
-border:none;
-
-border-radius:12px;
-
-background:#1e293b;
-
-color:white;
-
-font-size:1rem;
-
-}
-
-.campo input:focus{
-
-outline:2px solid #facc15;
-
-}
-
-/* ================================= */
-/* GRÁFICOS */
-/* ================================= */
-
-canvas{
-
-width:100% !important;
-
-max-height:400px;
-
-background:
-rgba(255,255,255,.02);
-
-border-radius:20px;
-
-padding:15px;
-
-}
-
-/* ================================= */
-/* CONQUISTAS */
-/* ================================= */
+/* =====================================
+   CONQUISTAS
+===================================== */
 
 #conquistas{
 
@@ -993,6 +1105,8 @@ minmax(220px,1fr)
 
 gap:15px;
 
+margin-top:20px;
+
 }
 
 .conquista{
@@ -1003,18 +1117,20 @@ border-radius:18px;
 
 text-align:center;
 
-font-weight:bold;
+font-weight:700;
 
 background:
 linear-gradient(
 135deg,
-rgba(250,204,21,.15),
-rgba(250,204,21,.03)
+rgba(255,215,0,.15),
+rgba(255,136,77,.15)
 );
 
 border:
 1px solid
-rgba(250,204,21,.15);
+rgba(255,215,0,.25);
+
+color:#ffd700;
 
 transition:.3s;
 
@@ -1023,19 +1139,20 @@ transition:.3s;
 .conquista:hover{
 
 transform:
-translateY(-5px);
+translateY(-4px)
+scale(1.03);
 
 box-shadow:
-0 0 20px
-rgba(250,204,21,.25);
+0 0 25px
+rgba(255,215,0,.35);
 
 }
 
-/* ================================= */
-/* ESTATÍSTICAS */
-/* ================================= */
+/* =====================================
+   TÍTULOS RPG
+===================================== */
 
-.stats-grid{
+.titulosGrid{
 
 display:grid;
 
@@ -1045,141 +1162,753 @@ auto-fit,
 minmax(180px,1fr)
 );
 
-gap:20px;
+gap:15px;
+
+margin-top:20px;
 
 }
 
-.stat{
+.tituloCard{
 
-padding:25px;
+padding:20px;
+
+border-radius:18px;
 
 text-align:center;
 
-border-radius:20px;
+font-weight:800;
+
+font-size:1.05rem;
 
 background:
-rgba(255,255,255,.03);
+linear-gradient(
+135deg,
+rgba(0,229,255,.15),
+rgba(139,92,246,.15)
+);
+
+border:
+1px solid
+rgba(0,229,255,.20);
 
 transition:.3s;
 
 }
 
-.stat:hover{
+.tituloCard:hover{
 
-transform:translateY(-5px);
+transform:
+translateY(-5px);
 
-}
-
-.stat h3{
-
-font-size:2rem;
-
-color:#facc15;
-
-margin-bottom:10px;
+box-shadow:
+0 0 25px
+rgba(0,229,255,.35);
 
 }
 
-.stat p{
+.bloqueado{
 
-color:#cbd5e1;
+opacity:.35;
+
+filter:grayscale(1);
 
 }
 
-/* ================================= */
-/* CICLO */
-/* ================================= */
+/* =====================================
+   HISTÓRICO TREINOS
+===================================== */
 
-.cicloBarra{
+#historicoTreinos{
 
-height:100%;
+display:grid;
 
-width:0;
-
-background:
-linear-gradient(
-90deg,
-#38bdf8,
-#0ea5e9
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(300px,1fr)
 );
 
-transition:.5s;
+gap:18px;
+
+margin-top:20px;
 
 }
-
-/* ================================= */
-/* HISTÓRICO */
-/* ================================= */
 
 .historicoCard{
 
-padding:18px;
-
-margin-bottom:12px;
-
-border-radius:15px;
-
 background:
-rgba(255,255,255,.03);
+rgba(255,255,255,.04);
 
-border-left:
-4px solid #facc15;
+border:
+1px solid
+rgba(255,255,255,.08);
+
+padding:20px;
+
+border-radius:18px;
+
+transition:.3s;
+
+}
+
+.historicoCard:hover{
+
+transform:
+translateY(-4px);
+
+border-color:
+rgba(0,229,255,.35);
 
 }
 
 .historicoCard h3{
 
-color:#facc15;
+color:#00e5ff;
 
-margin-bottom:5px;
+margin-bottom:15px;
 
 }
 
-/* ================================= */
-/* GEPETÃO */
-/* ================================= */
+.historicoCard p{
 
-#mensagem{
+margin-bottom:8px;
 
-font-size:1.1rem;
+color:#d1d5db;
 
-line-height:1.8;
+}
 
-color:#e2e8f0;
+/* =====================================
+   RECORDES
+===================================== */
 
-font-style:italic;
+#recordes{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(220px,1fr)
+);
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.recordeCard{
+
+padding:20px;
+
+border-radius:18px;
 
 text-align:center;
 
+background:
+linear-gradient(
+135deg,
+rgba(255,77,109,.15),
+rgba(255,136,77,.15)
+);
+
+border:
+1px solid
+rgba(255,77,109,.20);
+
 }
 
-/* ================================= */
-/* FOOTER */
-/* ================================= */
+.recordeCard h3{
 
-.footer{
+font-size:1rem;
+
+margin-bottom:10px;
+
+color:white;
+
+}
+
+.recordeCard p{
+
+font-size:1.8rem;
+
+font-weight:800;
+
+color:#ff884d;
+
+}
+
+/* =====================================
+   HALL DA FAMA
+===================================== */
+
+#hallDaFama{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(220px,1fr)
+);
+
+gap:20px;
+
+margin-top:20px;
+
+}
+
+.famaCard{
+
+padding:25px;
+
+border-radius:20px;
 
 text-align:center;
 
-padding:40px 20px;
+background:
+linear-gradient(
+135deg,
+rgba(255,215,0,.15),
+rgba(255,136,77,.10)
+);
 
-margin-top:40px;
+border:
+1px solid
+rgba(255,215,0,.25);
 
-color:#94a3b8;
+transition:.3s;
 
 }
 
-.footer h3{
+.famaCard:hover{
 
-color:#facc15;
+transform:
+translateY(-5px);
+
+box-shadow:
+0 0 25px
+rgba(255,215,0,.30);
+
+}
+
+.famaCard p{
+
+margin-top:10px;
+
+font-size:1.8rem;
+
+font-weight:800;
+
+color:#ffd700;
+
+}
+
+/* =====================================
+   ESTATÍSTICAS GERAIS
+===================================== */
+
+.estatisticasGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(200px,1fr)
+);
+
+gap:18px;
+
+margin-top:20px;
+
+}
+
+.estatisticaCard{
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+background:
+rgba(255,255,255,.04);
+
+border:
+1px solid
+rgba(255,255,255,.08);
+
+}
+
+.estatisticaCard h3{
+
+font-size:.95rem;
+
+color:#9ca3af;
 
 margin-bottom:10px;
 
 }
 
-/* ================================= */
-/* SCROLLBAR */
-/* ================================= */
+.estatisticaCard span{
+
+font-size:2rem;
+
+font-weight:800;
+
+color:#00ff9d;
+
+}
+
+/* =====================================
+   TERMINAL ARES
+===================================== */
+
+.terminalCard{
+
+background:
+#05070f;
+
+border:
+1px solid
+rgba(0,255,157,.15);
+
+}
+
+#terminalARES{
+
+height:300px;
+
+overflow-y:auto;
+
+padding:20px;
+
+border-radius:16px;
+
+background:
+#02040a;
+
+font-family:
+Consolas,
+monospace;
+
+}
+
+#terminalARES p{
+
+margin-bottom:10px;
+
+color:#00ff9d;
+
+font-size:.95rem;
+
+animation:
+terminalFade .4s ease;
+
+}
+
+@keyframes terminalFade{
+
+from{
+
+opacity:0;
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* =====================================
+   SCROLLBAR TERMINAL
+===================================== */
+
+#terminalARES::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+#terminalARES::-webkit-scrollbar-track{
+
+background:#111827;
+
+}
+
+#terminalARES::-webkit-scrollbar-thumb{
+
+background:#00ff9d;
+
+border-radius:999px;
+
+}
+
+/* =====================================
+   CARD ESPECIAL TITÃ
+===================================== */
+
+.titaCard{
+
+background:
+linear-gradient(
+135deg,
+rgba(255,215,0,.20),
+rgba(255,136,77,.15)
+);
+
+border:
+1px solid
+rgba(255,215,0,.30);
+
+box-shadow:
+0 0 30px
+rgba(255,215,0,.20);
+
+}
+/* =====================================
+   POPUP LEVEL UP
+===================================== */
+
+#levelUpPopup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+align-items:center;
+justify-content:center;
+
+background:
+rgba(0,0,0,.75);
+
+backdrop-filter:
+blur(10px);
+
+z-index:99999;
+
+animation:
+fadePopup .4s ease;
+
+}
+
+.popupContent{
+
+width:90%;
+max-width:500px;
+
+padding:40px;
+
+text-align:center;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,229,255,.15),
+rgba(139,92,246,.20)
+);
+
+border:
+1px solid
+rgba(0,229,255,.25);
+
+box-shadow:
+0 0 60px
+rgba(0,229,255,.35);
+
+animation:
+levelUpAnim 1s ease;
+
+}
+
+.popupContent h1{
+
+font-size:3rem;
+
+margin-bottom:15px;
+
+color:#ffd700;
+
+text-shadow:
+0 0 20px
+rgba(255,215,0,.8);
+
+}
+
+.popupContent h2{
+
+font-size:2rem;
+
+margin-bottom:15px;
+
+color:#00e5ff;
+
+}
+
+.popupContent p{
+
+font-size:1.1rem;
+
+color:white;
+
+}
+
+/* =====================================
+   ANIMAÇÕES
+===================================== */
+
+@keyframes fadePopup{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+@keyframes levelUpAnim{
+
+0%{
+
+transform:
+scale(.5);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:
+scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* =====================================
+   GLOW ANIMADO CARDS
+===================================== */
+
+.card{
+
+animation:
+cardGlow 8s infinite alternate;
+
+}
+
+@keyframes cardGlow{
+
+0%{
+
+box-shadow:
+0 0 15px
+rgba(0,229,255,.15);
+
+}
+
+100%{
+
+box-shadow:
+0 0 35px
+rgba(139,92,246,.25);
+
+}
+
+}
+
+/* =====================================
+   CLASSE DIAMANTE
+===================================== */
+
+.classeDiamante{
+
+background:
+linear-gradient(
+90deg,
+#00e5ff,
+#8b5cf6
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:
+transparent;
+
+font-weight:900;
+
+text-shadow:
+0 0 20px
+rgba(0,229,255,.5);
+
+}
+
+/* =====================================
+   CLASSE TITÃ
+===================================== */
+
+.classeTita{
+
+background:
+linear-gradient(
+90deg,
+#ffd700,
+#ff884d
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:
+transparent;
+
+font-weight:900;
+
+text-shadow:
+0 0 25px
+rgba(255,215,0,.7);
+
+}
+
+/* =====================================
+   DEUS DA GUERRA
+===================================== */
+
+.classeDeus{
+
+background:
+linear-gradient(
+90deg,
+#ff4d6d,
+#ffd700,
+#00e5ff
+);
+
+background-size:
+300% 300%;
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:
+transparent;
+
+animation:
+deusAnim 4s linear infinite;
+
+font-weight:900;
+
+}
+
+@keyframes deusAnim{
+
+0%{
+background-position:0% 50%;
+}
+
+100%{
+background-position:100% 50%;
+}
+
+}
+
+/* =====================================
+   GRÁFICOS
+===================================== */
+
+canvas{
+
+background:
+rgba(255,255,255,.03);
+
+border-radius:20px;
+
+padding:15px;
+
+border:
+1px solid
+rgba(255,255,255,.05);
+
+}
+
+/* =====================================
+   BOTÕES GERAIS
+===================================== */
+
+button{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+/* =====================================
+   BOTÃO BACKUP
+===================================== */
+
+#exportarDados{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:16px;
+
+font-weight:800;
+
+font-size:1rem;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#ff884d,
+#ff4d6d
+);
+
+margin-top:20px;
+
+}
+
+#exportarDados:hover{
+
+box-shadow:
+0 0 25px
+rgba(255,77,109,.45);
+
+}
+
+/* =====================================
+   SCROLLBAR GLOBAL
+===================================== */
 
 ::-webkit-scrollbar{
 
@@ -1189,504 +1918,26 @@ width:10px;
 
 ::-webkit-scrollbar-track{
 
-background:#0f172a;
+background:#0a0f1f;
 
 }
 
 ::-webkit-scrollbar-thumb{
 
-background:#facc15;
+background:
+linear-gradient(
+180deg,
+#00e5ff,
+#8b5cf6
+);
 
 border-radius:999px;
 
 }
 
-/* ================================= */
-/* ANIMAÇÕES */
-/* ================================= */
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:
-translateY(20px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:
-translateY(0);
-
-}
-
-}
-
-.card{
-
-animation:
-fadeUp .5s ease;
-
-}
-
-/* ================================= */
-/* RESPONSIVO */
-/* ================================= */
-
-@media(max-width:900px){
-
-.hero h1{
-
-font-size:2rem;
-
-}
-
-.banner{
-
-height:220px;
-
-}
-
-.perfil{
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.avatar{
-
-width:120px;
-height:120px;
-
-}
-
-.boss-area{
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.tabelaTreino{
-
-display:block;
-
-overflow-x:auto;
-
-}
-
-}
-
-@media(max-width:600px){
-
-body{
-
-padding:10px;
-
-}
-
-.card{
-
-padding:18px;
-
-}
-
-.hero-content{
-
-left:20px;
-bottom:20px;
-
-}
-
-.hero h1{
-
-font-size:1.6rem;
-
-}
-
-.badge{
-
-font-size:.8rem;
-
-padding:8px 12px;
-
-}
-
-.stat h3{
-
-font-size:1.5rem;
-
-}
-
-}
-
-/* ================================= */
-/* EFEITOS PREMIUM */
-/* ================================= */
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-border-radius:25px;
-
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.03),
-transparent
-);
-
-opacity:.5;
-
-}
-
-.card{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.hero::after{
-
-content:"";
-
-position:absolute;
-
-top:-100px;
-
-right:-100px;
-
-width:250px;
-
-height:250px;
-
-border-radius:50%;
-
-background:
-rgba(250,204,21,.08);
-
-filter:blur(80px);
-
-}
-
-/* ================================= */
-/* PROGRESSO TREINO */
-/* ================================= */
-
-#barraTreino{
-
-height:100%;
-
-width:0;
-
-background:
-linear-gradient(
-90deg,
-#22c55e,
-#4ade80
-);
-
-transition:.5s;
-
-}
-
-#textoProgresso{
-
-margin-top:10px;
-
-font-weight:bold;
-
-color:#22c55e;
-
-text-align:center;
-
-}
-/* ================================= */
-/* ARES PREMIUM 4.0 */
-/* ================================= */
-
-/* Glow Dourado */
-
-.glow-gold{
-
-box-shadow:
-0 0 15px rgba(250,204,21,.3),
-0 0 30px rgba(250,204,21,.2);
-
-}
-
-/* Glow Verde */
-
-.glow-green{
-
-box-shadow:
-0 0 15px rgba(34,197,94,.4),
-0 0 30px rgba(34,197,94,.25);
-
-}
-
-/* Glow Vermelho */
-
-.glow-red{
-
-box-shadow:
-0 0 15px rgba(239,68,68,.4),
-0 0 30px rgba(239,68,68,.25);
-
-}
-
-/* ================================= */
-/* HOVER DOS EXERCÍCIOS */
-/* ================================= */
-
-.exercicio{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.exercicio::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-100%;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.08),
-transparent
-);
-
-transition:.6s;
-
-}
-
-.exercicio:hover::before{
-
-left:100%;
-
-}
-
-/* ================================= */
-/* XP BRILHANDO */
-/* ================================= */
-
-#xp{
-
-font-weight:bold;
-
-color:#facc15;
-
-animation:
-xpGlow 3s infinite;
-
-}
-
-@keyframes xpGlow{
-
-0%{
-text-shadow:none;
-}
-
-50%{
-text-shadow:
-0 0 15px #facc15;
-}
-
-100%{
-text-shadow:none;
-}
-
-}
-
-/* ================================= */
-/* NÍVEL */
-/* ================================= */
-
-#nivel{
-
-font-size:1.1rem;
-
-font-weight:bold;
-
-color:#38bdf8;
-
-}
-
-/* ================================= */
-/* CLASSE */
-/* ================================= */
-
-#classe{
-
-font-size:1.2rem;
-
-font-weight:bold;
-
-color:#facc15;
-
-}
-
-/* ================================= */
-/* BOTÃO PREMIUM */
-/* ================================= */
-
-button{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-button::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-100%;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.25),
-transparent
-);
-
-transition:.6s;
-
-}
-
-button:hover::before{
-
-left:100%;
-
-}
-
-/* ================================= */
-/* CONQUISTA DESBLOQUEADA */
-/* ================================= */
-
-.conquistaNova{
-
-animation:
-conquistaAnim .8s ease;
-
-}
-
-@keyframes conquistaAnim{
-
-0%{
-
-transform:scale(.5);
-
-opacity:0;
-
-}
-
-100%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-}
-
-/* ================================= */
-/* STREAK */
-/* ================================= */
-
-#streak{
-
-font-weight:bold;
-
-color:#f97316;
-
-font-size:1.1rem;
-
-}
-
-/* ================================= */
-/* RECORDES */
-/* ================================= */
-
-.recordeCard{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.recordeCard::after{
-
-content:"🏆";
-
-position:absolute;
-
-top:10px;
-right:10px;
-
-opacity:.2;
-
-font-size:2rem;
-
-}
-
-/* ================================= */
-/* SCROLL ANIMADO */
-/* ================================= */
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-/* ================================= */
-/* CARD HOVER PREMIUM */
-/* ================================= */
-
-.card{
-
-will-change:transform;
-
-}
+/* =====================================
+   EFEITO HOVER GLOBAL
+===================================== */
 
 .card:hover{
 
@@ -1696,124 +1947,67 @@ scale(1.01);
 
 }
 
-/* ================================= */
-/* BOSS HP */
-/* ================================= */
+/* =====================================
+   RESPONSIVO MOBILE
+===================================== */
 
-#bossHp{
+@media(max-width:768px){
 
-font-size:1.2rem;
+header h1{
 
-font-weight:bold;
-
-color:#ef4444;
+font-size:2rem;
 
 }
 
-/* ================================= */
-/* TABELA TREINO */
-/* ================================= */
+.popupContent h1{
 
-.tabelaTreino tr:hover{
-
-background:
-rgba(250,204,21,.05);
+font-size:2rem;
 
 }
 
-/* ================================= */
-/* INPUT PREMIUM */
-/* ================================= */
+.popupContent h2{
 
-input{
-
-transition:.3s;
+font-size:1.5rem;
 
 }
 
-input:hover{
+#bossNomeArena{
 
-transform:scale(1.02);
-
-}
-
-input:focus{
-
-box-shadow:
-0 0 15px rgba(250,204,21,.25);
+font-size:1.5rem;
 
 }
 
-/* ================================= */
-/* BARRAS */
-/* ================================= */
+.bossImagem img{
 
-.barra{
-
-position:relative;
+width:130px;
 
 }
 
-.barra::after{
+}
 
-content:"";
+/* =====================================
+   EASTER EGG ARES
+===================================== */
 
-position:absolute;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.08),
-transparent
-);
+.aresMode{
 
 animation:
-shine 4s infinite;
+aresMode 6s infinite linear;
 
 }
 
-@keyframes shine{
+@keyframes aresMode{
 
 0%{
-left:-100%;
+
+filter:hue-rotate(0deg);
+
 }
 
 100%{
-left:100%;
-}
 
-}
+filter:hue-rotate(360deg);
 
-/* ================================= */
-/* LOADING */
-/* ================================= */
-
-.loading{
-
-animation:
-pulse 1.5s infinite;
-
-}
-
-@keyframes pulse{
-
-0%{
-opacity:.5;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:.5;
 }
 
 }
